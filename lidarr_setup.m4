@@ -17,7 +17,7 @@ iocage exec __LIDARR_JAIL__ make -DBATCH -C /usr/ports/lang/mono install clean
 # Mount storage
 iocage exec __LIDARR_JAIL__ mkdir -p /config
 iocage exec __LIDARR_JAIL__ mkdir -p /mnt/music
-iocage exec __LIDARR_JAIL__ mkdir -p /mnt/torrents
+iocage exec __LIDARR_JAIL__ mkdir -p /mnt/downloads
 iocage fstab -a __LIDARR_JAIL__ __APPS_ROOT__/__LIDARR_JAIL__ /config nullfs rw 0 0
 
 # Download lidarr
