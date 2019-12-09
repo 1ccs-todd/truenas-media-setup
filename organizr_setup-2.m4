@@ -1,3 +1,4 @@
+include(variables.m4)dnl
 iocage exec __ORGANIZR_JAIL__ sysrc nginx_enable=YES
 iocage exec __ORGANIZR_JAIL__ sysrc php_fpm_enable=YES
 iocage exec __ORGANIZR_JAIL__ service nginx start
