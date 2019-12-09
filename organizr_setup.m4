@@ -1,3 +1,4 @@
+include(variables.m4)dnl
 #Note to self: Make sure port forwarding is disabled before removing or rebuilding this jail
 
 iocage create -n "__ORGANIZR_JAIL__" -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__ORGANIZR_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
