@@ -1,7 +1,7 @@
 include(variables.m4)dnl
 iocage create -n "__TRANSMISSION_JAIL__" -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__TRANSMISSION_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 
-iocage exec __TRANSMISSION_JAIL__ pkg install -y transmission
+iocage exec __TRANSMISSION_JAIL__ pkg install -y transmission nano
 
 iocage exec __TRANSMISSION_JAIL__ mkdir -p /config/transmission-home
 iocage exec __TRANSMISSION_JAIL__ mkdir -p  /mnt/downloads
