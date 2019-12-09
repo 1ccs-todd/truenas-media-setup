@@ -3,7 +3,7 @@ include(variables.m4)dnl
 
 iocage create -n "__ORGANIZR_JAIL__" -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__ORGANIZR_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 
-iocage exec __ORGANIZR_JAIL__ pkg install -y nginx git wget php72 php72-curl php72-pdo php72-sqlite3 php72-simplexml php72-zip php72-openssl php72-hash php72-json php72-session php72-pdo_sqlite
+iocage exec __ORGANIZR_JAIL__ pkg install -y nginx git wget php72 php72-curl php72-pdo php72-sqlite3 php72-simplexml php72-zip php72-openssl php72-hash php72-json php72-session php72-pdo_sqlite nano
 
 iocage exec __ORGANIZR_JAIL__ mkdir -p /config
 iocage fstab -a __ORGANIZR_JAIL__ __APPS_ROOT__/organizr /config nullfs rw 0 0
