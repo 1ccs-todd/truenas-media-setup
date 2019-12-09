@@ -36,5 +36,5 @@ clean :
 	rm "jackett_setup-2.sh"
 	rm "organizr_setup.sh"
 	rm "organizr_setup-2.sh"
-	rm "organizer_nginx.conf"
+	rm "organizr_nginx.conf"
 	rm "tautulli_setup.sh"
