@@ -20,8 +20,27 @@ __POOL__ > __MEDIA_DATASET__ >  -series
            __APPS_DATASET__                                  
 ```
 
+Complete Media setup including (dates show the last successful test):
 
-Basic Guide:
++ [Plex](#plex) 12/xx/19
++ [Transmission](#transmission) 12/xx/19
++ [Sonarr V3](#sonarr) 12/xx/19
++ [Radarr](#radarr) 12/xx/19
++ [Lidarr](#lidarr) 12/xx/19
++ [Jackett](#jackett) 12/xx/19
++ [Tautulli](#tautulli) 12/xx/19
++ [Organizr V2](#organizr) 12/xx/19
+
+Ombi is no longer supported as Ombi 2.x is no longer being developed actively and Ombi 3.x is not usable until there is proper support for .net-core on FreeBSD
+
+Configuration:
++ [Backups](#backups)
++ [Common Commands](#commands)
++ [Testing/Updates](#testing)
++ [Default Jail Ports/UID/Location](#default)
+
+
+**Basic Guide:**
 1) download the master.zip from this repo and unpack it to a folder on your FreeNAS server.
 2) ssh (preferred) or use shell from the Web-UI of FreeNAS
 3) enter path where you unpacked the master.zip file and edit 'variables.m4'
