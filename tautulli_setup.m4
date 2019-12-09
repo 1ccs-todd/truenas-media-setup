@@ -1,3 +1,4 @@
+include(variables.m4)dnl
 echo '{"pkgs":["python2","py27-sqlite3","py27-openssl","git" ," py27-pycryptodome" ,"ca_root_nss"]}' > /tmp/pkg.json
 iocage create -n "__TAUTULLI_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__TAUTULLI_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 rm /tmp/pkg.json
