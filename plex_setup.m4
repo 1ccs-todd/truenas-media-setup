@@ -7,7 +7,7 @@ iocage exec __PLEX_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
 iocage exec __PLEX_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
 
 # Install Plex and dependencies
-iocage exec __PLEX_JAIL__ pkg install -y plexmediaserver
+iocage exec __PLEX_JAIL__ pkg install -y plexmediaserver nano
 
 # Mount storage
 iocage exec __PLEX_JAIL__ "mkdir -p /config"
