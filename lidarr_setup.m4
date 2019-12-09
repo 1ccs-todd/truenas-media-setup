@@ -11,6 +11,7 @@ iocage exec __LIDARR_JAIL__ pkg install -y libepoxy-1.5.2 llvm80 curl nano
 iocage exec __LIDARR_JAIL__ portsnap fetch extract
 iocage exec __LIDARR_JAIL__ curl -o /tmp/mono-patch-5.20.1.34 https://bz-attachments.freebsd.org/attachment.cgi?id=209650
 patch -d /mnt/TANK/iocage/jails/lidarr/root/usr/ports/lang/mono/ -E < /mnt/TANK/iocage/jails/lidarr/root/tmp/mono-patch-5.20.1.34
+iocage exec __LIDARR_JAIL__ rm /tmp/mono-patch-5.20.1.34
 iocage exec __LIDARR_JAIL__ make -C /usr/ports/lang/mono install clean
 
 # mount storage
