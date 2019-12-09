@@ -13,8 +13,10 @@ The goal is to make a customizable installation script to setup complete media m
 ```
 __POOL__ > __MEDIA_DATASET__ >  -series
                                 -movies
+                                -music
                                 -downloads > -radarr
                                              -sonarr
+                                             -lidarr
                                              -complete
                                              -incomplete
            __APPS_DATASET__                                  
