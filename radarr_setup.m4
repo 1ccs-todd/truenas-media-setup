@@ -1,3 +1,4 @@
+include(variables.m4)dnl
 iocage create -n "__RADARR_JAIL__" -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__RADARR_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 
 # Update to Latest Repo
