@@ -12,6 +12,7 @@ iocage exec __SONARR_JAIL__ curl -o /tmp/mono-patch-5.20.1.34 https://bz-attachm
 iocage exec __SONARR_JAIL__ portsnap fetch extract
 iocage exec __SONARR_JAIL__ curl -o /tmp/mono-patch-5.20.1.34 https://bz-attachments.freebsd.org/attachment.cgi?id=209650
 patch -d /mnt/TANK/iocage/jails/sonarr/root/usr/ports/lang/mono/ -E < /mnt/TANK/iocage/jails/sonarr/root/tmp/mono-patch-5.20.1.34
+iocage exec __SONARR_JAIL__ rm /tmp/mono-patch-5.20.1.34
 iocage exec __SONARR_JAIL__ make -C /usr/ports/lang/mono install clean
 
 # mount storage
