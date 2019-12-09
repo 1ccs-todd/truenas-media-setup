@@ -5,7 +5,7 @@ iocage create -n "__JACKETT_JAIL__" -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_IN
 iocage exec __JACKETT_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
 iocage exec __JACKETT_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
 
-iocage exec __JACKETT_JAIL__ pkg install -y mono curl
+iocage exec __JACKETT_JAIL__ pkg install -y mono curl nano
 
 iocage exec __JACKETT_JAIL__ mkdir -p /config
 iocage fstab -a __JACKETT_JAIL__ __APPS_ROOT__/jackett /config nullfs rw 0 0
