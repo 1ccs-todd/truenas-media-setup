@@ -6,7 +6,7 @@ iocage exec __RADARR_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
 iocage exec __RADARR_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
 
 # Install pkgs
-iocage exec __RADARR_JAIL__ pkg install -y mono mediainfo sqlite3 curl
+iocage exec __RADARR_JAIL__ pkg install -y mono mediainfo sqlite3 curl nano
 
 iocage exec __RADARR_JAIL__ mkdir -p /config
 iocage exec __RADARR_JAIL__ mkdir -p  /mnt/downloads
