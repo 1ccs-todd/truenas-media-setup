@@ -1,3 +1,4 @@
+changequote(`[[[', `]]]')dnl
 include(variables.m4)dnl
 FreeNAS 11.2-U7, 11.3
 =======
