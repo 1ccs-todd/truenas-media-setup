@@ -1,13 +1,10 @@
-changequote(`[[[', `]]]')dnl
-include(variables.m4)
-FreeNAS 11.2
+include(variables.m4)dnl
+FreeNAS 11.2-U7, 11.3
 =======
 
 ***WARNING READ THIS: This page contains incomplete and possibly incorrect info. The page is constantly being edited and worked on. Many of these should work but some may be broken. Read the code carefully to understand what you are doing, stuff may be nedd to be changed for your own use. These include but are not limited too JAIL AND ROUTER IPs, YOUR FREENAS MAIN VOLUME,THE MOST RECENT RELEASE OF DOWNLOADED FILES Use at your own risk.***
 
-**Find me in the FreeNAS forums
-
-Thanks to the creator of this guide https://forums.freenas.org/index.php?resources/fn11-1-iocage-jails-plex-tautulli-sonarr-radarr-lidarr-jackett-ombi-transmission-organizr.58/
+Thanks to the creator of this guide https://www.ixsystems.com/community/resources/fn11-2-iocage-jails-plex-tautulli-sonarr-radarr-lidarr-jackett-transmission-organizr.58/
 
 
 ***Setup Structure***
@@ -27,7 +24,7 @@ I have pool named __POOL__. I created a dataset named "__MEDIA_DATASET__" owned 
 **Permissions**
 ------  
 ```
-For Sonarr, Radarr, Transmission you will have to change the default user to __MEDIA_USER__:__MEDIA_GROUP__ so the jails can work together properly.
+For Sonarr, Radarr, Lidarr, and Transmission you will have to change the default user to __MEDIA_USER__:__MEDIA_GROUP__ so the jails can work together properly.
 
 Use the name of your plugin instead of PLUGIN
 
@@ -41,17 +38,18 @@ service PLUGIN start
 
 
 
-My current setup (dates show the last successful test):
+Complete Media setup including (dates show the last successful test):
 
 + [Plex](#plex) 12/21/18
 + [Transmission](#transmission) 12/21/18
 + [Sonarr V3](#sonarr) 12/21/18
 + [Radarr](#radarr) 12/21/18
++ [Lidarr](#lidarr) 
 + [Jackett](#jackett) 12/21/18
 + [Tautulli](#tautulli) 12/21/18
 + [Organizr V2](#organizr) 12/21/18
 
-Ombi and Unifi have been moved to docker containers in Rancher. See my other guide.
+Ombi is no longer supported as Ombi 2.x is no longer being developed actively and Ombi 3.x is not usable until there is proper support for .net-core on FreeBSD
 
 Configuration:
 + [Backups](#backups)
@@ -108,9 +106,6 @@ Radarr
 include(radarr_setup.sh)
 ```
 ```
-On Windows, you need to change the End of Line (EOL) format in Notepad++ to UNIX:
-
-use ee editor or it won't work at least for me!
 Create an rc file for radarr using your favorite editor at /mnt/iocage/jails/radarr/root/usr/local/etc/rc.d/radarr
 
 iocage exec radarr mkdir /usr/local/etc/rc.d
@@ -123,6 +118,33 @@ include(radarr.rc)
 ```
 include(radarr_setup-2.sh)
 ```
+
+<a name="lidarr"></a>
+Lidarr V7.1.x
+-----
+```
+include(lidarr_setup.sh)
+
+# create rc.d
+iocage exec lidarr mkdir /usr/local/etc/rc.d
+iocage exec lidarr "ee /mnt/iocage/jails/lidarr/root/usr/local/etc/rc.d/lidarr"
+# use rc.d below
+```
+
+<details><summary>CLICK TO SHOW LIDARR rc.d</summary>
+<p>
+
+```
+include(lidarr.rc)
+```
+
+</p>
+</details>
+
+```
+include(lidarr_setup-2.sh)
+```
+
 
 <a name="organizr"></a>
 Organizr V2
