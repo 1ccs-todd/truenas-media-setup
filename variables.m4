@@ -1,4 +1,4 @@
-define(__IOCAGE_RELEASE__,11.2-RELEASE)dnl
+define(__IOCAGE_RELEASE__,11.3-RELEASE)dnl
 dnl
 define(__POOL__,myVol)dnl
 define(__POOL_ROOT__,/mnt/__POOL__)dnl
