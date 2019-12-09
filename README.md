@@ -26,15 +26,15 @@ Basic Guide:
 2) ssh (preferred) or use shell from the Web-UI of FreeNAS
 3) enter path where you unpacked the master.zip file and edit 'variables.m4'
 4) run 'make' to build custom install scripts based on 'variables.m4'
-    * Recommended to edit variables: '__POOL__'
-                                     '__MEDIA_DATASET__'
-                                     '__DEFAULT_ROUTER__'
-                                     '__JACKETT_IP__'
-                                     '__ORGANIZR_IP__'
-                                     '__PLEX_IP__'
-                                     '__RADARR_IP__'
-                                     '__SONARR_IP__'
-                                     '__TAUTULLI_IP__'
-                                     '__TRANSMISSION_IP__'
+    * Recommended to edit variables: ```__POOL__
+                                     __MEDIA_DATASET__
+                                     __DEFAULT_ROUTER__
+                                     __JACKETT_IP__
+                                     __ORGANIZR_IP__
+                                     __PLEX_IP__
+                                     __RADARR_IP__
+                                     __SONARR_IP__
+                                     __TAUTULLI_IP__
+                                     __TRANSMISSION_IP__```
                                           
 5) ... more to follow ...
