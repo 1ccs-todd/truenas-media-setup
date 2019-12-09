@@ -1,3 +1,4 @@
+include(variables.m4)dnl
 user __ORGANIZR_USER__;
 worker_processes 1;
 events {
