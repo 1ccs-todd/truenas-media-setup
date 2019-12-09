@@ -1,3 +1,4 @@
+include(variables.m4)dnl
 #!/bin/sh
 
 # $FreeBSD$
