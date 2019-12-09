@@ -1,6 +1,9 @@
 # freenas-media-setup
 Cribbed from https://gist.github.com/mow4cash/e2fd4991bd2b787ca407a355d134b0ff
 
+Thanks to the creator of this guide https://www.ixsystems.com/community/resources/fn11-2-iocage-jails-plex-tautulli-sonarr-radarr-lidarr-jackett-transmission-organizr.58/
+
+
 The goal is to make a customizable installation script to setup complete media management including Plex, Tautulli, Sonarr, Radarr, Lidarr, Jackett, Transmission, and Organizr on any FreeNAS server.
 
 Basic Guide:
