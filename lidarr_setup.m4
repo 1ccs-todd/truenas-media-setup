@@ -1,6 +1,6 @@
 changequote(`[[[', `]]]')dnl
 include(variables.m4)
-iocage create -n "__LIDARR_JAIL__" -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__JACKETT_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
+iocage create -n "__LIDARR_JAIL__" -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__LIDARR_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 
 # Update to Latest Repo
 iocage exec __LIDARR_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
@@ -31,6 +31,6 @@ iocage exec __LIDARR_JAIL__ chown -R __LIDARR_USER__:__LIDARR_GROUP__ /usr/local
 
 # Install rc.d service script
 cp lidarr.sh __IOCAGE_ROOT__/jails/__LIDARR_JAIL__/root/usr/local/etc/rc.d/lidarr
-iocage exec __LIDARR_JAIL__ chmod u+x /usr/local/etc/rc.d/jackett
-iocage exec __LIDARR_JAIL__ sysrc "jackett_enable=YES"
-iocage exec __LIDARR_JAIL__ service jackett start
+iocage exec __LIDARR_JAIL__ chmod u+x /usr/local/etc/rc.d/lidarr
+iocage exec __LIDARR_JAIL__ sysrc "lidarr_enable=YES"
+iocage exec __LIDARR_JAIL__ service lidarr start
