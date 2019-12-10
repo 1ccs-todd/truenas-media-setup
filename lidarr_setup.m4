@@ -30,7 +30,7 @@ iocage exec __LIDARR_JAIL__ "pw user add __LIDARR_USER__ -c __LIDARR_USER__ -u _
 iocage exec __LIDARR_JAIL__ chown -R __LIDARR_USER__:__LIDARR_GROUP__ /usr/local/share/Lidarr /config
 
 # Install rc.d service script
-cp lidarr.sh __IOCAGE_ROOT__/jails/__LIDARR_JAIL__/root/usr/local/etc/rc.d/lidarr
+cp lidarr.rc __IOCAGE_ROOT__/jails/__LIDARR_JAIL__/root/usr/local/etc/rc.d/lidarr
 iocage exec __LIDARR_JAIL__ chmod u+x /usr/local/etc/rc.d/lidarr
 iocage exec __LIDARR_JAIL__ sysrc "lidarr_enable=YES"
 iocage exec __LIDARR_JAIL__ service lidarr start
