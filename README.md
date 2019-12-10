@@ -9,7 +9,7 @@ Thanks to the creator of this guide https://www.ixsystems.com/community/resource
 
 The goal is to make a customizable installation script to setup complete media management including Plex, Tautulli, Sonarr, Radarr, Lidarr, Jackett, Transmission, and Organizr on any FreeNAS server.
 
-Ombi is no longer supported as Ombi 2.x is no longer being developed actively and Ombi 3.x is not usable until there is proper support for .net-core on FreeBSD
+Ombi is no longer supported as Ombi 2.x is no longer being developed and Ombi 3.x is not usable until there is proper support for .net-core on FreeBSD
 
 ***Setup Structure***
 ```
