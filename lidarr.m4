@@ -1,5 +1,4 @@
-changequote(`[[[', `]]]')dnl
-include(variables.m4)
+include(variables.m4)dnl
 #!/bin/sh
 
 # $FreeBSD$
