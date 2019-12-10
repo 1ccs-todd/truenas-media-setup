@@ -1,6 +1,7 @@
 "Freenas 11.3 Setup.md" :
 	m4 "plex_setup.m4" > "plex_setup.sh"
 	m4 "transmission_setup.m4" > "transmission_setup.sh"
+	m4 "transmission_ipfw.m4" > transmission_ipfw.rules
 	m4 "sonarr.m4" > "sonarr.rc"
 	m4 "sonarr_setup.m4" > "sonarr_setup.sh"
 	m4 "radarr.m4" > "radarr.rc"
@@ -29,3 +30,4 @@ clean :
 	rm "organizr_setup.sh"
 	rm "organizr_nginx.conf"
 	rm "tautulli_setup.sh"
+	rm "transmission_ipfw.rules"
