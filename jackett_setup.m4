@@ -10,7 +10,7 @@ iocage exec __JACKETT_JAIL__ pkg install -y mono curl nano
 
 # Mount storage
 iocage exec __JACKETT_JAIL__ mkdir -p /config
-iocage fstab -a __JACKETT_JAIL__ __APPS_ROOT__/jackett /config nullfs rw 0 0
+iocage fstab -a __JACKETT_JAIL__ __APPS_ROOT__/__JACKETT_JAIL__ /config nullfs rw 0 0
 
 # download jackett
 iocage exec __JACKETT_JAIL__ ln -s /usr/local/bin/mono /usr/bin/mono
@@ -21,3 +21,9 @@ iocage exec __JACKETT_JAIL__ rm __JACKETT_FETCH_PATH__
 # Media permissions
 iocage exec __JACKETT_JAIL__ "pw user add __JACKETT_USER__ -c jackett -u __JACKETT_UID__ -d /nonexistent -s /usr/bin/nologin"
 iocage exec __JACKETT_JAIL__ chown -R __JACKETT_USER__:__JACKETT_GROUP__ /usr/local/share/Jackett /config
+
+# Install rc.d service
+cp jackett.sh __IOCAGE_ROOT__/jails/__JACKETT_JAIL__/root/usr/local/etc/rc.d/jackett
+iocage exec __JACKETT_JAIL__ chmod u+x /usr/local/etc/rc.d/jackett
+iocage exec __JACKETT_JAIL__ sysrc "jackett_enable=YES"
+iocage exec __JACKETT_JAIL__ service jackett start
