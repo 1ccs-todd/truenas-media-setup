@@ -22,21 +22,23 @@ __POOL__ > __MEDIA_DATASET__ >  -series
 You have pool named "__POOL__". And created a dataset named "__MEDIA_DATASET__" owned by the default freenas user __MEDIA_USER__:__MEDIA_GROUP__. The dataset contains the folders: series,movies, and downloads. You also have a dataset named "__APPS_DATASET__" to hold the config data.
 
 ```
+```
+ISSUES RESOLVED IN INSTALL SCRIPTS:
+```
 **Permissions**
 ------  
 ```
 For Sonarr, Radarr, Lidarr, and Transmission you will have to change the default user to __MEDIA_USER__:__MEDIA_GROUP__ so the jails can work together properly.
-
-Use the name of your plugin instead of PLUGIN
-
-service PLUGIN onestop
-chown -R __MEDIA_USER__:__MEDIA_GROUP__ /usr/local/PLUGIN (this location might be different for some of the apps)
-sysrc 'PLUGIN_user=__MEDIA_USER__'
-sysrc 'PLUGIN_group=__MEDIA_GROUP__'
-service PLUGIN start
 ```
-
-
+**MONO 5.20 compatibility**
+------
+```
+Sonarr and Lidarr have moved away from mono 5.10.  For these two, PORTS are installed to apply a patch to v5.20.1.34 and installed. 
+```
+**OPENVPN**
+------
+```
+OpenVPN may not be desired by everyone, so I created "transmission_add_VPN.sh" to process the necessary additions for __TRANSMISSION_JAIL__.
 
 
 Complete Media setup including (dates show the last successful test):
