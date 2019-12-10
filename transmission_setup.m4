@@ -9,6 +9,7 @@ iocage exec __JACKETT_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.
 iocage exec __TRANSMISSION_JAIL__ pkg install -y bash unzip unrar transmission openvpn ca_root_nss nano
 
 # Mount storage
+iocage exec __TRANSMISSION_JAIL__ mkdir -p /config
 iocage fstab -a __TRANSMISSION_JAIL__ __APPS_ROOT__/transmission /config nullfs rw 0 0
 iocage fstab -a __TRANSMISSION_JAIL__ __MEDIA_ROOT__ /mnt nullfs rw 0 0
 iocage exec __TRANSMISSION_JAIL__ mkdir -p /config/transmission-home
