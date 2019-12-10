@@ -23,7 +23,7 @@ iocage exec __JACKETT_JAIL__ "pw user add __JACKETT_USER__ -c jackett -u __JACKE
 iocage exec __JACKETT_JAIL__ chown -R __JACKETT_USER__:__JACKETT_GROUP__ /usr/local/share/Jackett /config
 
 # Install rc.d service
-cp jackett.sh __IOCAGE_ROOT__/jails/__JACKETT_JAIL__/root/usr/local/etc/rc.d/jackett
+cp jackett.rc __IOCAGE_ROOT__/jails/__JACKETT_JAIL__/root/usr/local/etc/rc.d/jackett
 iocage exec __JACKETT_JAIL__ chmod u+x /usr/local/etc/rc.d/jackett
 iocage exec __JACKETT_JAIL__ sysrc "jackett_enable=YES"
 iocage exec __JACKETT_JAIL__ service jackett start
