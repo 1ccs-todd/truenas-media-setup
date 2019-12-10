@@ -6,7 +6,7 @@ iocage exec __JACKETT_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
 iocage exec __JACKETT_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
 
 # Install pkgs
-iocage exec __JACKETT_JAIL__ pkg install -y mono curl nano
+iocage exec __JACKETT_JAIL__ pkg install -y mono curl ca_root_nss nano
 
 # Mount storage
 iocage exec __JACKETT_JAIL__ mkdir -p /config
