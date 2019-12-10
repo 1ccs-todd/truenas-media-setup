@@ -9,6 +9,8 @@ Thanks to the creator of this guide https://www.ixsystems.com/community/resource
 
 The goal is to make a customizable installation script to setup complete media management including Plex, Tautulli, Sonarr, Radarr, Lidarr, Jackett, Transmission, and Organizr on any FreeNAS server.
 
+Ombi is no longer supported as Ombi 2.x is no longer being developed actively and Ombi 3.x is not usable until there is proper support for .net-core on FreeBSD
+
 ***Setup Structure***
 ```
 __POOL__ > __MEDIA_DATASET__ >  -series
@@ -22,24 +24,7 @@ __POOL__ > __MEDIA_DATASET__ >  -series
            __APPS_DATASET__                                  
 ```
 
-Complete Media setup including (dates show the last successful test):
 
-+ [Plex](#plex) 12/xx/19
-+ [Transmission](#transmission) 12/xx/19
-+ [Sonarr V3](#sonarr) 12/xx/19
-+ [Radarr](#radarr) 12/xx/19
-+ [Lidarr](#lidarr) 12/xx/19
-+ [Jackett](#jackett) 12/xx/19
-+ [Tautulli](#tautulli) 12/xx/19
-+ [Organizr V2](#organizr) 12/xx/19
-
-Ombi is no longer supported as Ombi 2.x is no longer being developed actively and Ombi 3.x is not usable until there is proper support for .net-core on FreeBSD
-
-Configuration:
-+ [Backups](#backups)
-+ [Common Commands](#commands)
-+ [Testing/Updates](#testing)
-+ [Default Jail Ports/UID/Location](#default)
 
 
 **Basic Guide:**
@@ -58,4 +43,7 @@ Configuration:
                                      __TAUTULLI_IP__
                                      __TRANSMISSION_IP__```
                                           
-5) ... more to follow ...
+5) Review "Freenas 11.3 Setup.md".  A customized setup guide based for each installation parsed from variables.m4
+6) Enter "chmod u+x *.sh" to allow execution of installation scripts.
+7) Execute <JAIL>_setup.sh to install whichever jails you desire.
+8) If you desire VPN protection for your Transmission jail, place your working 'openvpn.conf' file into __APPS_ROOT__/__TRANSMISSION_JAIL__/ and execute "transmission_add_VPN.sh"
