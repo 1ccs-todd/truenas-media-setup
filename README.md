@@ -44,6 +44,6 @@ __POOL__ > __MEDIA_DATASET__ >  -series
                                      __TRANSMISSION_IP__```
                                           
 5) Review "Freenas 11.3 Setup.md".  A customized setup guide for each installation.
-6) Enter "chmod u+x *.sh" to allow execution of the installation scripts.
+6) Enter "chmod u+x *.sh" to ensure execution of the installation scripts.
 7) Execute \<JAIL\>_setup.sh to install whichever jails you desire.
 8) If you desire VPN protection for your Transmission jail, execute "transmission_add_VPN.sh" and place your working openvpn.conf file where the script recommends.
