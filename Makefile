@@ -13,7 +13,6 @@
 	m4 "jackett_setup.m4" > "jackett_setup.sh"
 	m4 "organizr_nginx.m4" > "organizr_nginx.conf"
 	m4 "organizr_setup.m4" > "organizr_setup.sh"
-	m4 "organizr_setup-2.m4" > "organizr_setup-2.sh"
 	m4 "tautulli_setup.m4" > "tautulli_setup.sh"
 	m4 "Freenas 11.3 Setup.m4" > "Freenas 11.3 Setup.md"
 clean :
