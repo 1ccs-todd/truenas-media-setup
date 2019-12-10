@@ -19,9 +19,9 @@ __POOL__ > __MEDIA_DATASET__ >  -series
                               -recycle bin   
                             ```
 
-I have pool named __POOL__. I created a dataset named "__MEDIA_DATASET__" owned by the default freenas user __MEDIA_USER__:__MEDIA_GROUP__. The dataset contains the folders series,movies,downloads. Radarr, Sonarr, Transmission will need to run as the user __MEDIA_USER__:__MEDIA_GROUP__ to have access to them, this is very important and should not be overlooked. I also have a dataset named "__APPS_DATASET__" to hold the config data.
-```
+You have pool named "__POOL__". And created a dataset named "__MEDIA_DATASET__" owned by the default freenas user __MEDIA_USER__:__MEDIA_GROUP__. The dataset contains the folders: series,movies, and downloads. You also have a dataset named "__APPS_DATASET__" to hold the config data.
 
+```
 **Permissions**
 ------  
 ```
@@ -79,11 +79,6 @@ Sonarr V3
 -----
 ```
 include(sonarr_setup.sh)
-
-# create rc.d
-iocage exec sonarr mkdir /usr/local/etc/rc.d
-iocage exec sonarr "ee /mnt/iocage/jails/sonarr/root/usr/local/etc/rc.d/sonarr"
-# use rc.d below
 ```
 
 <details><summary>CLICK TO SHOW SONARR rc.d</summary>
@@ -96,40 +91,28 @@ include(sonarr.rc)
 </p>
 </details>
 
-```
-include(sonarr_setup-2.sh)
-```
-
 <a name="radarr"></a>
 Radarr
 ------
 ```
 include(radarr_setup.sh)
 ```
-```
-Create an rc file for radarr using your favorite editor at /mnt/iocage/jails/radarr/root/usr/local/etc/rc.d/radarr
 
-iocage exec radarr mkdir /usr/local/etc/rc.d
-iocage exec radarr "ee /mnt/iocage/jails/radarr/root/usr/local/etc/rc.d/radarr"
+<details><summary>CLICK TO SHOW SONARR rc.d</summary>
+<p>
 
-```
 ```
 include(radarr.rc)
 ```
-```
-include(radarr_setup-2.sh)
-```
+
+</p>
+</details>
 
 <a name="lidarr"></a>
 Lidarr V7.1.x
 -----
 ```
 include(lidarr_setup.sh)
-
-# create rc.d
-iocage exec lidarr mkdir /usr/local/etc/rc.d
-iocage exec lidarr "ee /mnt/iocage/jails/lidarr/root/usr/local/etc/rc.d/lidarr"
-# use rc.d below
 ```
 
 <details><summary>CLICK TO SHOW LIDARR rc.d</summary>
@@ -142,11 +125,6 @@ include(lidarr.rc)
 </p>
 </details>
 
-```
-include(lidarr_setup-2.sh)
-```
-
-
 <a name="organizr"></a>
 Organizr V2
 ------
@@ -157,28 +135,27 @@ include(organizr_setup.sh)
 include(organizr_nginx.conf)
 ```
 ```
-include(organizr_setup-2.sh)
-
 #note to self renable port forwarding
 
 I keep folders in /config for nginx,log,letsencrypt,Backups
 ```
-
 
 <a name="jackett"></a>
 Jackett
 ------
 ```
 include(jackett_setup.sh)
-
-ee __IOCAGE_ROOT__/jails/jackett/root/usr/local/etc/rc.d/jackett
 ```
+
+<details><summary>CLICK TO SHOW JACKETT rc.d</summary>
+<p>
+
 ```
 include(jackett.rc)
 ```
-```
-include(jackett_setup-2.sh)
-```
+
+</p>
+</details>
 
 <a name="tautulli"></a>
 Tautulli
@@ -219,7 +196,7 @@ Testing/Updates
 -----
 ```
 iocage exec <jail> pkg upgrade <name of service>
-iocage exec <jail> pkg upgrade && pkg update
+iocage exec <jail> pkg update && pkg upgrade
 
 iocage exec <jail> service <name of service> start
 iocage exec <jail> service <name of service> restart
@@ -233,7 +210,7 @@ iocage exec <jail> service <name of service> stop
 ```
 PORT - SERVICE - USER (UID)
 radarr- 7878 - __RADARR_USER__ (__RADARR_UID__) 
-sonarr- 8989 - 
+sonarr- 8989 - __SONARR_USER__ (__SONARR_UID__)
 jackett - 9117 - __JACKETT_USER__ (__JACKETT_UID__)
 0rganizr - 80 - organizr (www)
 plexmediaserver 32400 - plex (972)
