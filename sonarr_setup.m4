@@ -6,7 +6,7 @@ iocage exec __SONARR_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
 iocage exec __SONARR_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
 
 # install pkgs
-iocage exec __SONARR_JAIL__ pkg install -y libepoxy-1.5.2 llvm80 mediainfo sqlite3 curl nano
+iocage exec __SONARR_JAIL__ pkg install -y libepoxy-1.5.2 llvm80 mediainfo sqlite3 curl ca_root_nss nano
 iocage exec __SONARR_JAIL__ portsnap fetch extract
 iocage exec __SONARR_JAIL__ curl -o /tmp/mono-patch-5.20.1.34 https://bz-attachments.freebsd.org/attachment.cgi?id=209650
 iocage exec __SONARR_JAIL__ portsnap fetch extract
