@@ -12,6 +12,7 @@ iocage exec __ORGANIZR_JAIL__ pkg install -y nginx git wget php72 php72-curl php
 
 # Mount storage
 iocage exec __ORGANIZR_JAIL__ mkdir -p /config
+mkdir -p __APPS_ROOT__/__ORGANIZR_JAIL__
 iocage fstab -a __ORGANIZR_JAIL__ __APPS_ROOT__/__ORGANIZR_JAIL__ /config nullfs rw 0 0
 iocage exec __ORGANIZR_JAIL__ mkdir -p /config/nginx
 iocage exec __ORGANIZR_JAIL__ mkdir -p /config/Organizr
