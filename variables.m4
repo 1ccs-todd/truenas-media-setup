@@ -9,6 +9,13 @@ define(__IOCAGE_ROOT__,__POOL_ROOT__/__IOCAGE_DATASET__)dnl
 define(__MEDIA_DATASET__,media)dnl
 define(__MEDIA_ROOT__,__POOL_ROOT__/__MEDIA_DATASET__)dnl
 dnl
+define(__SONARR_DOWNLOADS__,sonarr)dnl
+define(__SONARR_COMPLETED__,series)dnl
+define(__RADARR_DOWNLOADS__,radarr)dnl
+define(__RADARR_COMPLETED__,movies)dnl
+define(__LIDARR_DOWNLOADS__,lidarr)dnl
+define(__LIDARR_COMPLETED__,music)dnl
+dnl
 define(__MEDIA_USER__,media)dnl
 define(__MEDIA_GROUP__,media)dnl
 define(__MEDIA_UID__,8675309)dnl
