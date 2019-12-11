@@ -15,6 +15,7 @@ iocage exec __SONARR_JAIL__ make -C /usr/ports/lang/mono -DBATCH install clean
 
 # mount storage
 iocage exec __SONARR_JAIL__ mkdir -p /config
+mkdir -p __APPS_ROOT__/__SONARR_JAIL__
 iocage fstab -a __SONARR_JAIL__ __APPS_ROOT__/sonarr /config nullfs rw 0 0
 iocage fstab -a __SONARR_JAIL__ __MEDIA_ROOT__ /mnt nullfs rw 0 0
 
