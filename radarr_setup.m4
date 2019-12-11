@@ -8,10 +8,13 @@ iocage exec __RADARR_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.o
 # Install pkgs
 iocage exec __RADARR_JAIL__ pkg install -y mono mediainfo sqlite3 curl ca_root_nss nano
 
+# Mount storage
 iocage exec __RADARR_JAIL__ mkdir -p /config
-iocage fstab -a __RADARR_JAIL__ __APPS_ROOT__/radarr /config nullfs rw 0 0
+mkdir -p __APPS_ROOT__/__RADARR_JAIL__
+iocage fstab -a __RADARR_JAIL__ __APPS_ROOT__/__RADARR_JAIL__ /config nullfs rw 0 0
 iocage fstab -a __RADARR_JAIL__ __MEDIA_ROOT__ /mnt nullfs rw 0 0
 
+# download radarr
 iocage exec __RADARR_JAIL__ ln -s /usr/local/bin/mono /usr/bin/mono
 iocage exec __RADARR_JAIL__ "fetch __RADARR_FETCH_URL__ -o /usr/local/share"
 iocage exec __RADARR_JAIL__ "tar -xzvf __RADARR_FETCH_PATH__ -C /usr/local/share"
