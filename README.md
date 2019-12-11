@@ -11,28 +11,14 @@ The goal is to make a customizable installation script to setup complete media m
 
 Ombi is no longer supported as Ombi 2.x is no longer being developed and Ombi 3.x is not usable until there is proper support for .net-core on FreeBSD
 
-***Setup Structure***
-```
-__POOL__ > __MEDIA_DATASET__ >  -series
-                                -movies
-                                -music
-                                -downloads > -radarr
-                                             -sonarr
-                                             -lidarr
-                                             -complete
-                                             -incomplete
-           __APPS_DATASET__                                  
-```
 
-
-
-
-**Basic Guide:**
+**Basic Guide:** 
 1) download the master.zip from this repo and unpack it to a folder on your FreeNAS server.
 2) ssh (preferred) or use shell from the Web-UI of FreeNAS
 3) enter path where you unpacked the master.zip file and edit 'variables.m4'
     * Recommended to edit variables: 
-                                    ```__POOL__;
+                                    ```
+                                     __POOL__;
                                      __MEDIA_DATASET__;
                                      __DEFAULT_ROUTER__;
                                      __JACKETT_IP__;
