@@ -12,10 +12,11 @@ iocage exec __LIDARR_JAIL__ portsnap fetch extract
 iocage exec __LIDARR_JAIL__ curl -o /tmp/mono-patch-5.20.1.34 https://bz-attachments.freebsd.org/attachment.cgi?id=209650
 patch -d __IOCAGE_ROOT__/jails/__LIDARR_JAIL__/root/usr/ports/lang/mono/ -E < __IOCAGE_ROOT__/jails/__LIDARR_JAIL__/root/tmp/mono-patch-5.20.1.34
 iocage exec __LIDARR_JAIL__ rm /tmp/mono-patch-5.20.1.34
-iocage exec __LIDARR_JAIL__ make -DBATCH -C /usr/ports/lang/mono install clean
+iocage exec __LIDARR_JAIL__ make-C /usr/ports/lang/mono -DBATCH install clean
 
 # Mount storage
 iocage exec __LIDARR_JAIL__ mkdir -p /config
+mkdir -p __APPS_ROOT__/__LIDARR_JAIL__
 iocage fstab -a __LIDARR_JAIL__ __APPS_ROOT__/__LIDARR_JAIL__ /config nullfs rw 0 0
 iocage fstab -a __LIDARR_JAIL__ __MEDIA_ROOT__ /mnt nullfs rw 0 0
 
