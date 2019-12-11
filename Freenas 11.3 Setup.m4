@@ -20,8 +20,9 @@ __POOL__ > __MEDIA_DATASET__ >  -series
                             ```
 
 You have pool named "__POOL__". And created a dataset named "__MEDIA_DATASET__" owned by the default freenas user __MEDIA_USER__:__MEDIA_GROUP__. The dataset contains the folders: series,movies, and downloads. You also have a dataset named "__APPS_DATASET__" to hold the config data.
-
 ```
+------
+
 ***ISSUES RESOLVED IN INSTALL SCRIPTS:***
 
 Permissions
