@@ -10,6 +10,7 @@ iocage exec __JACKETT_JAIL__ pkg install -y mono curl ca_root_nss nano
 
 # Mount storage
 iocage exec __JACKETT_JAIL__ mkdir -p /config
+mkdir -p __APPS_ROOT__/__JACKETT_JAIL__
 iocage fstab -a __JACKETT_JAIL__ __APPS_ROOT__/__JACKETT_JAIL__ /config nullfs rw 0 0
 
 # download jackett
