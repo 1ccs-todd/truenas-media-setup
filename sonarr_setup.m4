@@ -9,19 +9,14 @@ iocage exec __SONARR_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.o
 iocage exec __SONARR_JAIL__ pkg install -y libepoxy-1.5.2 llvm80 mediainfo sqlite3 curl ca_root_nss nano
 iocage exec __SONARR_JAIL__ portsnap fetch extract
 iocage exec __SONARR_JAIL__ curl -o /tmp/mono-patch-5.20.1.34 https://bz-attachments.freebsd.org/attachment.cgi?id=209650
-iocage exec __SONARR_JAIL__ portsnap fetch extract
-iocage exec __SONARR_JAIL__ curl -o /tmp/mono-patch-5.20.1.34 https://bz-attachments.freebsd.org/attachment.cgi?id=209650
-patch -d /mnt/TANK/iocage/jails/sonarr/root/usr/ports/lang/mono/ -E < /mnt/TANK/iocage/jails/sonarr/root/tmp/mono-patch-5.20.1.34
+patch -d __IOCAGE_ROOT__/jails/__SONARR_JAIL__/root/usr/ports/lang/mono/ -E < __IOCAGE_ROOT__/jails/__SONARR_JAIL__/root/tmp/mono-patch-5.20.1.34
 iocage exec __SONARR_JAIL__ rm /tmp/mono-patch-5.20.1.34
-iocage exec __SONARR_JAIL__ make -C /usr/ports/lang/mono install clean
+iocage exec __SONARR_JAIL__ make -C /usr/ports/lang/mono -DBATCH install clean
 
 # mount storage
 iocage exec __SONARR_JAIL__ mkdir -p /config
-iocage exec __SONARR_JAIL__ mkdir -p  /mnt/downloads
-iocage exec __SONARR_JAIL__ mkdir -p /mnt/series
 iocage fstab -a __SONARR_JAIL__ __APPS_ROOT__/sonarr /config nullfs rw 0 0
-iocage fstab -a __SONARR_JAIL__ __MEDIA_ROOT__/downloads /mnt/downloads nullfs rw 0 0
-iocage fstab -a __SONARR_JAIL__ __MEDIA_ROOT__/series /mnt/series nullfs rw 0 0
+iocage fstab -a __SONARR_JAIL__ __MEDIA_ROOT__ /mnt nullfs rw 0 0
 
 # download sonarr
 iocage exec __SONARR_JAIL__ ln -s /usr/local/bin/mono /usr/bin/mono
