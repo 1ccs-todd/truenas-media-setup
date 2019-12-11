@@ -136,11 +136,6 @@ include(organizr_nginx.conf)
 
 </p>
 </details>
-```
-#note to self renable port forwarding
-
-I keep folders in /config for nginx,log,letsencrypt,Backups
-```
 
 <a name="jackett"></a>
 ***Jackett***
