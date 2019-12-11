@@ -36,7 +36,7 @@ iocage exec __ORGANIZR_JAIL__ ln -s /config/nginx/nginx.conf /usr/local/etc/ngin
 iocage exec __ORGANIZR_JAIL__ git clone -b __ORGANIZR_BRANCH__ __ORGANIZR_REPO__ /usr/local/www/Organizr
 iocage exec __ORGANIZR_JAIL__ chown -R __ORGANIZR_USER__:__ORGANIZR_GROUP__ /usr/local/www /config
 
-# Enalbe services
+# Enable services
 iocage exec __ORGANIZR_JAIL__ sysrc nginx_enable=YES
 iocage exec __ORGANIZR_JAIL__ sysrc php_fpm_enable=YES
 iocage exec __ORGANIZR_JAIL__ service nginx start
