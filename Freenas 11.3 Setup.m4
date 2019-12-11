@@ -23,13 +23,15 @@ You have pool named "__POOL__". And created a dataset named "__MEDIA_DATASET__" 
 
 ```
 ***ISSUES RESOLVED IN INSTALL SCRIPTS:***
-```
+
 Permissions
 ------  
 For Sonarr, Radarr, Lidarr, and Transmission you will have to change the default user to __MEDIA_USER__:__MEDIA_GROUP__ so the jails can work together properly.
+
 MONO 5.20 compatibility
 ------
 Sonarr and Lidarr have moved away from mono 5.10.  For these two, PORTS are installed to apply a patch to v5.20.1.34 and installed. 
+
 OPENVPN
 ------
 A VPN may not be desired by everyone. Execute "transmission_add_VPN.sh" to process the necessary additions for __TRANSMISSION_JAIL__.
