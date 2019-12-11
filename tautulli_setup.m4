@@ -10,7 +10,8 @@ iocage exec __TAUTULLI_JAIL__ pkg install python2 py27-sqlite3 py27-openssl git 
 
 # Mount storage
 iocage exec __TAUTULLI_JAIL__ mkdir -p /config
-iocage fstab -a __TAUTULLI_JAIL__ __APPS_ROOT__/tautulli /config nullfs rw 0 0
+mkdir -p __APPS_ROOT__/__TAUTULLI_JAIL__
+iocage fstab -a __TAUTULLI_JAIL__ __APPS_ROOT__/__TAUTULLI_JAIL__ /config nullfs rw 0 0
 
 # Download tautulli
 iocage exec __TAUTULLI_JAIL__ git clone __TAUTULLI_REPO__ /usr/local/share/Tautulli
