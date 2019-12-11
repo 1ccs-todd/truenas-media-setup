@@ -37,14 +37,14 @@ OpenVPN may not be desired by everyone, so I created "transmission_add_VPN.sh" t
 
 ***Complete Media setup including (dates show the last successful test):***
 
-+ [Plex](#plex) 12/21/18
-+ [Transmission](#transmission) 12/21/18
-+ [Sonarr V3](#sonarr) 12/21/18
-+ [Radarr](#radarr) 12/21/18
-+ [Lidarr](#lidarr) 
-+ [Jackett](#jackett) 12/21/18
-+ [Tautulli](#tautulli) 12/21/18
-+ [Organizr V2](#organizr) 12/21/18
++ [Plex](#plex) 12/xx/19
++ [Transmission](#transmission) 12/xx/19
++ [Sonarr V3](#sonarr) 12/xx/19
++ [Radarr](#radarr) 12/xx/19
++ [Lidarr](#lidarr) 12/xx/19
++ [Jackett](#jackett) 12/xx/19
++ [Tautulli](#tautulli) 12/xx/19
++ [Organizr V2](#organizr) 12/xx/19
 
 Ombi is no longer supported as Ombi 2.x is no longer being developed actively and Ombi 3.x is not usable until there is proper support for .net-core on FreeBSD
 
