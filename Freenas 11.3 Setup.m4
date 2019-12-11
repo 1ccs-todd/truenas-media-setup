@@ -22,26 +22,20 @@ __POOL__ > __MEDIA_DATASET__ >  -series
 You have pool named "__POOL__". And created a dataset named "__MEDIA_DATASET__" owned by the default freenas user __MEDIA_USER__:__MEDIA_GROUP__. The dataset contains the folders: series,movies, and downloads. You also have a dataset named "__APPS_DATASET__" to hold the config data.
 
 ```
-```
 ISSUES RESOLVED IN INSTALL SCRIPTS:
 ```
 **Permissions**
 ------  
-```
 For Sonarr, Radarr, Lidarr, and Transmission you will have to change the default user to __MEDIA_USER__:__MEDIA_GROUP__ so the jails can work together properly.
-```
 **MONO 5.20 compatibility**
 ------
-```
 Sonarr and Lidarr have moved away from mono 5.10.  For these two, PORTS are installed to apply a patch to v5.20.1.34 and installed. 
-```
 **OPENVPN**
 ------
-```
 OpenVPN may not be desired by everyone, so I created "transmission_add_VPN.sh" to process the necessary additions for __TRANSMISSION_JAIL__.
+```
 
-
-Complete Media setup including (dates show the last successful test):
+***Complete Media setup including (dates show the last successful test):***
 
 + [Plex](#plex) 12/21/18
 + [Transmission](#transmission) 12/21/18
@@ -61,14 +55,14 @@ Configuration:
 + [Default Jail Ports/UID/Location](#default)
 
 <a name="plex"></a>
-Plex
+***Plex***
 ------
 ```
 include(plex_setup.sh)
 ```
 
 <a name="transmission"></a>
-Transmission
+***Transmission***
 -------
 ```
 include(transmission_setup.sh)
@@ -77,7 +71,7 @@ include(transmission_setup.sh)
 ```
 
 <a name="sonarr"></a>
-Sonarr V3
+***Sonarr V3***
 -----
 ```
 include(sonarr_setup.sh)
@@ -94,13 +88,13 @@ include(sonarr.rc)
 </details>
 
 <a name="radarr"></a>
-Radarr
+***Radarr***
 ------
 ```
 include(radarr_setup.sh)
 ```
 
-<details><summary>CLICK TO SHOW SONARR rc.d</summary>
+<details><summary>CLICK TO SHOW RADARR rc.d</summary>
 <p>
 
 ```
@@ -111,7 +105,7 @@ include(radarr.rc)
 </details>
 
 <a name="lidarr"></a>
-Lidarr V7.1.x
+***Lidarr V7.1.x***
 -----
 ```
 include(lidarr_setup.sh)
@@ -128,14 +122,20 @@ include(lidarr.rc)
 </details>
 
 <a name="organizr"></a>
-Organizr V2
+***Organizr V2***
 ------
 ```
 include(organizr_setup.sh)
 ```
+<details><summary>CLICK TO SHOW nginx.conf</summary>
+<p>
+
 ```
 include(organizr_nginx.conf)
 ```
+
+</p>
+</details>
 ```
 #note to self renable port forwarding
 
@@ -143,7 +143,7 @@ I keep folders in /config for nginx,log,letsencrypt,Backups
 ```
 
 <a name="jackett"></a>
-Jackett
+***Jackett***
 ------
 ```
 include(jackett_setup.sh)
@@ -160,15 +160,14 @@ include(jackett.rc)
 </details>
 
 <a name="tautulli"></a>
-Tautulli
+***Tautulli***
 -----
-
 ```
 include(tautulli_setup.sh)
 ```
 
 <a name="backups"></a>
-Backups
+***Backups***
 -------
 **Important files**
 ```
@@ -176,7 +175,7 @@ Backup your entire __APPS_DATASET__ folder
 ```
 
 <a name="common commands"></a>
-Common Commands
+**Common Commands**
 -----
 https://www-uxsup.csx.cam.ac.uk/pub/doc/suse/suse9.0/userguide-9.0/ch24s04.html
 ```
@@ -194,7 +193,7 @@ touch filename :	Create an empty file with the specified name.
 ```
 
 <a name="testing"></a>
-Testing/Updates
+***Testing/Updates***
 -----
 ```
 iocage exec <jail> pkg upgrade <name of service>
