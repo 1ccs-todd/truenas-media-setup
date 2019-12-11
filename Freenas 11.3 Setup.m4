@@ -22,18 +22,19 @@ __POOL__ > __MEDIA_DATASET__ >  -series
 You have pool named "__POOL__". And created a dataset named "__MEDIA_DATASET__" owned by the default freenas user __MEDIA_USER__:__MEDIA_GROUP__. The dataset contains the folders: series,movies, and downloads. You also have a dataset named "__APPS_DATASET__" to hold the config data.
 
 ```
-ISSUES RESOLVED IN INSTALL SCRIPTS:
+***ISSUES RESOLVED IN INSTALL SCRIPTS:***
 ```
-**Permissions**
+Permissions
 ------  
 For Sonarr, Radarr, Lidarr, and Transmission you will have to change the default user to __MEDIA_USER__:__MEDIA_GROUP__ so the jails can work together properly.
-**MONO 5.20 compatibility**
+MONO 5.20 compatibility
 ------
 Sonarr and Lidarr have moved away from mono 5.10.  For these two, PORTS are installed to apply a patch to v5.20.1.34 and installed. 
-**OPENVPN**
+OPENVPN
 ------
-OpenVPN may not be desired by everyone, so I created "transmission_add_VPN.sh" to process the necessary additions for __TRANSMISSION_JAIL__.
-```
+A VPN may not be desired by everyone. Execute "transmission_add_VPN.sh" to process the necessary additions for __TRANSMISSION_JAIL__.
+
+------
 
 ***Complete Media setup including (dates show the last successful test):***
 
@@ -48,6 +49,7 @@ OpenVPN may not be desired by everyone, so I created "transmission_add_VPN.sh" t
 
 Ombi is no longer supported as Ombi 2.x is no longer being developed actively and Ombi 3.x is not usable until there is proper support for .net-core on FreeBSD
 
+------
 Configuration:
 + [Backups](#backups)
 + [Common Commands](#commands)
