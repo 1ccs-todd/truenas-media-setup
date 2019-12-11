@@ -68,9 +68,9 @@ include(plex_setup.sh)
 -------
 ```
 include(transmission_setup.sh)
- 
-# you may need to change the white list in settings.json to 0.0.0.0 or set to your preferred settings
+
 ```
+# you may need to change the white list in settings.json to 0.0.0.0 or set to your preferred settings
 
 <a name="sonarr"></a>
 ***Sonarr V3***
