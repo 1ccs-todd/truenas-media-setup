@@ -64,7 +64,7 @@ to
 
 After you have completed either of these you can start transmission again.
 ```iocage exec transmission service transmission start```
-Transmission should be available at http://<JailIP>:9091/transmission/web/
+Transmission should be available at http://\<JailIP\>:9091/transmission/web/
    
 ORGANIZR:
-Navigate to http://<JailIP> and set the database location to "/config" and pick your timezone.
+Navigate to http://\<JailIP\> and set the database location to "/config" and pick your timezone.
