@@ -32,5 +32,38 @@ Ombi is no longer supported as Ombi 2.x is no longer being developed and Ombi 3.
 4) run 'make' to build custom install scripts based on 'variables.m4'
 5) Review "Freenas 11.3 Setup.md".  A customized setup guide for each installation.
 6) Enter "chmod u+x *.sh" to ensure execution of the installation scripts.
-7) Execute '\<JAIL\>_setup.sh' to install whichever jails you desire.
+7) Execute '.\/\<JAIL\>_setup.sh' to install whichever jails you desire.
 8) If you desire VPN protection for your Transmission jail, execute "transmission_add_VPN.sh" and place your working openvpn.conf file where the script recommends.
+
+------
+***Post Installation Steps***
+
+TRANSMISSION:
+```
+The default transmission settings will prevent any access to the WebUI from anything other than from localhost. We need to access edit the settings file for transmission to fix this to do so we need to stop transmission and edit settings.json file for Transmission.
+iocage exec transmission service transmission stop
+
+Using your favorite editor edit /mnt/tank1/apps/transmission/config/transmission-home/settings.json and find the lines prefixed with rpc-whitelist. You have 2 options disabling the whitelist or adding your IP to the whitelist.
+
+To disable the whitelist change the following lines:
+Code:
+"rpc-whitelist-enabled": true,
+to
+Code:
+"rpc-whitelist-enabled": false,
+
+To add your IP edit the line below to include your IP. The setting is a comma separated list, so if your IP was 192.168.1.100 you would change it as follows.
+Code:
+"rpc-whitelist": "127.0.0.1",
+to
+Code:
+"rpc-whitelist": "127.0.0.1,192.168.1.100",
+
+After you have completed either of these you can start transmission again.
+iocage exec transmission service transmission start
+```
+
+ORGANIZR:
+```
+Navigate to http://<JailIP> and set the database location to "/config" and pick your timezone.
+```
