@@ -46,8 +46,8 @@ define(__PLEX_IP__,10.68.69.22)dnl
 dnl
 define(__RADARR_JAIL__,radarr)dnl
 define(__RADARR_IP__,10.68.69.23)dnl
-define(__RADARR_VERSION__,0.2.0.1217)dnl
-define(__RADARR_FETCH_URL__,https://github.com/Radarr/Radarr/releases/download/v__RADARR_VERSION__/Radarr.develop.__RADARR_VERSION__.linux.tar.gz)dnl
+define(__RADARR_VERSION__,v0.2.0.1217)dnl
+define(__RADARR_FETCH_URL__,https://github.com/Radarr/Radarr/releases/download/__RADARR_VERSION__/Radarr.develop.__RADARR_VERSION__.linux.tar.gz)dnl
 define(__RADARR_FETCH_PATH__,/usr/local/share/Radarr.__RADARR_VERSION__.linux.tar.gz)dnl
 define(__RADARR_USER__,radarr)dnl
 define(__RADARR_GROUP__,radarr)dnl
@@ -55,7 +55,7 @@ define(__RADARR_UID__,352)dnl
 dnl
 define(__SONARR_JAIL__,sonarr)dnl
 define(__SONARR_IP__,10.68.69.24)dnl
-define(__SONARR_VERSION__,3.0.0.334)dnl
+define(__SONARR_VERSION__,v3.0.0.334)dnl
 define(__SONARR_FETCH_URL__,http://services.sonarr.tv/v1/download/phantom/latest?version=3&os=linux)dnl
 define(__SONARR_FETCH_PATH__,/usr/local/share/Sonarr.phantom.__SONARR_VERSION__.linux.tar.gz)dnl
 define(__SONARR_USER__,sonarr)dnl
@@ -76,8 +76,8 @@ define(__TRANSMISSION_GROUP__,transmission)dnl
 dnl
 define(__LIDARR_JAIL__,lidarr)dnl
 define(__LIDARR_IP__,10.68.69.27)dnl
-define(__LIDARR_VERSION__,0.7.0.1347)dnl
-define(__LIDARR_FETCH_URL__,https://github.com/lidarr/Lidarr/releases/download/v__LIDARR_VERSION__/Lidarr.master.__LIDARR_VERSION__.linux.tar.gz)dnl
+define(__LIDARR_VERSION__,v0.7.0.1347)dnl
+define(__LIDARR_FETCH_URL__,https://github.com/lidarr/Lidarr/releases/download/__LIDARR_VERSION__/Lidarr.master.__LIDARR_VERSION__.linux.tar.gz)dnl
 define(__LIDARR_FETCH_PATH__,/usr/local/share/Lidarr.master.__LIDARR_VERSION__.linux.tar.gz)dnl
 define(__LIDARR_USER__,lidarr)dnl
 define(__LIDARR_GROUP__,lidarr)dnl
