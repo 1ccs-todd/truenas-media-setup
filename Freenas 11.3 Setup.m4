@@ -32,7 +32,7 @@ For Sonarr, Radarr, Lidarr, and Transmission you will have to change the default
 
 MONO 5.20 compatibility
 ------
-Sonarr and Lidarr have moved away from mono 5.10.  For these two, PORTS are installed to apply a patch to v5.20.1.34 and installed. 
+Sonarr and Lidarr have moved away from mono 5.10.  For these two, PORTS are installed to apply a patch to v5.20.1.34 and installed. Installation of these two jails takes a LONG time due to Ports installation and compiling Mono from source.
 
 OPENVPN
 ------
