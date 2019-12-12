@@ -39,4 +39,4 @@ cp sonarr.rc __IOCAGE_ROOT__/jails/__SONARR_JAIL__/root/usr/local/etc/rc.d/sonar
 iocage exec __SONARR_JAIL__ chmod u+x /usr/local/etc/rc.d/sonarr
 iocage exec __SONARR_JAIL__ sysrc "sonarr_enable=YES"
 iocage exec __SONARR_JAIL__ service sonarr start
-echo Please open your web browser to http://__SONARR_IP__:9117
+echo Please open your web browser to http://__SONARR_IP__:8989
