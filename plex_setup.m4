@@ -22,3 +22,4 @@ iocage exec __PLEX_JAIL__ chown -R plex:plex /config
 iocage exec __PLEX_JAIL__ sysrc "plexmediaserver_enable=YES"
 iocage exec __PLEX_JAIL__ sysrc plexmediaserver_support_path="/config"
 iocage exec __PLEX_JAIL__ service plexmediaserver start
+echo Please open your web browser to http://__PLEX_IP__:32400
