@@ -6,7 +6,7 @@ iocage exec __SONARR_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
 iocage exec __SONARR_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
 
 # install pkgs
-iocage exec __SONARR_JAIL__ pkg install -y libepoxy-1.5.2 llvm80 mediainfo sqlite3 curl ca_root_nss nano
+iocage exec __SONARR_JAIL__ pkg install -y libepoxy-1.5.2 llvm80 mediainfo sqlite3 curl ca_root_nss python27 libffi py27-pillow tk86 libXrender libX11 libxcb libXdmcp xorgproto libXau libpthread-stubs libXext libXScrnSaver libXft fontconfig expat freetype2 tcl86 py27-tkinter py27-setuptools webp tiff jpeg-turbo jbigkit png giflib openjpeg lcms2 py27-olefile libinotify nano
 iocage exec __SONARR_JAIL__ portsnap fetch extract
 iocage exec __SONARR_JAIL__ curl -o /tmp/mono-patch-5.20.1.34 https://bz-attachments.freebsd.org/attachment.cgi?id=209650
 patch -d __IOCAGE_ROOT__/jails/__SONARR_JAIL__/root/usr/ports/lang/mono/ -E < __IOCAGE_ROOT__/jails/__SONARR_JAIL__/root/tmp/mono-patch-5.20.1.34
