@@ -30,6 +30,7 @@ iocage exec __RADARR_JAIL__ sysrc 'radarr_user=__MEDIA_USER__'
 iocage exec __RADARR_JAIL__ service radarr start
 
 # Install rc.d service
+iocage exec __RADARR_JAIL__ mkdir /usr/local/etc/rc.d
 cp radarr.rc __IOCAGE_ROOT__/jails/__RADARR_JAIL__/root/usr/local/etc/rc.d/radarr
 iocage exec __RADARR_JAIL__ chmod u+x /usr/local/etc/rc.d/radarr
 iocage exec __RADARR_JAIL__ sysrc "radarr_enable=YES"
