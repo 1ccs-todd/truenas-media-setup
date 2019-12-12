@@ -5,7 +5,7 @@ Cribbed from https://gist.github.com/mow4cash/e2fd4991bd2b787ca407a355d134b0ff
 
 Thanks to the creator of this guide https://www.ixsystems.com/community/resources/fn11-2-iocage-jails-plex-tautulli-sonarr-radarr-lidarr-jackett-transmission-organizr.58/
 
-**Warning: Default __IOCAGE_RELEASE__ in 'variables.m4' is configured to build 11.3-RELEASE jails.  This requires FreeNAS version 11.2-U7 or 11.3-BETA1**
+**Warning: Default __IOCAGE_RELEASE__ in 'variables.m4' is configured to build 11.3-RELEASE jails.  This requires FreeNAS version 11.2-U7 or 11.3-RC1**
 
 The goal is to make a customizable installation script to setup complete media management including Plex, Tautulli, Sonarr, Radarr, Lidarr, Jackett, Transmission, and Organizr on any FreeNAS server.
 
@@ -30,7 +30,8 @@ Ombi is no longer supported as Ombi 2.x is no longer being developed and Ombi 3.
                                      __TRANSMISSION_IP__;
                                      ```
 4) run 'make' to build custom install scripts based on 'variables.m4'
-5) Review "Freenas 11.3 Setup.md".  A customized setup guide for each installation.
+5) Review "Freenas 11.3 Setup.md".  A customized manual installation guide for each FreeNAS installation.
+   - I use Chrome with MarkDown Viewer Extension.
 6) Enter "chmod u+x *.sh" to ensure execution of the installation scripts.
 7) Execute '.\/\<JAIL\>_setup.sh' to install whichever jails you desire. Reply 'y' to the prompt to install package management.
 8) If you desire VPN protection for your Transmission jail, execute "transmission_add_VPN.sh" and place your working openvpn.conf file where the script recommends.
