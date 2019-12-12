@@ -25,3 +25,4 @@ iocage exec __TAUTULLI_JAIL__ chmod u+x /usr/local/etc/rc.d/tautulli
 iocage exec __TAUTULLI_JAIL__ sysrc "tautulli_enable=YES"
 iocage exec __TAUTULLI_JAIL__ sysrc "tautulli_flags=--datadir /config"
 iocage exec __TAUTULLI_JAIL__ service tautulli start
+echo Please open your web browser to http://__TAUTULLI_IP__:8181
