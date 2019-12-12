@@ -29,3 +29,4 @@ cp jackett.rc __IOCAGE_ROOT__/jails/__JACKETT_JAIL__/root/usr/local/etc/rc.d/jac
 iocage exec __JACKETT_JAIL__ chmod u+x /usr/local/etc/rc.d/jackett
 iocage exec __JACKETT_JAIL__ sysrc "jackett_enable=YES"
 iocage exec __JACKETT_JAIL__ service jackett start
+echo Please open your web browser to http://__JACKETT_IP__:9117
