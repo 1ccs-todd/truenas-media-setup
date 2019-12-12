@@ -35,3 +35,4 @@ cp radarr.rc __IOCAGE_ROOT__/jails/__RADARR_JAIL__/root/usr/local/etc/rc.d/radar
 iocage exec __RADARR_JAIL__ chmod u+x /usr/local/etc/rc.d/radarr
 iocage exec __RADARR_JAIL__ sysrc "radarr_enable=YES"
 iocage exec __RADARR_JAIL__ service radarr start
+echo Please open your web browser to http://__RADARR_IP__:7878
