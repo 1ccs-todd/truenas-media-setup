@@ -44,7 +44,7 @@ iocage exec transmission service transmission stop
 
 Using your favorite editor edit /mnt/tank1/apps/transmission/config/transmission-home/settings.json and find the lines prefixed with rpc-whitelist. You have 2 options disabling the whitelist or adding your IP to the whitelist.
 
-To disable the whitelist change the following lines:
+A) To disable the whitelist change the following lines:
 '''
 "rpc-whitelist-enabled": true,
 '''
@@ -53,7 +53,7 @@ to
 "rpc-whitelist-enabled": false,
 '''
 
-To add your IP edit the line below to include your IP. The setting is a comma separated list, so if your IP was 192.168.1.100 you would change it as follows.
+B) To add your IP edit the line below to include your IP. The setting is a comma separated list, so if your IP was 192.168.1.100 you would change it as follows.
 '''
 "rpc-whitelist": "127.0.0.1",
 '''
@@ -67,4 +67,3 @@ iocage exec transmission service transmission start
 
 ORGANIZR:
 Navigate to http://<JailIP> and set the database location to "/config" and pick your timezone.
-
