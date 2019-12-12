@@ -26,8 +26,8 @@ define(__DEFAULT_INTERFACE__,vnet0)dnl
 dnl
 define(__JACKETT_JAIL__,jackett)dnl
 define(__JACKETT_IP__,10.68.69.20)dnl
-define(__JACKETT_VERSION__,0.12.1115)dnl
-define(__JACKETT_FETCH_URL__,https://github.com/Jackett/Jackett/releases/download/v__JACKETT_VERSION__/Jackett.Binaries.Mono.tar.gz)dnl
+define(__JACKETT_VERSION__,v0.12.1115)dnl
+define(__JACKETT_FETCH_URL__,https://github.com/Jackett/Jackett/releases/download/__JACKETT_VERSION__/Jackett.Binaries.Mono.tar.gz)dnl
 define(__JACKETT_FETCH_PATH__,/usr/local/share/Jackett.Binaries.Mono.tar.gz)dnl
 define(__JACKETT_USER__,jackett)dnl
 define(__JACKETT_GROUP__,jackett)dnl
