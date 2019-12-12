@@ -36,3 +36,4 @@ cp lidarr.rc __IOCAGE_ROOT__/jails/__LIDARR_JAIL__/root/usr/local/etc/rc.d/lidar
 iocage exec __LIDARR_JAIL__ chmod u+x /usr/local/etc/rc.d/lidarr
 iocage exec __LIDARR_JAIL__ sysrc "lidarr_enable=YES"
 iocage exec __LIDARR_JAIL__ service lidarr start
+echo Please open your web browser to http://__LIDARR_IP__:9117
