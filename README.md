@@ -45,22 +45,22 @@ iocage exec transmission service transmission stop
 Using your favorite editor edit /mnt/tank1/apps/transmission/config/transmission-home/settings.json and find the lines prefixed with rpc-whitelist. You have 2 options disabling the whitelist or adding your IP to the whitelist.
 
 A) To disable the whitelist change the following lines:
-'''
+```
 "rpc-whitelist-enabled": true,
-'''
+```
 to
-'''
+```
 "rpc-whitelist-enabled": false,
-'''
+```
 
 B) To add your IP edit the line below to include your IP. The setting is a comma separated list, so if your IP was 192.168.1.100 you would change it as follows.
-'''
+```
 "rpc-whitelist": "127.0.0.1",
-'''
+```
 to
-'''
+```
 "rpc-whitelist": "127.0.0.1,192.168.1.100",
-'''
+```
 
 After you have completed either of these you can start transmission again.
 iocage exec transmission service transmission start
