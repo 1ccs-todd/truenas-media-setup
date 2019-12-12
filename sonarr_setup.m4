@@ -34,6 +34,7 @@ iocage exec __SONARR_JAIL__ chown -R __MEDIA_USER__:__MEDIA_GROUP__ /usr/local/s
 iocage exec __SONARR_JAIL__  sysrc 'sonarr_user=__MEDIA_USER__'
 
 # Install rc.d service
+iocage exec __SONARR_JAIL__ mkdir /usr/local/etc/rc.d
 cp sonarr.rc __IOCAGE_ROOT__/jails/__SONARR_JAIL__/root/usr/local/etc/rc.d/sonarr
 iocage exec __SONARR_JAIL__ chmod u+x /usr/local/etc/rc.d/sonarr
 iocage exec __SONARR_JAIL__ sysrc "sonarr_enable=YES"
