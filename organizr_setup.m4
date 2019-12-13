@@ -1,14 +1,10 @@
 include(variables.m4)dnl
-#Note to self: Make sure port forwarding is disabled before removing or rebuilding this jail
-
+echo '{"pkgs":["nginx","php72","php72-filter","php72-curl","php72-hash","php72-json","php72-openssl","php72-pdo","php72-pdo_sqlite","php72-session","php72-simplexml","php72-sqlite3","php72-zip","git","ca_root_nss"]}' > /tmp/pkg.json
 iocage create -n "__ORGANIZR_JAIL__" -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__ORGANIZR_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 
 # Update to Latest Repo
 iocage exec __ORGANIZR_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
 iocage exec __ORGANIZR_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
-
-# Install pkgs
-iocage exec __ORGANIZR_JAIL__ pkg install -y nginx git wget php72 php72-curl php72-pdo php72-sqlite3 php72-simplexml php72-zip php72-openssl php72-hash php72-json php72-session php72-pdo_sqlite ca_root_nss nano
 
 # Mount storage
 iocage exec __ORGANIZR_JAIL__ mkdir -p /config
