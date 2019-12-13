@@ -1,12 +1,12 @@
 include(variables.m4)dnl
-iocage create -n "__TAUTULLI_JAIL__" -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__TAUTULLI_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
+# Create the jail
+echo '{"pkgs":["python2","py27-sqlite3","py27-openssl","git","py27-pycryptodome","ca_root_nss","nano"]}' > /tmp/pkg.json
+iocage create -n "__TAUTULLI_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__TAUTULLI_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
+rm /tmp/pkg.json
 
 # Update to Latest Repo
 iocage exec __TAUTULLI_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
 iocage exec __TAUTULLI_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
-
-# Install pkgs
-iocage exec __TAUTULLI_JAIL__ pkg install python2 py27-sqlite3 py27-openssl git py27-pycryptodome ca_root_nss
 
 # Mount storage
 iocage exec __TAUTULLI_JAIL__ mkdir -p /config
