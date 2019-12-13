@@ -1,12 +1,11 @@
 include(variables.m4)dnl
-iocage create -n "__JACKETT_JAIL__" -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__JACKETT_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
+echo '{"pkgs":["mono","curl","ca_root_nss","nano"]}' > /tmp/pkg.json
+iocage create -n "__JACKETT_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__JACKETT_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
+rm /tmp/pkg.json
 
 # Update to Latest Repo
 iocage exec __JACKETT_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
 iocage exec __JACKETT_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
-
-# Install pkgs
-iocage exec __JACKETT_JAIL__ pkg install -y mono curl ca_root_nss nano
 
 # Mount storage
 iocage exec __JACKETT_JAIL__ mkdir -p /config
