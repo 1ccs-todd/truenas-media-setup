@@ -1,7 +1,7 @@
 include(variables.m4)dnl
 # Create the jail
 echo '{"pkgs":["plexmediaserver","ca_root_nss","nano"]}' > /tmp/pkg.json
-iocage create -n "__PLEX_JAIL__" -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__PLEX_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on" 
+iocage create -n "__PLEX_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__PLEX_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on" 
 rm /tmp/pkg.json
 
 # Update to the latest repo
