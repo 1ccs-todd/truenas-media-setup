@@ -1,6 +1,7 @@
 include(variables.m4)dnl
 echo '{"pkgs":["nginx","php72","php72-filter","php72-curl","php72-hash","php72-json","php72-openssl","php72-pdo","php72-pdo_sqlite","php72-session","php72-simplexml","php72-sqlite3","php72-zip","git","ca_root_nss"]}' > /tmp/pkg.json
 iocage create -n "__ORGANIZR_JAIL__" -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__ORGANIZR_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
+rm /tmp/pkg.json
 
 # Update to Latest Repo
 iocage exec __ORGANIZR_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
