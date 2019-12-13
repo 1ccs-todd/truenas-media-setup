@@ -1,13 +1,12 @@
 include(variables.m4)dnl
 # Create the jail
+echo '{"pkgs":["plexmediaserver","ca_root_nss","nano"]}' > /tmp/pkg.json
 iocage create -n "__PLEX_JAIL__" -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__PLEX_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on" 
+rm /tmp/pkg.json
 
 # Update to the latest repo
 iocage exec __PLEX_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
 iocage exec __PLEX_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
-
-# Install Plex and dependencies
-iocage exec __PLEX_JAIL__ pkg install -y plexmediaserver ca_root_nss nano
 
 # Mount storage
 iocage exec __PLEX_JAIL__ "mkdir -p /config"
