@@ -1,4 +1,5 @@
 include(variables.m4)dnl
+# Create the jail
 echo '{"pkgs":["mono","curl","ca_root_nss","nano"]}' > /tmp/pkg.json
 iocage create -n "__JACKETT_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__JACKETT_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 rm /tmp/pkg.json
