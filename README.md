@@ -33,7 +33,7 @@ Ombi is no longer supported as Ombi 2.x is no longer being developed and Ombi 3.
 5) Review "Freenas 11.3 Setup.md".  A customized manual installation guide for each FreeNAS installation.
    - I use Chrome with MarkDown Viewer Extension.
 6) Enter "chmod u+x *.sh" to ensure execution of the installation scripts.
-7) Execute '.\/\<JAIL\>_setup.sh' to install whichever jails you desire. Reply 'y' to the prompt to install package management.
+7) Execute '.\/\<JAIL\>_setup.sh' to install whichever jails you desire.
 8) If you desire VPN protection for your Transmission jail, execute "transmission_add_VPN.sh" and place your working openvpn.conf file where the script recommends.
 
 ------
