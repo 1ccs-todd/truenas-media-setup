@@ -8,7 +8,7 @@ rm /tmp/pkg.json
 iocage exec __LIDARR_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
 iocage exec __LIDARR_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
 
-# Install pkgs
+# Install Mono 5.20.1.34  
 iocage exec __LIDARR_JAIL__ portsnap fetch extract
 iocage exec __LIDARR_JAIL__ curl -o /tmp/mono-patch-5.20.1.34 https://bz-attachments.freebsd.org/attachment.cgi?id=209650
 patch -d __IOCAGE_ROOT__/jails/__LIDARR_JAIL__/root/usr/ports/lang/mono/ -E < __IOCAGE_ROOT__/jails/__LIDARR_JAIL__/root/tmp/mono-patch-5.20.1.34
