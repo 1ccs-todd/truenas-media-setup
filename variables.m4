@@ -76,7 +76,7 @@ define(__TRANSMISSION_GROUP__,transmission)dnl
 dnl
 define(__LIDARR_JAIL__,lidarr)dnl
 define(__LIDARR_IP__,10.68.69.27)dnl
-define(__LIDARR_VERSION__,v0.7.0.1381)dnl
+define(__LIDARR_VERSION__,v0.7.1.1381)dnl
 define(__LIDARR_FETCH_URL__,https://github.com/lidarr/Lidarr/releases/download/__LIDARR_VERSION__/Lidarr.master.patsubst(__LIDARR_VERSION__,v).linux.tar.gz)dnl
 define(__LIDARR_FETCH_PATH__,/usr/local/share/Lidarr.master.__LIDARR_VERSION__.linux.tar.gz)dnl
 define(__LIDARR_USER__,lidarr)dnl
