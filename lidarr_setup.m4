@@ -1,6 +1,6 @@
 changequote(`[[[', `]]]')dnl
 include(variables.m4)
-echo '{"pkgs":["mediainfo","sqlite3","ca_root_nss","curl","chromaprint","libepoxy-1.5.2","llvm80","python27","libffi","py27-pillow","tk86","libXrender","libX11","libxcb","libXdmcp","xorgproto","libXau","libpthread-stubs","libXext","libXScrnSaver","libXft","fontconfig","expat","freetype2","tcl86","py27-tkinter","py27-setuptools","webp","tiff","jpeg-turbo","jbigkit","png","giflib","openjpeg","lcms2","py27-olefile","libinotify","bash","p5-XML-Parser","cmake","autoconf","automake","libtool","bison","gmake","gettext-tools","xorg-vfbserver","xorg-fonts-miscbitmaps","font-alias","xkeyboard-config","xkbcomp","perl5","nano"]}' > /tmp/pkg.json
+echo '{"pkgs":["mediainfo","sqlite3","chromaprint","p5-XML-Parser","bash","cmake","autoconf","automake","libtool","bison","gmake","python36","gettext-tools","xorg-vfbserver","xorg-fonts-miscbitmaps","font-alias",j"libinotify","nano"]}' > /tmp/pkg.json
 iocage create -n "__LIDARR_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__LIDARR_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 rm /tmp/pkg.json
 
