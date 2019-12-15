@@ -47,8 +47,8 @@ dnl
 define(__RADARR_JAIL__,radarr)dnl
 define(__RADARR_IP__,10.68.69.23)dnl
 define(__RADARR_VERSION__,v0.2.0.1217)dnl
-define(__RADARR_FETCH_URL__,https://github.com/Radarr/Radarr/releases/download/__RADARR_VERSION__/Radarr.develop.__RADARR_VERSION__.linux.tar.gz)dnl
-define(__RADARR_FETCH_PATH__,/usr/local/share/Radarr.__RADARR_VERSION__.linux.tar.gz)dnl
+define(__RADARR_FETCH_URL__,https://github.com/Radarr/Radarr/releases/download/__RADARR_VERSION__/Radarr.develop.patsubst(__RADARR_VERSION__,v).linux.tar.gz)dnl
+define(__RADARR_FETCH_PATH__,/usr/local/share/Radarr.patsubst(__RADARR_VERSION__,v).linux.tar.gz)dnl
 define(__RADARR_USER__,radarr)dnl
 define(__RADARR_GROUP__,radarr)dnl
 define(__RADARR_UID__,352)dnl
