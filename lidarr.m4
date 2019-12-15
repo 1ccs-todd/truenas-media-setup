@@ -25,7 +25,7 @@ load_rc_config $name
 
 command="/usr/sbin/daemon"
 procname="/usr/local/bin/mono"
-command_args="-p ${lidarr_data_dir}/lidarr.pid -f ${procname} /usr/local/share/Lidarr/Lidarr.exe -d ${lidarr_data_dir} -nobrowser"
+command_args="-p ${lidarr_data_dir}/lidarr.pid -f ${procname} /usr/local/share/Lidarr/Lidarr.exe -- data=${lidarr_data_dir} --nobrowser"
 
 start_precmd=lidarr_precmd
 lidarr_precmd() {
