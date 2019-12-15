@@ -14,7 +14,7 @@ iocage exec __RADARR_JAIL__ "pkg update && pkg upgrade -y"
 iocage exec __RADARR_JAIL__ mkdir -p /config
 mkdir -p __APPS_ROOT__/__RADARR_JAIL__
 iocage fstab -a __RADARR_JAIL__ __APPS_ROOT__/__RADARR_JAIL__ /config nullfs rw 0 0
-iocage fstab -a __RADARR_JAIL__ __MEDIA_ROOT__ /mnt nullfs rw 0 0
+iocage fstab -a __RADARR_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__ nullfs rw 0 0
 
 # download radarr
 iocage exec __RADARR_JAIL__ ln -s /usr/local/bin/mono /usr/bin/mono
