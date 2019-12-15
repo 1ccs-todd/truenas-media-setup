@@ -1,6 +1,6 @@
 include(variables.m4)dnl
 # Create the jail
-echo '{"pkgs":["mono","mediainfo","sqlite3","curl","ca_root_nss","nano"]}' > /tmp/pkg.json
+echo '{"pkgs":["mono","mediainfo","sqlite3","curl","nano"]}' > /tmp/pkg.json
 iocage create -n "__RADARR_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__RADARR_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 rm /tmp/pkg.json
 
@@ -23,11 +23,9 @@ iocage exec __RADARR_JAIL__ rm __RADARR_FETCH_PATH__
 ## Media Permissions
 iocage exec __RADARR_JAIL__ "pw user add __RADARR_USER__ -c radarr -u __RADARR_UID__ -d /nonexistent -s /usr/bin/nologin"
 iocage exec __RADARR_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __RADARR_JAIL__ "pw groupadd -n __MEDIA_GROUP__ -g __MEDIA_GID__"
 iocage exec __RADARR_JAIL__ "pw groupmod __MEDIA_GROUP__ -m __RADARR_USER__"
 iocage exec __RADARR_JAIL__ chown -R __MEDIA_USER__:__MEDIA_GROUP__ /usr/local/share/Radarr /config
 iocage exec __RADARR_JAIL__ sysrc 'radarr_user=__MEDIA_USER__'
-iocage exec __RADARR_JAIL__ service radarr start
 
 # Install rc.d service
 iocage exec __RADARR_JAIL__ mkdir /usr/local/etc/rc.d
