@@ -43,7 +43,7 @@ TRANSMISSION:
 The default transmission settings will prevent any access to the WebUI from anything other than from localhost. We need to access edit the settings file for transmission to fix this to do so we need to stop transmission and edit settings.json file for Transmission.
 iocage exec transmission service transmission stop
 
-Using your favorite editor edit /mnt/<POOL>/apps/<transmission-jail>/config/transmission-home/settings.json and find the lines prefixed with rpc-whitelist. You have 2 options disabling the whitelist or adding your IP to the whitelist.
+Using your favorite editor edit /mnt/\<POOL\>/apps/\<transmission-jail\>/config/transmission-home/settings.json and find the lines prefixed with rpc-whitelist. You have 2 options disabling the whitelist or adding your IP to the whitelist.
 
 A) To disable the whitelist change the following lines:
 ```
