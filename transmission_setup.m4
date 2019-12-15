@@ -1,12 +1,12 @@
 include(variables.m4)dnl
 # Create the jail
-echo '{"pkgs":["bash","unzip","unrar","transmission","ca_root_nss","nano"]}' > /tmp/pkg.json
+echo '{"pkgs":["bash","unzip","unrar","transmission","nano"]}' > /tmp/pkg.json
 iocage create -n "__TRANSMISSION_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__TRANSMISSION_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 rm /tmp/pkg.json
 
 # Update to Latest Repo
-iocage exec __JACKETT_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
-iocage exec __JACKETT_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
+iocage exec __TRANSMISSION_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
+iocage exec __TRANSMISSION_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
 
 # Mount storage
 iocage exec __TRANSMISSION_JAIL__ mkdir -p /config
@@ -29,3 +29,4 @@ iocage exec __TRANSMISSION_JAIL__  chown -R __MEDIA_USER__:__MEDIA_GROUP__ /conf
 iocage exec __TRANSMISSION_JAIL__  chown -R __MEDIA_USER__:__MEDIA_GROUP__ /mnt/downloads
 
 iocage exec __TRANSMISSION_JAIL__ service transmission start
+echo Please open your web browser to http://__TRANSMISSION_IP__:9091
