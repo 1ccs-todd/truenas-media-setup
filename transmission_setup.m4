@@ -14,13 +14,13 @@ iocage exec __TRANSMISSION_JAIL__ "pkg update && pkg upgrade -y"
 iocage exec __TRANSMISSION_JAIL__ mkdir -p /config
 mkdir -p __APPS_ROOT__/__TRANSMISSION_JAIL__
 iocage fstab -a __TRANSMISSION_JAIL__ __APPS_ROOT__/__TRANSMISSION_JAIL__ /config nullfs rw 0 0
-iocage fstab -a __TRANSMISSION_JAIL__ __MEDIA_ROOT__ /mnt nullfs rw 0 0
+iocage fstab -a __TRANSMISSION_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__ nullfs rw 0 0
 iocage exec __TRANSMISSION_JAIL__ mkdir -p /config/transmission-home
 
 # Configure Transmission
 iocage exec __TRANSMISSION_JAIL__ sysrc "transmission_enable=YES"
 iocage exec __TRANSMISSION_JAIL__ sysrc "transmission_conf_dir=/config/transmission-home"
-iocage exec __TRANSMISSION_JAIL__ sysrc "transmission_download_dir=/mnt/downloads/complete"
+iocage exec __TRANSMISSION_JAIL__ sysrc "transmission_download_dir=/__MOUNT_LOCATION__/downloads/complete"
 iocage exec __TRANSMISSION_JAIL__ sysrc 'transmission_user=__MEDIA_USER__'
 
 # Media permissions
@@ -28,7 +28,7 @@ iocage exec __TRANSMISSION_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDI
 iocage exec __TRANSMISSION_JAIL__ "pw groupadd -n __MEDIA_GROUP__ -g __MEDIA_GID__"
 iocage exec __TRANSMISSION_JAIL__ "pw groupmod __MEDIA_GROUP__ -m __TRANSMISSION_USER__"
 iocage exec __TRANSMISSION_JAIL__  chown -R __MEDIA_USER__:__MEDIA_GROUP__ /config/transmission-home
-iocage exec __TRANSMISSION_JAIL__  chown -R __MEDIA_USER__:__MEDIA_GROUP__ /mnt/downloads
+iocage exec __TRANSMISSION_JAIL__  chown -R __MEDIA_USER__:__MEDIA_GROUP__ /__MOUNT_LOCATION__/downloads
 
 iocage exec __TRANSMISSION_JAIL__ service transmission start
 echo Please open your web browser to http://__TRANSMISSION_IP__:9091
