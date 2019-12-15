@@ -14,7 +14,7 @@ iocage exec __PLEX_JAIL__ "pkg update && pkg upgrade -y"
 iocage exec __PLEX_JAIL__ "mkdir -p /config"
 mkdir -p __APPS_ROOT__/__PLEX_JAIL__
 iocage fstab -a __PLEX_JAIL__ __APPS_ROOT__/__PLEX_JAIL__ /config nullfs rw 0 0
-iocage fstab -a __PLEX_JAIL__ __MEDIA_ROOT__ /mnt nullfs ro 0 0
+iocage fstab -a __PLEX_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__ nullfs ro 0 0
 
 # Set permissions
 iocage exec __PLEX_JAIL__ chown -R plex:plex /config
