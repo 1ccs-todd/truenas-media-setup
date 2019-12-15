@@ -1,6 +1,6 @@
 include(variables.m4)dnl
 # Create the jail
-echo '{"pkgs":["nginx","php72","php72-filter","php72-curl","php72-hash","php72-json","php72-openssl","php72-pdo","php72-pdo_sqlite","php72-session","php72-simplexml","php72-sqlite3","php72-zip","git","ca_root_nss"]}' > /tmp/pkg.json
+echo '{"pkgs":["nginx","php72","php72-filter","php72-curl","php72-hash","php72-json","php72-openssl","php72-pdo","php72-pdo_sqlite","php72-session","php72-simplexml","php72-sqlite3","php72-zip","git"]}' > /tmp/pkg.json
 iocage create -n "__ORGANIZR_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__ORGANIZR_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 rm /tmp/pkg.json
 
@@ -41,4 +41,4 @@ iocage exec __ORGANIZR_JAIL__ sysrc php_fpm_enable=YES
 iocage exec __ORGANIZR_JAIL__ service nginx start
 iocage exec __ORGANIZR_JAIL__ service php-fpm start
 
-#important step Navigate to http://JailIP and set the follow the setup database location to "/config/Organizr" and Organizr for the database name. If you have an exsisting config file in the database location once you complete the setup restart the jail and login with you exsisting credentials.
+#important step Navigate to http://__ORGANIZR_IP__ and set the follow the setup database location to "/config/Organizr" and Organizr for the database name. If you have an exsisting config file in the database location once you complete the setup restart the jail and login with you exsisting credentials.
