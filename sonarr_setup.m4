@@ -24,7 +24,7 @@ iocage exec __SONARR_JAIL__ rm -rf /var/db/portsnap
 iocage exec __SONARR_JAIL__ mkdir -p /config
 mkdir -p __APPS_ROOT__/__SONARR_JAIL__
 iocage fstab -a __SONARR_JAIL__ __APPS_ROOT__/__SONARR_JAIL__ /config nullfs rw 0 0
-iocage fstab -a __SONARR_JAIL__ __MEDIA_ROOT__ /mnt nullfs rw 0 0
+iocage fstab -a __SONARR_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__ nullfs rw 0 0
 
 # download sonarr
 iocage exec __SONARR_JAIL__ ln -s /usr/local/bin/mono /usr/bin/mono
