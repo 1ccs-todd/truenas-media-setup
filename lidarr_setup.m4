@@ -19,8 +19,8 @@ iocage exec __LIDARR_JAIL__ make -C /usr/ports/lang/mono -DBATCH install clean
 
 # Free ~1GB removing now unneeded PORTS tree
 iocage exec __LIDARR_JAIL__ rm -rf /usr/ports
-iocage exec __LIDARR_JAIL__ rm -rf /var/db/ports
-iocage exec __LIDARR_JAIL__ rm -rf /var/db/portsnap
+iocage exec __LIDARR_JAIL__ rm -rf /var/db/ports/*
+iocage exec __LIDARR_JAIL__ rm -rf /var/db/portsnap/*
 
 # Mount storage
 iocage exec __LIDARR_JAIL__ mkdir -p /config
