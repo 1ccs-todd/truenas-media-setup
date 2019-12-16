@@ -13,7 +13,7 @@ Ombi is no longer supported as Ombi 2.x is no longer being developed and Ombi 3.
 
 
 **Basic Guide:** 
-1) download the master.zip from this repo and unpack it to a folder on your FreeNAS server.
+1) download the latest release from this repo and unpack it to a folder on your FreeNAS server.
 2) ssh (preferred) or use shell from the Web-UI of FreeNAS
 3) enter path where you unpacked the master.zip file and edit 'variables.m4'
     * Recommended variables to edit: 
