@@ -42,7 +42,7 @@ A VPN may not be desired by everyone. Execute "transmission_add_VPN.sh" to proce
 
 ***Complete Media setup including (dates show the last successful test):***
 
-+ [Plex](#plex) 12/14/19
++ [Plex](#plex) 12/16/19
 + [Transmission](#transmission) 12/14/19
 + [Sonarr V3](#sonarr) 12/14/19
 + [Radarr](#radarr) 12/14/19
