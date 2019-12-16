@@ -42,7 +42,7 @@ define(__ORGANIZR_USER__,www)dnl
 define(__ORGANIZR_GROUP__,www)dnl
 define(__ORGANIZR_LISTEN_MODE__,0660)dnl
 dnl
-define(__PLEX_JAIL__,[[[plex]]])dnl
+define(__PLEX_JAIL__,plex)dnl
 define(__PLEX_IP__,10.68.69.22)dnl # desired IP for Plex
 dnl
 define(__RADARR_JAIL__,radarr)dnl
