@@ -43,4 +43,4 @@ iocage exec __ORGANIZR_JAIL__ sysrc php_fpm_enable=YES
 iocage exec __ORGANIZR_JAIL__ service nginx start
 iocage exec __ORGANIZR_JAIL__ service php-fpm start
 
-#important step Navigate to http://__ORGANIZR_IP__ and set the follow the setup database location to "/config/Organizr" and Organizr for the database name. If you have an exsisting config file in the database location once you complete the setup restart the jail and login with you exsisting credentials.
+echo Important step Navigate to http://__ORGANIZR_IP__ and set the follow the setup database location to "/config/Organizr" and Organizr for the database name. If you have an exsisting config file in the database location once you complete the setup restart the jail and login with you exsisting credentials.
