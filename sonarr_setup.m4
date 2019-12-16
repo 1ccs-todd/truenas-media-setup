@@ -34,7 +34,7 @@ iocage exec __SONARR_JAIL__ rm __SONARR_FETCH_PATH__
 
 # Media Permissions
 iocage exec __SONARR_JAIL__ "pw user add __SONARR_USER__ -c sonarr -u __SONARR_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __SONARR_JAIL__ "pw user add __MEDIA_GROUP__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
+iocage exec __SONARR_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
 iocage exec __SONARR_JAIL__ "pw groupmod __MEDIA_GROUP__ -m __SONARR_USER__"
 iocage exec __SONARR_JAIL__ chown -R __MEDIA_USER__:__MEDIA_GROUP__ /usr/local/share/Sonarr /config
 iocage exec __SONARR_JAIL__  sysrc 'sonarr_user=__MEDIA_USER__'
