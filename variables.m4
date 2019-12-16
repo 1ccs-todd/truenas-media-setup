@@ -1,7 +1,6 @@
 define(__IOCAGE_RELEASE__,11.3-RELEASE)
 
 define(__POOL__,myVol)
-define(__MOUNT_LOCATION__,mnt)
 define(__POOL_ROOT__,/mnt/__POOL__)
 define(__APPS_DATASET__,apps)
 define(__APPS_ROOT__,__POOL_ROOT__/__APPS_DATASET__)
@@ -9,6 +8,7 @@ define(__IOCAGE_DATASET__,iocage)
 define(__IOCAGE_ROOT__,__POOL_ROOT__/__IOCAGE_DATASET__)
 define(__MEDIA_DATASET__,media)
 define(__MEDIA_ROOT__,__POOL_ROOT__/__MEDIA_DATASET__)
+define(__MOUNT_LOCATION__,mnt)
 
 define(__SONARR_DOWNLOADS__,sonarr)
 define(__SONARR_COMPLETED__,series)
