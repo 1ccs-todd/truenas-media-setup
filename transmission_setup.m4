@@ -28,7 +28,6 @@ iocage exec __TRANSMISSION_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDI
 iocage exec __TRANSMISSION_JAIL__ "pw groupadd -n __MEDIA_GROUP__ -g __MEDIA_GID__"
 iocage exec __TRANSMISSION_JAIL__ "pw groupmod __MEDIA_GROUP__ -m __TRANSMISSION_USER__"
 iocage exec __TRANSMISSION_JAIL__  chown -R __MEDIA_USER__:__MEDIA_GROUP__ /config/transmission-home
-iocage exec __TRANSMISSION_JAIL__  chown -R __MEDIA_USER__:__MEDIA_GROUP__ /__MOUNT_LOCATION__/downloads
 
 iocage exec __TRANSMISSION_JAIL__ service transmission start
 echo Please open your web browser to http://__TRANSMISSION_IP__:9091
