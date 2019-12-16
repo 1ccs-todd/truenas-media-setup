@@ -2,7 +2,7 @@ define(__IOCAGE_RELEASE__,11.3-RELEASE)dnl
 dnl
 define(__POOL__,myVol)dnl
 define(__MOUNT_LOCATION__,mnt)dnl
-define(__POOL_ROOT__,/__MOUNT_LOCATION__/__POOL__)dnl
+define(__POOL_ROOT__,/mnt/__POOL__)dnl
 define(__APPS_DATASET__,apps)dnl
 define(__APPS_ROOT__,__POOL_ROOT__/__APPS_DATASET__)dnl
 define(__IOCAGE_DATASET__,iocage)dnl
