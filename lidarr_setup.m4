@@ -36,7 +36,7 @@ iocage exec __LIDARR_JAIL__ rm __LIDARR_FETCH_PATH__
 iocage exec __LIDARR_JAIL__ "pw user add __LIDARR_USER__ -c __LIDARR_USER__ -u __LIDARR_UID__ -d /nonexistent -s /usr/bin/nologin"
 iocage exec __LIDARR_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
 iocage exec __LIDARR_JAIL__ "pw groupmod __MEDIA_GROUP__ -m __LIDARR_USER__"
-iocage exec __LIDARR_JAIL__ chown -R __LIDARR_USER__:__LIDARR_GROUP__ /usr/local/share/Lidarr /config
+iocage exec __LIDARR_JAIL__ chown -R __MEDIA_USER__:__MEDIA_GROUP__ /usr/local/share/Lidarr /config
 
 # Install rc.d service script
 iocage exec __LIDARR_JAIL__ mkdir /usr/local/etc/rc.d
