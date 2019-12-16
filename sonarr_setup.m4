@@ -7,6 +7,8 @@ rm /tmp/pkg.json
 # update to Latest Repo
 iocage exec __SONARR_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
 iocage exec __SONARR_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
+# Apply updates from new Repo
+iocage exec __JACKETT_JAIL__ "pkg update && pkg upgrade -y"
 
 # install Mono 5.20.1.34
 iocage exec __SONARR_JAIL__ portsnap fetch extract
