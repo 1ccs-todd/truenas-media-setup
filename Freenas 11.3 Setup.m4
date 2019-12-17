@@ -30,9 +30,9 @@ Permissions
 ------  
 For Sonarr, Radarr, Lidarr, and Transmission you will have to change the default user to __MEDIA_USER__:__MEDIA_GROUP__ so the jails can work together properly.
 
-MONO 5.20 compatibility
+MONO 5.10 compatibility
 ------
-Sonarr and Lidarr have moved away from mono 5.10.  For these two, PORTS are installed to apply a patch to v5.20.1.34 and installed. Installation of these two jails takes a LONG time due to Ports installation and compiling Mono from source.
+To maintain mono-5.10 compatibility these, ONLY these versions Sonarr v2.0.0.5322 and Lidarr v0.6.2.883 are supported.
 
 OPENVPN
 ------
