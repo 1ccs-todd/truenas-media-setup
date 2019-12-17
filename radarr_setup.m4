@@ -5,7 +5,7 @@ iocage create -n "__RADARR_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_ad
 rm /tmp/pkg.json
 
 # Update to Latest Repo
-iocage exec __RADARR_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
+iocage exec __RADARR_JAIL__ mkdir -p /usr/local/etc/pkg/repos
 iocage exec __RADARR_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
 # Apply updates from new Repo
 iocage exec __RADARR_JAIL__ "pkg update && pkg upgrade -y"
