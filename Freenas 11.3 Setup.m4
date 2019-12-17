@@ -44,7 +44,7 @@ A VPN may not be desired by everyone. Execute "transmission_add_VPN.sh" to proce
 
 + [Plex](#plex) 12/16/19
 + [Transmission](#transmission) 12/14/19
-+ [Sonarr V3](#sonarr) 12/14/19
++ [Sonarr V3](#sonarr) 12/16/19
 + [Radarr](#radarr) 12/14/19
 + [Lidarr](#lidarr) 12/15/19
 + [Jackett](#jackett) 12/14/19
