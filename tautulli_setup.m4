@@ -5,7 +5,7 @@ iocage create -n "__TAUTULLI_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_
 rm /tmp/pkg.json
 
 # Update to Latest Repo
-iocage exec __TAUTULLI_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
+iocage exec __TAUTULLI_JAIL__ mkdir -p /usr/local/etc/pkg/repos
 iocage exec __TAUTULLI_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
 # Apply updates from new Repo
 iocage exec __TAUTULLI_JAIL__ "pkg update && pkg upgrade -y"
@@ -24,6 +24,8 @@ iocage exec __TAUTULLI_JAIL__ "pw user add __TAUTULLI_USER__ -c tautulli -u __TA
 iocage exec __TAUTULLI_JAIL__ chown -R __TAUTULLI_USER__:__TAUTULLI_GROUP__ /usr/local/share/Tautulli /config
 iocage exec __TAUTULLI_JAIL__ cp /usr/local/share/Tautulli/init-scripts/init.freenas /usr/local/etc/rc.d/tautulli
 iocage exec __TAUTULLI_JAIL__ chmod u+x /usr/local/etc/rc.d/tautulli
+
+# Service installation
 iocage exec __TAUTULLI_JAIL__ sysrc "tautulli_enable=YES"
 iocage exec __TAUTULLI_JAIL__ sysrc "tautulli_flags=--datadir /config"
 iocage exec __TAUTULLI_JAIL__ service tautulli start
