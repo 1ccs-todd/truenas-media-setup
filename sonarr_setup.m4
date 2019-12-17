@@ -18,9 +18,9 @@ iocage exec __SONARR_JAIL__ rm /tmp/mono-patch-5.20.1.34
 iocage exec __SONARR_JAIL__ make -C /usr/ports/lang/mono -DBATCH install clean
 
 # Free ~1GB removing now unneeded PORTS tree
-iocage exec __SONARR_JAIL__ rm -rf /usr/ports/*
+iocage exec __SONARR_JAIL__ rm -rf /usr/ports
 iocage exec __SONARR_JAIL__ rm -rf /var/db/ports/*
-iocage exec __SONARR_JAIL__ rm -rf /var/db/portsnap
+iocage exec __SONARR_JAIL__ rm -rf /var/db/portsnap/*
 
 # mount storage
 iocage exec __SONARR_JAIL__ mkdir -p /config
