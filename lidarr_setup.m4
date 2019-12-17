@@ -1,6 +1,6 @@
 changequote(`[[[', `]]]')dnl
 include(variables.m4)
-echo '{"pkgs":["mediainfo","sqlite3","chromaprint","p5-XML-Parser","bash","cmake","autoconf","automake","libtool","bison","gmake","python36","gettext-tools","xorg-vfbserver","xorg-fonts-miscbitmaps","font-alias","libinotify","nano"]}' > /tmp/pkg.json
+echo '{"pkgs":["mediainfo","sqlite3","chromaprint","p5-XML-Parser","bash","cmake","autoconf","automake","libtool","bison","gmake","python37","gettext-tools","xorg-vfbserver","xorg-fonts-miscbitmaps","font-alias","libinotify","nano"]}' > /tmp/pkg.json
 iocage create -n "__LIDARR_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__LIDARR_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 rm /tmp/pkg.json
 
