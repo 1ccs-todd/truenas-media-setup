@@ -1,6 +1,6 @@
 include(variables.m4)dnl
 # Create the jail
-echo '{"pkgs":["mediainfo","sqlite3","p5-XML-Parser","bash","cmake","autoconf","automake","libtool","bison","gmake","python37","gettext-tools","xorg-vfbserver","xorg-fonts-miscbitmaps","font-alias","libinotify","nano"]}' > /tmp/pkg.json
+echo '{"pkgs":["mono","mediainfo","sqlite3","ca_root_nss","curl","nano"]}' > /tmp/pkg.json
 iocage create -n "__SONARR_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__SONARR_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 rm /tmp/pkg.json
 
@@ -9,18 +9,6 @@ iocage exec __SONARR_JAIL__ mkdir -p /usr/local/etc/pkg/repos
 iocage exec __SONARR_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
 # Apply updates from new Repo
 iocage exec __SONARR_JAIL__ "pkg update && pkg upgrade -y"
-
-# install Mono 5.20.1.34
-iocage exec __SONARR_JAIL__ portsnap fetch extract
-iocage exec __SONARR_JAIL__ curl -o /tmp/mono-patch-5.20.1.34 https://bz-attachments.freebsd.org/attachment.cgi?id=209650
-patch -d __IOCAGE_ROOT__/jails/__SONARR_JAIL__/root/usr/ports/lang/mono/ -E < __IOCAGE_ROOT__/jails/__SONARR_JAIL__/root/tmp/mono-patch-5.20.1.34
-iocage exec __SONARR_JAIL__ rm /tmp/mono-patch-5.20.1.34
-iocage exec __SONARR_JAIL__ make -C /usr/ports/lang/mono -DBATCH install clean
-
-# Free ~1GB removing now unneeded PORTS tree
-iocage exec __SONARR_JAIL__ rm -rf /usr/ports
-iocage exec __SONARR_JAIL__ rm -rf /var/db/ports/*
-iocage exec __SONARR_JAIL__ rm -rf /var/db/portsnap/*
 
 # mount storage
 iocage exec __SONARR_JAIL__ mkdir -p /config
