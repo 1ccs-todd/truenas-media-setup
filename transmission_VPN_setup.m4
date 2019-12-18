@@ -1,5 +1,6 @@
 include(variables.m4)dnl
 iocage exec __TRANSMISSION_JAIL__ service transmission stop
+iocage set allow_tun="1" __TRANSMISSION_JAIL__ 
 iocage exec __TRANSMISSION_JAIL__ pkg install -y openvpn
 cp transmission_ipfw.rules __IOCAGE_ROOT__/jails/__TRANSMISSION_JAIL__/root/config/ipfw_rules
 iocage exec __TRANSMISSION_JAIL__ "chown 0:0 /config/ipfw_rules"
