@@ -14,6 +14,7 @@
 	m4 "organizr_nginx.m4" > "organizr_nginx.conf"
 	m4 "organizr_setup.m4" > "organizr_setup.sh"
 	m4 "tautulli_setup.m4" > "tautulli_setup.sh"
+	m4 "sabnzbd_setup.m4" > "sabnzbd_setup.sh"
 	m4 "Freenas 11.3 Setup.m4" > "Freenas 11.3 Setup.md"
 clean :
 	rm "Freenas 11.3 Setup.md"
@@ -31,4 +32,5 @@ clean :
 	rm "organizr_setup.sh"
 	rm "organizr_nginx.conf"
 	rm "tautulli_setup.sh"
+	rm "sabnzbd_setup.sh"
 	rm "transmission_ipfw.rules"

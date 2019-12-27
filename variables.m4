@@ -51,7 +51,6 @@ define(__RADARR_VERSION__,v0.2.0.1450)dnl # change to latest version of Radarrdn
 define(__RADARR_FETCH_URL__,https://github.com/Radarr/Radarr/releases/download/__RADARR_VERSION__/Radarr.develop.patsubst(__RADARR_VERSION__,v).linux.tar.gz)dnl
 define(__RADARR_FETCH_PATH__,/usr/local/share/Radarr.patsubst(__RADARR_VERSION__,v).linux.tar.gz)dnl
 define(__RADARR_USER__,radarr)dnl
-define(__RADARR_GROUP__,radarr)dnl
 define(__RADARR_UID__,352)dnl
 dnl
 define(__SONARR_JAIL__,sonarr)dnl
@@ -60,7 +59,6 @@ define(__SONARR_VERSION__,v3.0.3.664)dnl
 define(__SONARR_FETCH_URL__,http://services.sonarr.tv/v1/download/phantom/latest?version=3&os=linux)dnl
 define(__SONARR_FETCH_PATH__,/usr/local/share/Sonarr.phantom.__SONARR_VERSION__.linux.tar.gz)dnl
 define(__SONARR_USER__,sonarr)dnl
-define(__SONARR_GROUP__,sonarr)dnl
 define(__SONARR_UID__,351)dnl
 dnl
 define(__TAUTULLI_JAIL__,tautulli)
@@ -73,7 +71,6 @@ dnl
 define(__TRANSMISSION_JAIL__,transmission)dnl
 define(__TRANSMISSION_IP__,10.68.69.26)dnl # desired IP for Transmission
 define(__TRANSMISSION_USER__,transmission)dnl
-define(__TRANSMISSION_GROUP__,transmission)dnl
 dnl
 define(__LIDARR_JAIL__,lidarr)dnl
 define(__LIDARR_IP__,10.68.69.27)dnl # desired IP for Lidarr
@@ -81,5 +78,8 @@ define(__LIDARR_VERSION__,v0.7.1.1381)dnl # edit to latest version of Lidarr
 define(__LIDARR_FETCH_URL__,https://github.com/lidarr/Lidarr/releases/download/__LIDARR_VERSION__/Lidarr.master.patsubst(__LIDARR_VERSION__,v).linux.tar.gz)dnl
 define(__LIDARR_FETCH_PATH__,/usr/local/share/Lidarr.master.patsubst(__LIDARR_VERSION__,v).linux.tar.gz)dnl
 define(__LIDARR_USER__,lidarr)dnl
-define(__LIDARR_GROUP__,lidarr)dnl
 define(__LIDARR_UID__,353)dnl
+dnl
+define(__SABNZBD_JAIL__,sabnzbd)dnl
+define(__SABNZBD_IP__,10.68.69.28)dnl # desired IP for Transmission
+define(__SABNZBD_USER__,_sabnzbd)dnl
