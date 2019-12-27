@@ -50,6 +50,7 @@ A VPN may not be desired by everyone. Execute "transmission_add_VPN.sh" to proce
 + [Jackett](#jackett) 12/14/19
 + [Tautulli](#tautulli) 12/14/19
 + [Organizr V2](#organizr) 12/14/19
++ [Sabnzbd](#sabnzbd) 12/26/19
 
 Ombi is no longer supported as Ombi 2.x is no longer being developed actively and Ombi 3.x is not usable until there is proper support for .net-core on FreeBSD
 
@@ -166,6 +167,13 @@ include(jackett.rc)
 -----
 ```
 include(tautulli_setup.sh)
+```
+
+<a name="sabnzbd"></a>
+***Sabnzbd***
+-------
+```
+include(sabnzbd_setup.sh)
 ```
 
 <a name="backups"></a>
