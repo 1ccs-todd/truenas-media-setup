@@ -30,6 +30,7 @@ Ombi is no longer supported as Ombi 2.x is no longer being developed and Ombi 3.
                                      __SONARR_IP__;
                                      __TAUTULLI_IP__;
                                      __TRANSMISSION_IP__;
+                                     __SABNZBD_IP__;
                                      ```
 4) run 'make' to build custom install scripts based on 'variables.m4'
 5) Review "Freenas 11.3 Setup.md".  A customized manual installation guide for each FreeNAS installation.
