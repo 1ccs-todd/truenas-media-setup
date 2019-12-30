@@ -34,7 +34,7 @@ load_rc_config $name
 : ${sonarr_group:="__MEDIA_GROUP__"}
 : ${sonarr_data_dir:="/config"}
 
-pidfile="${sonarr_data_dir}/nzbdrone.pid"
+pidfile="${sonarr_data_dir}/sonarr.pid"
 command="/usr/sbin/daemon"
 procname="/usr/local/bin/mono"
 command_args="-f ${procname} /usr/local/share/Sonarr/Sonarr.exe --data=${sonarr_data_dir} --nobrowser"
