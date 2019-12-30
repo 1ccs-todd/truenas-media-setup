@@ -24,6 +24,8 @@ iocage exec __TAUTULLI_JAIL__ "pw user add __TAUTULLI_USER__ -c tautulli -u __TA
 iocage exec __TAUTULLI_JAIL__ chown -R __TAUTULLI_USER__:__TAUTULLI_GROUP__ /usr/local/share/Tautulli /config
 iocage exec __TAUTULLI_JAIL__ cp /usr/local/share/Tautulli/init-scripts/init.freenas /usr/local/etc/rc.d/tautulli
 iocage exec __TAUTULLI_JAIL__ chmod u+x /usr/local/etc/rc.d/tautulli
+
+# Install rc.d service
 iocage exec __TAUTULLI_JAIL__ sysrc "tautulli_enable=YES"
 iocage exec __TAUTULLI_JAIL__ sysrc "tautulli_flags=--datadir /config"
 iocage exec __TAUTULLI_JAIL__ service tautulli start
