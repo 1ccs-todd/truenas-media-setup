@@ -16,6 +16,7 @@ define(__RADARR_DOWNLOADS__,radarr)dnl # edit if a different category name is de
 define(__RADARR_COMPLETED__,movies)dnl # edit if a different storage folder is desired for Radarr
 define(__LIDARR_DOWNLOADS__,lidarr)dnl # edit if a different category name is desired for Lidarr
 define(__LIDARR_COMPLETED__,music)dnl # edit if a different storage folder is desired for Lidarr
+define(__SABNZBD_FILES__),sabnzbd)dnl # edit if a differnet download folder is desired for Usenet files
 dnl
 define(__MEDIA_USER__,media)dnl
 define(__MEDIA_GROUP__,media)dnl
