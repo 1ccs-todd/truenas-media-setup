@@ -80,5 +80,5 @@ define(__LIDARR_USER__,lidarr)dnl
 define(__LIDARR_UID__,353)dnl
 dnl
 define(__SABNZBD_JAIL__,sabnzbd)dnl
-define(__SABNZBD_IP__,10.68.69.28)dnl # desired IP for Transmission
+define(__SABNZBD_IP__,10.68.69.28)dnl # desired IP for Sabnzbd
 define(__SABNZBD_USER__,_sabnzbd)dnl
