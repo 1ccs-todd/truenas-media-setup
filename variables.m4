@@ -27,7 +27,7 @@ define(__DEFAULT_INTERFACE__,vnet0)dnl
 dnl
 define(__JACKETT_JAIL__,jackett)dnl
 define(__JACKETT_IP__,10.68.69.20)dnl # desired IP for Jackettdnl
-define(__JACKETT_VERSION__,v0.12.1115)dnl # change to latest version of Jackettdnl
+define(__JACKETT_VERSION__,v0.12.1384)dnl # change to latest version of Jackett
 define(__JACKETT_FETCH_URL__,https://github.com/Jackett/Jackett/releases/download/__JACKETT_VERSION__/Jackett.Binaries.Mono.tar.gz)dnl
 define(__JACKETT_FETCH_PATH__,/usr/local/share/Jackett.Binaries.Mono.tar.gz)dnl
 define(__JACKETT_USER__,jackett)dnl
@@ -70,7 +70,6 @@ define(__TAUTULLI_UID__,109)dnl
 dnl
 define(__TRANSMISSION_JAIL__,transmission)dnl
 define(__TRANSMISSION_IP__,10.68.69.26)dnl # desired IP for Transmission
-define(__TRANSMISSION_USER__,transmission)dnl
 dnl
 define(__LIDARR_JAIL__,lidarr)dnl
 define(__LIDARR_IP__,10.68.69.27)dnl # desired IP for Lidarr
