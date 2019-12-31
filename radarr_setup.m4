@@ -27,7 +27,6 @@ iocage exec __RADARR_JAIL__ "pw user add __RADARR_USER__ -c radarr -u __RADARR_U
 iocage exec __RADARR_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
 iocage exec __RADARR_JAIL__ "pw groupmod __MEDIA_GROUP__ -m __RADARR_USER__"
 iocage exec __RADARR_JAIL__ chown -R __MEDIA_USER__:__MEDIA_GROUP__ /usr/local/share/Radarr /config
-iocage exec __RADARR_JAIL__ sysrc 'radarr_user=__MEDIA_USER__'
 
 # Install rc.d service
 iocage exec __RADARR_JAIL__ mkdir /usr/local/etc/rc.d

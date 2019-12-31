@@ -21,7 +21,7 @@ __POOL__ > __MEDIA_DATASET__ >  -__SONARR_COMPLETED__
                               -__SABNZBD_FILES__
                             ```
 
-You have pool named "__POOL__". And created a dataset named "__MEDIA_DATASET__" owned by the default freenas user __MEDIA_USER__:__MEDIA_GROUP__. The dataset contains the folders: series,movies, and downloads. You also have a dataset named "__APPS_DATASET__" to hold the config data.
+You have pool named "__POOL__". And created a dataset named "__MEDIA_DATASET__" owned by the default freenas user __MEDIA_USER__:__MEDIA_GROUP__. The dataset contains the folders: __SONARR_COMPLETED__, __RADARR_COMPLETED__, __LIDARR_COMPLETED__ and downloads. You also have a dataset named "__APPS_DATASET__" to hold the jails config data.
 ```
 ------
 
@@ -29,7 +29,7 @@ You have pool named "__POOL__". And created a dataset named "__MEDIA_DATASET__" 
 
 Permissions
 ------  
-For Sonarr, Radarr, Lidarr, and Transmission you will have to change the default user to __MEDIA_USER__:__MEDIA_GROUP__ so the jails can work together properly.
+For Sonarr, Radarr, Lidarr, and Transmission to share files, the default user is changed to to __MEDIA_USER__:__MEDIA_GROUP__ so the jails can work together properly.
 
 MONO 5.20 compatibility
 ------
@@ -43,15 +43,15 @@ A VPN may not be desired by everyone. Execute "transmission_add_VPN.sh" to proce
 
 ***Complete Media setup including (dates show the last successful test):***
 
-+ [Plex](#plex) 12/16/19
-+ [Transmission](#transmission) 12/14/19
-+ [Sonarr V3](#sonarr) 12/14/19
-+ [Radarr](#radarr) 12/14/19
-+ [Lidarr](#lidarr) 12/15/19
-+ [Jackett](#jackett) 12/14/19
-+ [Tautulli](#tautulli) 12/14/19
-+ [Organizr V2](#organizr) 12/14/19
-+ [Sabnzbd](#sabnzbd) 12/26/19
++ [Plex](#plex) 12/30/19
++ [Transmission](#transmission) 12/30/19
++ [Sonarr V3](#sonarr) 12/30/19
++ [Radarr](#radarr) 12/30/19
++ [Lidarr](#lidarr) 12/30/19
++ [Jackett](#jackett) 12/30/19
++ [Tautulli](#tautulli) 12/30/19
++ [Organizr V2](#organizr) 12/30/19
++ [Sabnzbd](#sabnzbd) 12/30/19
 
 Ombi is no longer supported as Ombi 2.x is no longer being developed actively and Ombi 3.x is not usable until there is proper support for .net-core on FreeBSD
 
@@ -76,7 +76,7 @@ include(plex_setup.sh)
 include(transmission_setup.sh)
 ```
 ```
-# you may need to change the white list in settings.json to 0.0.0.0 or set to your preferred settings
+# you may need to change the white list in settings.json to your preferred settings. The script allows EVERYONE.
 ```
 
 <a name="sonarr"></a>

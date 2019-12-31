@@ -15,19 +15,24 @@ iocage exec __TRANSMISSION_JAIL__ mkdir -p /config
 mkdir -p __APPS_ROOT__/__TRANSMISSION_JAIL__
 iocage fstab -a __TRANSMISSION_JAIL__ __APPS_ROOT__/__TRANSMISSION_JAIL__ /config nullfs rw 0 0
 iocage fstab -a __TRANSMISSION_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__ nullfs rw 0 0
-iocage exec __TRANSMISSION_JAIL__ mkdir -p /config/transmission-home
+iocage exec __TRANSMISSION_JAIL__ mkdir /config/transmission-home
 
 # Configure Transmission
 iocage exec __TRANSMISSION_JAIL__ sysrc "transmission_enable=YES"
 iocage exec __TRANSMISSION_JAIL__ sysrc "transmission_conf_dir=/config/transmission-home"
 iocage exec __TRANSMISSION_JAIL__ sysrc "transmission_download_dir=/__MOUNT_LOCATION__/downloads/complete"
 iocage exec __TRANSMISSION_JAIL__ sysrc 'transmission_user=__MEDIA_USER__'
+iocage exec __TRANSMISSION_JAIL__ sysrc 'transmission_group=__MEDIA_GROUP__'
 
 # Media permissions
 iocage exec __TRANSMISSION_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __TRANSMISSION_JAIL__ "pw groupadd -n __MEDIA_GROUP__ -g __MEDIA_GID__"
-iocage exec __TRANSMISSION_JAIL__ "pw groupmod __MEDIA_GROUP__ -m __TRANSMISSION_USER__"
+iocage exec __TRANSMISSION_JAIL__ "pw groupmod __MEDIA_GROUP__ -m transmission"
 iocage exec __TRANSMISSION_JAIL__  chown -R __MEDIA_USER__:__MEDIA_GROUP__ /config/transmission-home
+
+# Edit default config to allow web access to ALL
+iocage exec __TRANSMISSION_JAIL__  service transmission start
+iocage exec __TRANSMISSION_JAIL__  service transmission stop
+iocage exec __TRANSMISSION_JAIL__  sed -i '' -e 's?"rpc-whitelist-enabled": true?"rpc-whitelist-enabled": false?g' /config/transmission-home/settings.json
 
 iocage exec __TRANSMISSION_JAIL__ service transmission start
 echo Please open your web browser to http://__TRANSMISSION_IP__:9091

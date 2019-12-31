@@ -17,12 +17,12 @@ iocage fstab -a __SABNZBD_JAIL__ __APPS_ROOT__/__SABNZBD_JAIL__ /config nullfs r
 iocage fstab -a __SABNZBD_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__  nullfs rw 0 0
 
 #Media Permissions
-iocage exec __SABNZBD_JAIL__ "pw add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
+iocage exec __SABNZBD_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
 iocage exec __SABNZBD_JAIL__ "pw groupmod __MEDIA_GROUP__ -m __SABNZBD_USER__"
-iocage exec __SABNZBD_JAIL__ -R __SABNZBD_USER__:__MEDIA_GROUP__ /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__ /config
-
 iocage exec __SABNZBD_JAIL__ mkdir -p /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__/incomplete
-iocage exec __SABNZBD_JAIL__ mkdir -p /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__/complete
+iocage exec __SABNZBD_JAIL__ mkdir /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__/complete
+iocage exec __SABNZBD_JAIL__ chown -R __SABNZBD_USER__:__SABNZBD_GROUP__ /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__ /config
+
 iocage exec __SABNZBD_JAIL__ ln -s /usr/local/bin/python2.7 /usr/bin/python
 iocage exec __SABNZBD_JAIL__ ln -s /usr/local/bin/python2.7 /usr/bin/python2
 

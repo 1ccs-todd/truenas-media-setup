@@ -14,8 +14,8 @@ iocage exec __ORGANIZR_JAIL__ "pkg update && pkg upgrade -y"
 iocage exec __ORGANIZR_JAIL__ mkdir -p /config
 mkdir -p __APPS_ROOT__/__ORGANIZR_JAIL__
 iocage fstab -a __ORGANIZR_JAIL__ __APPS_ROOT__/__ORGANIZR_JAIL__ /config nullfs rw 0 0
-iocage exec __ORGANIZR_JAIL__ mkdir -p /config/nginx
-iocage exec __ORGANIZR_JAIL__ mkdir -p /config/Organizr
+iocage exec __ORGANIZR_JAIL__ mkdir /config/nginx
+iocage exec __ORGANIZR_JAIL__ mkdir /config/Organizr
 
 # Configure php-fpm
 echo 'listen = /var/run/php-fpm.sock' >> __IOCAGE_ROOT__/jails/__ORGANIZR_JAIL__/root/usr/local/etc/php-fpm.conf
@@ -43,4 +43,4 @@ iocage exec __ORGANIZR_JAIL__ sysrc php_fpm_enable=YES
 iocage exec __ORGANIZR_JAIL__ service nginx start
 iocage exec __ORGANIZR_JAIL__ service php-fpm start
 
-echo Important step Navigate to http://__ORGANIZR_IP__ and set the follow the setup database location to "/config/Organizr" and Organizr for the database name. If you have an exsisting config file in the database location once you complete the setup restart the jail and login with you exsisting credentials.
+echo Important step Navigate to http://__ORGANIZR_IP__ and set the follow the setup database location to "/config/Organizr" and Organizr for the database name. If you have an exsisting config file in the database location once you complete the setup restart the jail and login with your previous credentials.

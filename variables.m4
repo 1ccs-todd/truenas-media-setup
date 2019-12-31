@@ -83,3 +83,4 @@ dnl
 define(__SABNZBD_JAIL__,sabnzbd)dnl
 define(__SABNZBD_IP__,10.68.69.28)dnl # desired IP for Sabnzbd
 define(__SABNZBD_USER__,_sabnzbd)dnl
+define(__SABNZBD_GROUP__,_sabnzbd)dnl

@@ -1,11 +1,12 @@
-changequote(`[[[', `]]]')dnl
-include(variables.m4)
+include(variables.m4)dnl
 echo '{"pkgs":["mediainfo","sqlite3","chromaprint","p5-XML-Parser","bash","cmake","autoconf","automake","libtool","bison","gmake","python37","gettext-tools","xorg-vfbserver","xorg-fonts-miscbitmaps","font-alias","libinotify","nano"]}' > /tmp/pkg.json
 iocage create -n "__LIDARR_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__LIDARR_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 rm /tmp/pkg.json
 
 # Update to Latest Repo
-iocage exec __LIDARR_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
+
+
+,iocage exec __LIDARR_JAIL__ "mkdir -p /usr/local/etc/pkg/repos"
 iocage exec __LIDARR_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
 # Apply updates from new Repo
 iocage exec __LIDARR_JAIL__ "pkg update && pkg upgrade -y"
@@ -18,9 +19,11 @@ iocage exec __LIDARR_JAIL__ rm /tmp/mono-patch-5.20.1.34
 iocage exec __LIDARR_JAIL__ make -C /usr/ports/lang/mono -DBATCH install clean
 
 # Free ~1GB removing now unneeded PORTS tree
-iocage exec __LIDARR_JAIL__ rm -rf /usr/ports
-iocage exec __LIDARR_JAIL__ rm -rf /var/db/ports/*
-iocage exec __LIDARR_JAIL__ rm -rf /var/db/portsnap/*
+iocage exec __LIDARR_JAIL__ rm -r /usr/ports
+iocage exec __LIDARR_JAIL__ rm -r /var/db/ports
+iocage exec __LIDARR_JAIL__ rm -r /var/db/portsnap
+iocage exec __LIDARR_JAIL__ mkdir /var/db/ports
+iocage exec __LIDARR_JAIL__ mkdir /var/db/portsnap
 
 # Mount storage
 iocage exec __LIDARR_JAIL__ mkdir -p /config
@@ -35,13 +38,12 @@ iocage exec __LIDARR_JAIL__ "tar -xzvf __LIDARR_FETCH_PATH__ -C /usr/local/share
 iocage exec __LIDARR_JAIL__ rm __LIDARR_FETCH_PATH__
 
 # Media Permissions
-iocage exec __LIDARR_JAIL__ "pw user add __LIDARR_USER__ -c __LIDARR_USER__ -u __LIDARR_UID__ -d /nonexistent -s /usr/bin/nologin"
+iocage exec __LIDARR_JAIL__ "pw user add __LIDARR_USER__ -c lidarr -u __LIDARR_UID__ -d /nonexistent -s /usr/bin/nologin"
 iocage exec __LIDARR_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
 iocage exec __LIDARR_JAIL__ "pw groupmod __MEDIA_GROUP__ -m __LIDARR_USER__"
 iocage exec __LIDARR_JAIL__ chown -R __MEDIA_USER__:__MEDIA_GROUP__ /usr/local/share/Lidarr /config
 
 # Install rc.d service script
-iocage exec __LIDARR_JAIL__ mkdir /usr/local/etc/rc.d
 cp lidarr.rc __IOCAGE_ROOT__/jails/__LIDARR_JAIL__/root/usr/local/etc/rc.d/lidarr
 iocage exec __LIDARR_JAIL__ chmod u+x /usr/local/etc/rc.d/lidarr
 iocage exec __LIDARR_JAIL__ sysrc "lidarr_enable=YES"

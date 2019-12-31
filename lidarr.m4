@@ -20,7 +20,7 @@ load_rc_config $name
 
 : ${lidarr_enable:="NO"}
 : ${lidarr_user:="__MEDIA_USER__"}
-: ${lidarr_group:="__MEDIA_USER__"}
+: ${lidarr_group:="__MEDIA_GROUP__"}
 : ${lidarr_data_dir:="/config"}
 
 command="/usr/sbin/daemon"

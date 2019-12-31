@@ -31,7 +31,7 @@ load_rc_config $name
 
 : ${jackett_enable:="NO"}
 : ${jackett_user:="__JACKETT_USER__"}
-: ${jackett_group:="__JACKETT_USER__"}
+: ${jackett_group:="__JACKETT_GROUP__"}
 : ${jackett_data_dir:="/config"}
 
 command="/usr/sbin/daemon"

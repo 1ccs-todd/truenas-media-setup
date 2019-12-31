@@ -18,9 +18,11 @@ iocage exec __SONARR_JAIL__ rm /tmp/mono-patch-5.20.1.34
 iocage exec __SONARR_JAIL__ make -C /usr/ports/lang/mono -DBATCH install clean
 
 # Free ~1GB removing now unneeded PORTS tree
-iocage exec __SONARR_JAIL__ rm -rf /usr/ports
-iocage exec __SONARR_JAIL__ rm -rf /var/db/ports/*
-iocage exec __SONARR_JAIL__ rm -rf /var/db/portsnap/*
+iocage exec __SONARR_JAIL__ rm -r /usr/ports
+iocage exec __SONARR_JAIL__ rm -r /var/db/ports
+iocage exec __SONARR_JAIL__ rm -r /var/db/portsnap
+iocage exec __SONARR_JAIL__ mkdir /var/db/ports
+iocage exec __SONARR_JAIL__ mkdir /var/db/portsnap
 
 # mount storage
 iocage exec __SONARR_JAIL__ mkdir -p /config
@@ -39,7 +41,6 @@ iocage exec __SONARR_JAIL__ "pw user add __SONARR_USER__ -c sonarr -u __SONARR_U
 iocage exec __SONARR_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
 iocage exec __SONARR_JAIL__ "pw groupmod __MEDIA_GROUP__ -m __SONARR_USER__"
 iocage exec __SONARR_JAIL__ chown -R __MEDIA_USER__:__MEDIA_GROUP__ /usr/local/share/Sonarr /config
-iocage exec __SONARR_JAIL__  sysrc 'sonarr_user=__MEDIA_USER__'
 
 # Install rc.d service
 iocage exec __SONARR_JAIL__ mkdir /usr/local/etc/rc.d
