@@ -31,7 +31,6 @@ iocage fstab -a __SONARR_JAIL__ __APPS_ROOT__/__SONARR_JAIL__ /config nullfs rw 
 iocage fstab -a __SONARR_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__ nullfs rw 0 0
 
 # download sonarr
-iocage exec __SONARR_JAIL__ ln -s /usr/local/bin/mono /usr/bin/mono
 iocage exec __SONARR_JAIL__ fetch "__SONARR_FETCH_URL__" -o __SONARR_FETCH_PATH__
 iocage exec __SONARR_JAIL__ "tar -xzvf __SONARR_FETCH_PATH__ -C /usr/local/share"
 iocage exec __SONARR_JAIL__ rm __SONARR_FETCH_PATH__
