@@ -17,7 +17,6 @@ iocage fstab -a __RADARR_JAIL__ __APPS_ROOT__/__RADARR_JAIL__ /config nullfs rw 
 iocage fstab -a __RADARR_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__ nullfs rw 0 0
 
 # download radarr
-iocage exec __RADARR_JAIL__ ln -s /usr/local/bin/mono /usr/bin/mono
 iocage exec __RADARR_JAIL__ "fetch __RADARR_FETCH_URL__ -o __RADARR_FETCH_PATH__"
 iocage exec __RADARR_JAIL__ "tar -xzvf __RADARR_FETCH_PATH__ -C /usr/local/share"
 iocage exec __RADARR_JAIL__ rm __RADARR_FETCH_PATH__
