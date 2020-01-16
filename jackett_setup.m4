@@ -16,7 +16,6 @@ mkdir -p __APPS_ROOT__/__JACKETT_JAIL__
 iocage fstab -a __JACKETT_JAIL__ __APPS_ROOT__/__JACKETT_JAIL__ /config nullfs rw 0 0
 
 # download jackett
-iocage exec __JACKETT_JAIL__ ln -s /usr/local/bin/mono /usr/bin/mono
 iocage exec __JACKETT_JAIL__ "fetch __JACKETT_FETCH_URL__ -o /usr/local/share"
 iocage exec __JACKETT_JAIL__ "tar -xzvf __JACKETT_FETCH_PATH__ -C /usr/local/share"
 iocage exec __JACKETT_JAIL__ rm __JACKETT_FETCH_PATH__
