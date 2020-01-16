@@ -32,7 +32,6 @@ iocage fstab -a __LIDARR_JAIL__ __APPS_ROOT__/__LIDARR_JAIL__ /config nullfs rw 
 iocage fstab -a __LIDARR_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__ nullfs rw 0 0
 
 # Download lidarr
-iocage exec __LIDARR_JAIL__ ln -s /usr/local/bin/mono /usr/bin/mono
 iocage exec __LIDARR_JAIL__ "fetch __LIDARR_FETCH_URL__ -o /usr/local/share"
 iocage exec __LIDARR_JAIL__ "tar -xzvf __LIDARR_FETCH_PATH__ -C /usr/local/share"
 iocage exec __LIDARR_JAIL__ rm __LIDARR_FETCH_PATH__
