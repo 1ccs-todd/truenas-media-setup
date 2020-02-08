@@ -24,9 +24,6 @@ iocage exec __SABNZBD_JAIL__ mkdir /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES
 iocage exec __SABNZBD_JAIL__ chown -R __SABNZBD_USER__:__SABNZBD_GROUP__ /config
 iocage exec __SABNZBD_JAIL__ chown -R __SABNZBD_USER__:__MEDIA_GROUP__ /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__
 
-iocage exec __SABNZBD_JAIL__ ln -s /usr/local/bin/python2.7 /usr/bin/python
-iocage exec __SABNZBD_JAIL__ ln -s /usr/local/bin/python2.7 /usr/bin/python2
-
 # Install rc.d service
 iocage exec __SABNZBD_JAIL__ sysrc sabnzbd_enable=YES
 iocage exec __SABNZBD_JAIL__ sysrc sabnzbd_conf_dir="/config"
