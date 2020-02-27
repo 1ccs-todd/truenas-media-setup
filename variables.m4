@@ -1,4 +1,4 @@
-define(__IOCAGE_RELEASE__,11.3-RELEASE)dnl # change '11.3-RELEASE' if you run FN prior to 11.2-U7 or 11.3-BETA1.
+define(__IOCAGE_RELEASE__,11.3-RELEASE)dnl # change '11.3-RELEASE' if you run FN prior to 11.2-U7.
 dnl
 define(__POOL__,myVol)dnl # edit 'myVol' to your pool for iocage (jail) data.
 define(__POOL_ROOT__,/mnt/__POOL__)dnl
