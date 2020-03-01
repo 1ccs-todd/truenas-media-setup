@@ -7,7 +7,7 @@ Mono 5.20 additions cribbed from https://www.ixsystems.com/community/resources/h
 
 Thanks to the creator of this guide https://www.ixsystems.com/community/resources/fn11-2-iocage-jails-plex-tautulli-sonarr-radarr-lidarr-jackett-transmission-organizr.58/
 
-**Warning: Default __IOCAGE_RELEASE__ in 'variables.m4' is configured to build 11.3-RELEASE jails.  This requires FreeNAS version 11.2-U7 or 11.3-RC1**
+**Warning: Default __IOCAGE_RELEASE__ in 'variables.m4' is configured to build 11.3-RELEASE jails.  This requires FreeNAS version 11.2-U7 or newer**
 
 The goal is to make a customizable installation script to setup complete media management including Plex, Tautulli, Sonarr, Radarr, Lidarr, Jackett, Transmission, Organizr, and Sabnzbd on any FreeNAS server.
 
