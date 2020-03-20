@@ -7,7 +7,7 @@ cp -n transmission_ipfw.rules __IOCAGE_ROOT__/jails/__TRANSMISSION_JAIL__/root/c
 iocage exec __TRANSMISSION_JAIL__ "chown 0:0 /config/ipfw.rules"
 iocage exec __TRANSMISSION_JAIL__ "chmod 600 /config/ipfw.rules"
 iocage exec __TRANSMISSION_JAIL__ sysrc firewall_enable="YES"
-iocage exec __TRANSMISSION_JAIL__ sysrc firewall_type="/config/ipfw.rules"
+iocage exec __TRANSMISSION_JAIL__ sysrc firewall_script="/config/ipfw.rules"
 iocage exec __TRANSMISSION_JAIL__ sysrc openvpn_enable="YES"
 iocage exec __TRANSMISSION_JAIL__ sysrc openvpn_dir="/config"
 iocage exec __TRANSMISSION_JAIL__ sysrc openvpn_configfile="/config/openvpn.conf"

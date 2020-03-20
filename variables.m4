@@ -27,7 +27,7 @@ define(__DEFAULT_CIDR__,24)dnl # edit if you use a different subnet mask than /2
 define(__DEFAULT_INTERFACE__,vnet0)dnl
 dnl
 define(__JACKETT_JAIL__,jackett)dnl
-define(__JACKETT_IP__,10.68.69.20)dnl # desired IP for Jackettdnl
+define(__JACKETT_IP__,10.68.69.20)dnl # desired IP for Jackett
 define(__JACKETT_VERSION__,v0.12.1384)dnl # change to latest version of Jackett
 define(__JACKETT_FETCH_URL__,https://github.com/Jackett/Jackett/releases/download/__JACKETT_VERSION__/Jackett.Binaries.Mono.tar.gz)dnl
 define(__JACKETT_FETCH_PATH__,/usr/local/share/Jackett.Binaries.Mono.tar.gz)dnl
@@ -47,8 +47,8 @@ define(__PLEX_JAIL__,plex)dnl
 define(__PLEX_IP__,10.68.69.22)dnl # desired IP for Plex
 dnl
 define(__RADARR_JAIL__,radarr)dnl
-define(__RADARR_IP__,10.68.69.23)dnl # desired IP for Radarrdnl
-define(__RADARR_VERSION__,v0.2.0.1450)dnl # change to latest version of Radarrdnl
+define(__RADARR_IP__,10.68.69.23)dnl # desired IP for Radarr
+define(__RADARR_VERSION__,v0.2.0.1450)dnl # change to latest version of Radarr
 define(__RADARR_FETCH_URL__,https://github.com/Radarr/Radarr/releases/download/__RADARR_VERSION__/Radarr.develop.patsubst(__RADARR_VERSION__,v).linux.tar.gz)dnl
 define(__RADARR_FETCH_PATH__,/usr/local/share/Radarr.patsubst(__RADARR_VERSION__,v).linux.tar.gz)dnl
 define(__RADARR_USER__,radarr)dnl
@@ -70,7 +70,8 @@ define(__TAUTULLI_GROUP__,tautulli)dnl
 define(__TAUTULLI_UID__,109)dnl
 dnl
 define(__TRANSMISSION_JAIL__,transmission)dnl
-define(__TRANSMISSION_IP__,10.68.69.26)dnl # desired IP for Transmission
+define(__TRANSMISSION_IP__,10.68.69.26)dnl # static LAN IP for Transmission
+define(__TRANSMISSION_VPNIP__,10.10.10.10)dnl # IP of VPN server to connect to
 dnl
 define(__LIDARR_JAIL__,lidarr)dnl
 define(__LIDARR_IP__,10.68.69.27)dnl # desired IP for Lidarr
@@ -82,5 +83,9 @@ define(__LIDARR_UID__,353)dnl
 dnl
 define(__SABNZBD_JAIL__,sabnzbd)dnl
 define(__SABNZBD_IP__,10.68.69.28)dnl # desired IP for Sabnzbd
-define(__SABNZBD_USER__,_sabnzbd)dnl
-define(__SABNZBD_GROUP__,_sabnzbd)dnl
+dnl
+define(__BAZARR_JAIL__,bazarr)dnl
+define(__BAZARR_IP__,10.68.69.29)dnl # desired IP for Tautulli
+define(__BAZARR_REPO__,https://github.com/morpheus65535/bazarr.git)dnl
+define(__BAZARR_USER__,bazarr)dnl
+define(__BAZARR_UID__,354)dnl

@@ -1,6 +1,5 @@
 include(variables.m4)dnl
 #!/bin/sh
-
 # $FreeBSD$
 #
 # PROVIDE: radarr
@@ -34,17 +33,22 @@ load_rc_config $name
 : ${radarr_group:="__MEDIA_GROUP__"}
 : ${radarr_data_dir:="/config"}
 
-pidfile="${radarr_data_dir}/nzbdrone.pid"
+pidfile="${radarr_data_dir}/radarr.pid"
+stop_postcmd="${name}_poststop"
+start_precmd="${name}_prestart"
+
 command="/usr/sbin/daemon"
 procname="/usr/local/bin/mono"
-command_args="-f ${procname} /usr/local/share/Radarr/Radarr.exe --data=${radarr_data_dir} --nobrowser"
+command_args="-f -p ${pidfile} ${procname} /usr/local/share/Radarr/Radarr.exe --data=${radarr_data_dir} --nobrowser"
 
-start_precmd=radarr_precmd
-radarr_precmd() {
+radarr_poststop()
+{
+        rm $pidfile
+}
+radarr_prestart() {
     if [ ! -d ${radarr_data_dir} ]; then
     install -d -o ${radarr_user} -g ${radarr_group} ${radarr_data_dir}
     fi
-
     export XDG_CONFIG_HOME=${radarr_data_dir}
 }
 

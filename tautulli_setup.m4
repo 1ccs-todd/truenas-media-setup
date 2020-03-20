@@ -11,12 +11,16 @@ iocage exec __TAUTULLI_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD
 iocage exec __TAUTULLI_JAIL__ "pkg update && pkg upgrade -y"
 
 # Mount storage
-iocage exec __TAUTULLI_JAIL__ mkdir -p /config
+iocage exec __TAUTULLI_JAIL__ mkdir /config
 mkdir -p __APPS_ROOT__/__TAUTULLI_JAIL__
 iocage fstab -a __TAUTULLI_JAIL__ __APPS_ROOT__/__TAUTULLI_JAIL__ /config nullfs rw 0 0
 
-# Download tautulli
+# Download Tautulli
 iocage exec __TAUTULLI_JAIL__ git clone __TAUTULLI_REPO__ /usr/local/share/Tautulli
+
+# Configure rc.conf
+iocage exec __TAUTULLI_JAIL__ sysrc tautulli_enable=YES
+iocage exec __TAUTULLI_JAIL__ sysrc "tautulli_flags=--datadir /config"
 
 # Media permissions
 iocage exec __TAUTULLI_JAIL__ "pw user add __TAUTULLI_USER__ -c tautulli -u __TAUTULLI_UID__ -d /nonexistent -s /usr/bin/nologin"
@@ -24,8 +28,6 @@ iocage exec __TAUTULLI_JAIL__ chown -R __TAUTULLI_USER__:__TAUTULLI_GROUP__ /usr
 iocage exec __TAUTULLI_JAIL__ cp /usr/local/share/Tautulli/init-scripts/init.freenas /usr/local/etc/rc.d/tautulli
 iocage exec __TAUTULLI_JAIL__ chmod u+x /usr/local/etc/rc.d/tautulli
 
-# Install rc.d service
-iocage exec __TAUTULLI_JAIL__ sysrc "tautulli_enable=YES"
-iocage exec __TAUTULLI_JAIL__ sysrc "tautulli_flags=--datadir /config"
+# Start rc.d service
 iocage exec __TAUTULLI_JAIL__ service tautulli start
 echo Please open your web browser to http://__TAUTULLI_IP__:8181

@@ -1,7 +1,7 @@
 include(variables.m4)dnl
 # Create the jail
 echo '{"pkgs":["plexmediaserver","ca_root_nss","nano"]}' > /tmp/pkg.json
-iocage create -n "__PLEX_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__PLEX_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on" 
+iocage create -n "__PLEX_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__PLEX_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 rm /tmp/pkg.json
 
 # Update to the latest repo
@@ -16,11 +16,15 @@ mkdir -p __APPS_ROOT__/__PLEX_JAIL__
 iocage fstab -a __PLEX_JAIL__ __APPS_ROOT__/__PLEX_JAIL__ /config nullfs rw 0 0
 iocage fstab -a __PLEX_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__ nullfs ro 0 0
 
+# Configure rc.conf
+iocage exec __PLEX_JAIL__ sysrc plexmediaserver_enable=YES
+iocage exec __PLEX_JAIL__ sysrc "plexmediaserver_support_path=/config"
+
 # Set permissions
+iocage exec __PLEX_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
+iocage exec __PLEX_JAIL__ "pw groupmod __MEDIA_GROUP__ -m plex"
 iocage exec __PLEX_JAIL__ chown -R plex:plex /config
 
-# Enable service
-iocage exec __PLEX_JAIL__ sysrc "plexmediaserver_enable=YES"
-iocage exec __PLEX_JAIL__ sysrc plexmediaserver_support_path="/config"
+# Start rc.d service
 iocage exec __PLEX_JAIL__ service plexmediaserver start
 echo Please open your web browser to http://__PLEX_IP__:32400/web

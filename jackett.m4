@@ -34,17 +34,23 @@ load_rc_config $name
 : ${jackett_group:="__JACKETT_GROUP__"}
 : ${jackett_data_dir:="/config"}
 
+pidfile="${jackett_data_dir}/jackett.pid"
+stop_postcmd="${name}_poststop"
+start_precmd="${name}_prestart"
+
 command="/usr/sbin/daemon"
 procname="/usr/local/bin/mono"
 command_args="-p ${jackett_data_dir}/jackett.pid -f ${procname} /usr/local/share/Jackett/JackettConsole.exe -d ${jackett_data_dir}"
 
-start_precmd=jackett_precmd
-jackett_precmd() {
+jackett_poststop()
+{
+        rm $pidfile
+}
+jackett_prestart() {
     export USER=${jackett_user}
     if [ ! -d ${jackett_data_dir} ]; then
     install -d -o ${jackett_user} -g ${jackett_group} ${jackett_data_dir}
     fi
-
     export XDG_CONFIG_HOME=${jackett_data_dir}
 }
 

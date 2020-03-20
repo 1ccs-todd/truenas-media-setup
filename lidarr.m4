@@ -23,17 +23,23 @@ load_rc_config $name
 : ${lidarr_group:="__MEDIA_GROUP__"}
 : ${lidarr_data_dir:="/config"}
 
+pidfile="${lidarr_data_dir}/lidarr.pid"
+stop_postcmd="${name}_poststop"
+start_precmd="${name}_prestart"
+
 command="/usr/sbin/daemon"
 procname="/usr/local/bin/mono"
-command_args="-p ${lidarr_data_dir}/lidarr.pid -f ${procname} /usr/local/share/Lidarr/Lidarr.exe -- data=${lidarr_data_dir} --nobrowser"
+command_args="-f -p ${pidfile} ${procname} /usr/local/share/Lidarr/Lidarr.exe -- data=${lidarr_data_dir} --nobrowser"
 
-start_precmd=lidarr_precmd
-lidarr_precmd() {
+lidarr_poststop()
+{
+        rm $pidfile
+}
+lidarr_prestart() {
     export USER=${lidarr_user}
     if [ ! -d ${lidarr_data_dir} ]; then
     install -d -o ${lidarr_user} -g ${lidarr_group} ${lidarr_data_dir}
     fi
-
     export XDG_CONFIG_HOME=${lidarr_data_dir}
 }
 

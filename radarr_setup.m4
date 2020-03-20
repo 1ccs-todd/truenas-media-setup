@@ -21,16 +21,21 @@ iocage exec __RADARR_JAIL__ "fetch __RADARR_FETCH_URL__ -o __RADARR_FETCH_PATH__
 iocage exec __RADARR_JAIL__ "tar -xzvf __RADARR_FETCH_PATH__ -C /usr/local/share"
 iocage exec __RADARR_JAIL__ rm __RADARR_FETCH_PATH__
 
-## Media Permissions
+# Configure rc.conf
+iocage exec __RADARR_JAIL__ sysrc radarr_enable=YES
+iocage exec __RADARR_JAIL__ sysrc "radarr_data_dir=/config"
+iocage exec __RADARR_JAIL__ sysrc radarr_user=__MEDIA_USER__
+iocage exec __RADARR_JAIL__ sysrc radarr_group=__MEDIA_GROUP__
+
+# Media Permissions
 iocage exec __RADARR_JAIL__ "pw user add __RADARR_USER__ -c radarr -u __RADARR_UID__ -d /nonexistent -s /usr/bin/nologin"
 iocage exec __RADARR_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
 iocage exec __RADARR_JAIL__ "pw groupmod __MEDIA_GROUP__ -m __RADARR_USER__"
 iocage exec __RADARR_JAIL__ chown -R __MEDIA_USER__:__MEDIA_GROUP__ /usr/local/share/Radarr /config
 
-# Install rc.d service
+# Start rc.d service
 iocage exec __RADARR_JAIL__ mkdir /usr/local/etc/rc.d
 cp radarr.rc __IOCAGE_ROOT__/jails/__RADARR_JAIL__/root/usr/local/etc/rc.d/radarr
 iocage exec __RADARR_JAIL__ chmod u+x /usr/local/etc/rc.d/radarr
-iocage exec __RADARR_JAIL__ sysrc "radarr_enable=YES"
 iocage exec __RADARR_JAIL__ service radarr start
 echo Please open your web browser to http://__RADARR_IP__:7878

@@ -14,7 +14,7 @@ iocage exec __ORGANIZR_JAIL__ "pkg update && pkg upgrade -y"
 iocage exec __ORGANIZR_JAIL__ mkdir -p /config
 mkdir -p __APPS_ROOT__/__ORGANIZR_JAIL__
 iocage fstab -a __ORGANIZR_JAIL__ __APPS_ROOT__/__ORGANIZR_JAIL__ /config nullfs rw 0 0
-iocage exec __ORGANIZR_JAIL__ mkdir /config/nginx
+iocage exec __ORGANIZR_JAIL__ mkdir -p /config/nginx
 iocage exec __ORGANIZR_JAIL__ mkdir /config/Organizr
 
 # Configure php-fpm
@@ -37,10 +37,12 @@ iocage exec __ORGANIZR_JAIL__ ln -s /config/nginx/nginx.conf /usr/local/etc/ngin
 iocage exec __ORGANIZR_JAIL__ git clone -b __ORGANIZR_BRANCH__ __ORGANIZR_REPO__ /usr/local/www/Organizr
 iocage exec __ORGANIZR_JAIL__ chown -R __ORGANIZR_USER__:__ORGANIZR_GROUP__ /usr/local/www /config
 
-# Enable services
+# Configure rc.conf
 iocage exec __ORGANIZR_JAIL__ sysrc nginx_enable=YES
 iocage exec __ORGANIZR_JAIL__ sysrc php_fpm_enable=YES
+
+# Enable services
 iocage exec __ORGANIZR_JAIL__ service nginx start
 iocage exec __ORGANIZR_JAIL__ service php-fpm start
 
-echo Important step Navigate to http://__ORGANIZR_IP__ and set the follow the setup database location to "/config/Organizr" and Organizr for the database name. If you have an exsisting config file in the database location once you complete the setup restart the jail and login with your previous credentials.
+echo Important step! Navigate to http://__ORGANIZR_IP__ and set the database location to "/config/Organizr" and Organizr for the database name. If you have an exsisting config file in the database location once you complete the setup restart the jail and login with your previous credentials.

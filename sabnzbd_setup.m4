@@ -16,21 +16,26 @@ mkdir -p __APPS_ROOT__/__SABNZBD_JAIL__
 iocage fstab -a __SABNZBD_JAIL__ __APPS_ROOT__/__SABNZBD_JAIL__ /config nullfs rw 0 0
 iocage fstab -a __SABNZBD_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__  nullfs rw 0 0
 
-#Media Permissions
-iocage exec __SABNZBD_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __SABNZBD_JAIL__ "pw groupmod __MEDIA_GROUP__ -m __SABNZBD_USER__"
-iocage exec __SABNZBD_JAIL__ mkdir -p /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__/incomplete
-iocage exec __SABNZBD_JAIL__ mkdir /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__/complete
-iocage exec __SABNZBD_JAIL__ chown -R __SABNZBD_USER__:__SABNZBD_GROUP__ /config
-iocage exec __SABNZBD_JAIL__ chown -R __SABNZBD_USER__:__MEDIA_GROUP__ /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__
-
-# Install rc.d service
+# Configure rc.conf
 iocage exec __SABNZBD_JAIL__ sysrc sabnzbd_enable=YES
 iocage exec __SABNZBD_JAIL__ sysrc sabnzbd_conf_dir="/config"
+iocage exec __SABNZBD_JAIL__ sysrc sabnzbd_user=__MEDIA_USER__
+iocage exec __SABNZBD_JAIL__ sysrc sabnzbd_group=__MEDIA_GROUP__
+
+#Media Permissions
+iocage exec __SABNZBD_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
+iocage exec __SABNZBD_JAIL__ "pw groupmod __MEDIA_GROUP__ -m _sabnzbd"
+iocage exec __SABNZBD_JAIL__ mkdir -p /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__/incomplete
+iocage exec __SABNZBD_JAIL__ mkdir /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__/complete
+iocage exec __SABNZBD_JAIL__ chown -R __MEDIA_USER__:__MEDIA_GROUP__ /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__ /config
+
+# Configuer Sabnzbd
 iocage exec __SABNZBD_JAIL__ service sabnzbd start
 iocage exec __SABNZBD_JAIL__ service sabnzbd stop
 iocage exec __SABNZBD_JAIL__ sed -i '' -e 's?host = 127.0.0.1?host = 0.0.0.0?g' /config/sabnzbd.ini
 iocage exec __SABNZBD_JAIL__ sed -i '' -e 's?download_dir = Downloads/incomplete?download_dir = /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__/incomplete?g' /config/sabnzbd.ini
 iocage exec __SABNZBD_JAIL__ sed -i '' -e 's?complete_dir = Downloads/complete?complete_dir = /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__/complete?g' /config/sabnzbd.ini
+
+# Start rc.d service
 iocage exec __SABNZBD_JAIL__ service sabnzbd start
 echo Please open your browser to: http://__SABNZBD_IP__:8080/sabnzbd/

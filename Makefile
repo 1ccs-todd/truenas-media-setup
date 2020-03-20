@@ -15,7 +15,10 @@
 	m4 "organizr_setup.m4" > "organizr_setup.sh"
 	m4 "tautulli_setup.m4" > "tautulli_setup.sh"
 	m4 "sabnzbd_setup.m4" > "sabnzbd_setup.sh"
+	m4 "bazarr.m4" > "bazarr.rc"
+	m4 "bazarr_setup.m4" > "bazarr_setup.sh"
 	m4 "Freenas 11.3 Setup.m4" > "Freenas 11.3 Setup.md"
+
 clean :
 	rm "Freenas 11.3 Setup.md"
 	rm "plex_setup.sh"
@@ -34,3 +37,5 @@ clean :
 	rm "tautulli_setup.sh"
 	rm "sabnzbd_setup.sh"
 	rm "transmission_ipfw.rules"
+	rm "bazarr.rc"
+	rm "bazarr_setup.sh"
