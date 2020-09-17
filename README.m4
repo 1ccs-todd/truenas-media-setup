@@ -3,8 +3,6 @@ Cribbed from https://gist.github.com/mow4cash/e2fd4991bd2b787ca407a355d134b0ff
 
 Mono 5.20 additions cribbed from https://www.ixsystems.com/community/resources/how-to-manually-upgrade-mono-from-5-10-to-5-20-in-a-freenas-jail.126/
 
-Mono patches cribbed from https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=238089
-
 ***DISCLAIMER: This page contains incomplete and possibly incorrect info. The page is constantly being edited and worked on. Many of these should work but some may be broken. Read the code carefully to understand what you are doing.  Use at your own risk.***
 
 Thanks to the creator of this guide https://www.ixsystems.com/community/resources/fn11-2-iocage-jails-plex-tautulli-sonarr-radarr-lidarr-jackett-transmission-organizr.58/
