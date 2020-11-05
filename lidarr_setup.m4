@@ -14,7 +14,7 @@ if [ ! -f __APPS_ROOT__/mono-6.8.0.105.txz ];then
 	iocage exec __LIDARR_JAIL__ portsnap fetch extract
 	iocage exec __LIDARR_JAIL__ pkg install -y p5-XML-Parser bash cmake autoconf automake libtool bison gmake gettext-tools xorg-vfbserver xorg-fonts-miscbitmaps font-alias
 	iocage exec __LIDARR_JAIL__ cp -r /usr/ports/lang/mono /usr/ports/lang/mono68105
-	curl -o /tmp/mono-patch-6.8.0.105 "https://bz-attachments.freebsd.org/attachment.cgi?id=211960"
+	curl -o /tmp/mono-patch-6.8.0.105 "https://bz-attachments.freebsd.org/attachment.cgi?id=219366"
 	patch -d __IOCAGE_ROOT__/jails/__LIDARR_JAIL__/root/usr/ports/lang/ -E < /tmp/mono-patch-6.8.0.105
 	rm /tmp/mono-patch-6.8.0.105
 	iocage exec __LIDARR_JAIL__ make -C /usr/ports/lang/mono -DBATCH package
