@@ -33,7 +33,7 @@ Ombi 3.x and Radarr 3.x are not yet compatible due to .NET Core requriements.
 6) Review "Freenas 11.3 Setup.md".  A customized manual installation guide for each FreeNAS installation.  
    (I use Chrome with MarkDown Viewer Extension.)  
 7) Enter "chmod u+x *.sh" to ensure execution of the installation scripts.  
-8) Execute './\<JAIL\>_setup.sh' to install whichever jails you desire.  
+8) Execute './\<JAIL\>_setup.sh' to install whichever jails you desire.   
 9a) If you desire VPN protection for your Transmission jail, execute "transmission_add_VPN.sh" and place your working openvpn.conf file where the script recommends.  
 9b) If you desire VPN protection for your Deluge jail, execute "deluge_add_VPN.sh" and place your working openvpn.conf file where the script recommends.  
 ------  
