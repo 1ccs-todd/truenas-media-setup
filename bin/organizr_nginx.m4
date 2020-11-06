@@ -1,5 +1,4 @@
-include(variables.m4)dnl
-user __ORGANIZR_USER__;
+user www;
 worker_processes 1;
 events {
 worker_connections 1024;

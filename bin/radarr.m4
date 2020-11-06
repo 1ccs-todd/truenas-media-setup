@@ -1,4 +1,3 @@
-include(variables.m4)dnl
 #!/bin/sh
 # $FreeBSD$
 #
@@ -29,8 +28,8 @@ rcvar=${name}_enable
 load_rc_config $name
 
 : ${radarr_enable:="NO"}
-: ${radarr_user:="__MEDIA_USER__"}
-: ${radarr_group:="__MEDIA_GROUP__"}
+: ${radarr_user:="media"}
+: ${radarr_group:="media"}
 : ${radarr_data_dir:="/config"}
 
 pidfile="${radarr_data_dir}/radarr.pid"

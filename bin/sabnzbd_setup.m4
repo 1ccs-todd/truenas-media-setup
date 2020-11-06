@@ -19,12 +19,12 @@ iocage fstab -a __SABNZBD_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__  nullfs rw 0
 # Configure rc.conf
 iocage exec __SABNZBD_JAIL__ sysrc sabnzbd_enable=YES
 iocage exec __SABNZBD_JAIL__ sysrc sabnzbd_conf_dir="/config"
-iocage exec __SABNZBD_JAIL__ sysrc sabnzbd_user=__MEDIA_USER__
-iocage exec __SABNZBD_JAIL__ sysrc sabnzbd_group=__MEDIA_GROUP__
+iocage exec __SABNZBD_JAIL__ sysrc sabnzbd_user=media
+iocage exec __SABNZBD_JAIL__ sysrc sabnzbd_group=media
 
 #Media Permissions
-iocage exec __SABNZBD_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __SABNZBD_JAIL__ "pw groupmod __MEDIA_GROUP__ -m _sabnzbd"
+iocage exec __SABNZBD_JAIL__ "pw user add media -c media -u 8675309 -d /nonexistent -s /usr/bin/nologin"
+iocage exec __SABNZBD_JAIL__ "pw groupmod media -m _sabnzbd"
 iocage exec __SABNZBD_JAIL__ mkdir -p /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__/incomplete
 iocage exec __SABNZBD_JAIL__ mkdir /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__/complete
 iocage exec __SABNZBD_JAIL__ chown -R __MEDIA_USER__:__MEDIA_GROUP__ /__MOUNT_LOCATION__/downloads/__SABNZBD_FILES__ /config

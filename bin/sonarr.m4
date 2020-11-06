@@ -1,4 +1,3 @@
-include(variables.m4)dnl
 #!/bin/sh
 # $FreeBSD$
 #
@@ -29,8 +28,8 @@ rcvar=${name}_enable
 load_rc_config $name
 
 : ${sonarr_enable:="NO"}
-: ${sonarr_user:="__MEDIA_USER__"}
-: ${sonarr_group:="__MEDIA_GROUP__"}
+: ${sonarr_user:="media"}
+: ${sonarr_group:="media"}
 : ${sonarr_data_dir:="/config"}
 
 pidfile="${sonarr_data_dir}/sonarr.pid"

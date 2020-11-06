@@ -17,20 +17,20 @@ iocage fstab -a __BAZARR_JAIL__ __APPS_ROOT__/__BAZARR_JAIL__ /config nullfs rw 
 iocage fstab -a __BAZARR_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__ nullfs rw 0 0
 
 # Install Bazarr
-iocage exec __BAZARR_JAIL__ git clone __BAZARR_REPO__ /usr/local/share/bazarr
+iocage exec __BAZARR_JAIL__ git clone https://github.com/morpheus65535/bazarr.git /usr/local/share/bazarr
 iocage exec __BAZARR_JAIL__  pip install -r /usr/local/share/bazarr/requirements.txt
 
 # Configure Bazarr
 iocage exec __BAZARR_JAIL__ sysrc bazarr_enable=YES
 iocage exec __BAZARR_JAIL__ sysrc "bazarr_conf_dir=/config"
-iocage exec __BAZARR_JAIL__ sysrc bazarr_user=__MEDIA_USER__
-iocage exec __BAZARR_JAIL__ sysrc bazarr_group=__MEDIA_GROUP__
+iocage exec __BAZARR_JAIL__ sysrc bazarr_user=media
+iocage exec __BAZARR_JAIL__ sysrc bazarr_group=media
 
 # Media permissions
-iocage exec __BAZARR_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __BAZARR_JAIL__ "pw user add __BAZARR_USER__ -c bazarr -u __BAZARR_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __BAZARR_JAIL__ "pw groupmod __MEDIA_GROUP__ -m bazarr"
-iocage exec __BAZARR_JAIL__ chown -R __MEDIA_USER__:__MEDIA_GROUP__ /usr/local/share/bazarr /config
+iocage exec __BAZARR_JAIL__ "pw user add media -c media -u 8675308 -d /nonexistent -s /usr/bin/nologin"
+iocage exec __BAZARR_JAIL__ "pw user add bazaar -c bazarr -u 354 -d /nonexistent -s /usr/bin/nologin"
+iocage exec __BAZARR_JAIL__ "pw groupmod media -m bazarr"
+iocage exec __BAZARR_JAIL__ chown -R media:media /usr/local/share/bazarr /config
 
 # Install rc.d service
 cp bazarr.rc __IOCAGE_ROOT__/jails/__BAZARR_JAIL__/root/usr/local/etc/rc.d/bazarr

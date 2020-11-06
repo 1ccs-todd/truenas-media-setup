@@ -19,9 +19,9 @@ iocage exec __ORGANIZR_JAIL__ mkdir /config/Organizr
 
 # Configure php-fpm
 echo 'listen = /var/run/php-fpm.sock' >> __IOCAGE_ROOT__/jails/__ORGANIZR_JAIL__/root/usr/local/etc/php-fpm.conf
-echo 'listen.owner = __ORGANIZR_USER__' >> __IOCAGE_ROOT__/jails/__ORGANIZR_JAIL__/root/usr/local/etc/php-fpm.conf
-echo 'listen.group = __ORGANIZR_GROUP__' >> __IOCAGE_ROOT__/jails/__ORGANIZR_JAIL__/root/usr/local/etc/php-fpm.conf
-echo 'listen.mode = __ORGANIZR_LISTEN_MODE__' >> __IOCAGE_ROOT__/jails/__ORGANIZR_JAIL__/root/usr/local/etc/php-fpm.conf
+echo 'listen.owner = www' >> __IOCAGE_ROOT__/jails/__ORGANIZR_JAIL__/root/usr/local/etc/php-fpm.conf
+echo 'listen.group = www' >> __IOCAGE_ROOT__/jails/__ORGANIZR_JAIL__/root/usr/local/etc/php-fpm.conf
+echo 'listen.mode = 0660' >> __IOCAGE_ROOT__/jails/__ORGANIZR_JAIL__/root/usr/local/etc/php-fpm.conf
 
 # Configure php
 iocage exec __ORGANIZR_JAIL__ cp /usr/local/etc/php.ini-production /usr/local/etc/php.ini
@@ -34,8 +34,8 @@ iocage exec __ORGANIZR_JAIL__ rm /usr/local/etc/nginx/nginx.conf
 iocage exec __ORGANIZR_JAIL__ ln -s /config/nginx/nginx.conf /usr/local/etc/nginx/nginx.conf
 
 # Install Organizr
-iocage exec __ORGANIZR_JAIL__ git clone -b __ORGANIZR_BRANCH__ __ORGANIZR_REPO__ /usr/local/www/Organizr
-iocage exec __ORGANIZR_JAIL__ chown -R __ORGANIZR_USER__:__ORGANIZR_GROUP__ /usr/local/www /config
+iocage exec __ORGANIZR_JAIL__ git clone -b v2-master https://github.com/causefx/Organizr.git /usr/local/www/Organizr
+iocage exec __ORGANIZR_JAIL__ chown -R www:www /usr/local/www /config
 
 # Configure rc.conf
 iocage exec __ORGANIZR_JAIL__ sysrc nginx_enable=YES

@@ -1,4 +1,3 @@
-include(variables.m4)dnl
 #!/bin/sh
 # PROVIDE: bazarr
 # REQUIRE: LOGIN
@@ -18,8 +17,8 @@ rcvar=bazarr_enable
 load_rc_config $name
 
 : ${bazarr_enable="NO"}
-: ${bazarr_user:="__MEDIA_USER__"}
-: ${bazarr_group:="__MEDIA_GROUP__"}
+: ${bazarr_user:="bazarr"}
+: ${bazarr_group:="bazarr"}
 : ${bazarr_data_dir:="/config"}
 
 pidfile="${bazarr_data_dir}/bazarr.pid"
@@ -32,7 +31,6 @@ command_args="-f -p ${pidfile} ${procname} /usr/local/share/bazarr/bazarr.py"
 
 bazarr_poststop()
 {
-        rm $pidfile
 }
 bazarr_prestart()
 {

@@ -13,7 +13,7 @@ iocage exec __SONARR_JAIL__ "pkg update && pkg upgrade -y"
 # Install Mono 6.8.0.105
 if [ ! -f __APPS_ROOT__/mono-6.8.0.105.txz ];then
 	iocage exec __SONARR_JAIL__ portsnap fetch extract
-	iocage exec __SONARR_JAIL__ pkg install -y p5-XML-Parser bash cmake autoconf automake libtool bison gmake gettext-tools xorg-vfbserver xorg-fonts-miscbitmaps font-alias
+	iocage exec __SONARR_JAIL__ pkg install -y p5-XML-Parser bash cmake autoconf automake libtool bison gcc gmake gettext-tools xorg-vfbserver xorg-fonts-miscbitmaps font-alias
 	iocage exec __SONARR_JAIL__ cp -r /usr/ports/lang/mono /usr/ports/lang/mono68105
 	curl -o /tmp/mono-patch-6.8.0.105 "https://bz-attachments.freebsd.org/attachment.cgi?id=219366"
 	patch -d __IOCAGE_ROOT__/jails/__SONARR_JAIL__/root/usr/ports/lang/ -E < /tmp/mono-patch-6.8.0.105
@@ -42,21 +42,21 @@ iocage fstab -a __SONARR_JAIL__ __APPS_ROOT__/__SONARR_JAIL__ /config nullfs rw 
 iocage fstab -a __SONARR_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__ nullfs rw 0 0
 
 # Install Sonarr
-iocage exec __SONARR_JAIL__ fetch "__SONARR_FETCH_URL__" -o __SONARR_FETCH_PATH__
-iocage exec __SONARR_JAIL__ "tar -xzvf __SONARR_FETCH_PATH__ -C /usr/local/share"
-iocage exec __SONARR_JAIL__ rm __SONARR_FETCH_PATH__
+iocage exec __SONARR_JAIL__ fetch "http://services.sonarr.tv/v1/download/phantom/latest?version=3&os=linux" -o /usr/local/share/Sonarr.phantom.latest.linux.tar.gz
+iocage exec __SONARR_JAIL__ "tar -xzvf /usr/local/share/Sonarr.phantom.latest.linux.tar.gz -C /usr/local/share"
+iocage exec __SONARR_JAIL__ rm /usr/local/share/Sonarr.phantom.latest.linux.tar.gz
 
 # Configure rc.conf
 iocage exec __SONARR_JAIL__ sysrc sonarr_enable=YES
 iocage exec __SONARR_JAIL__ sysrc "sonarr_data_dir=/config"
-iocage exec __SONARR_JAIL__ sysrc sonarr_user=__MEDIA_USER__
-iocage exec __SONARR_JAIL__ sysrc sonarr_group=__MEDIA_GROUP__
+iocage exec __SONARR_JAIL__ sysrc sonarr_user=media
+iocage exec __SONARR_JAIL__ sysrc sonarr_group=media
 
 # Media permissions
-iocage exec __SONARR_JAIL__ "pw user add __SONARR_USER__ -c sonarr -u __SONARR_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __SONARR_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __SONARR_JAIL__ "pw groupmod __MEDIA_GROUP__ -m __SONARR_USER__"
-iocage exec __SONARR_JAIL__ chown -R __MEDIA_USER__:__MEDIA_GROUP__ /usr/local/share/Sonarr /config
+iocage exec __SONARR_JAIL__ "pw user add sonarr -c sonarr -u 351 -d /nonexistent -s /usr/bin/nologin"
+iocage exec __SONARR_JAIL__ "pw user add media -c media -u 8675309 -d /nonexistent -s /usr/bin/nologin"
+iocage exec __SONARR_JAIL__ "pw groupmod media -m sonarr"
+iocage exec __SONARR_JAIL__ chown -R media:media /usr/local/share/Sonarr /config
 
 # Start rc.d service
 iocage exec __SONARR_JAIL__ mkdir /usr/local/etc/rc.d

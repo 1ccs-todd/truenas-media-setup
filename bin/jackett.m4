@@ -1,4 +1,3 @@
-include(variables.m4)dnl
 #!/bin/sh
 
 # $FreeBSD$
@@ -30,8 +29,8 @@ rcvar=${name}_enable
 load_rc_config $name
 
 : ${jackett_enable:="NO"}
-: ${jackett_user:="__JACKETT_USER__"}
-: ${jackett_group:="__JACKETT_GROUP__"}
+: ${jackett_user:="jackett"}
+: ${jackett_group:="jackett"}
 : ${jackett_data_dir:="/config"}
 
 pidfile="${jackett_data_dir}/jackett.pid"

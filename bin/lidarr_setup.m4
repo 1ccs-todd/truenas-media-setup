@@ -12,7 +12,7 @@ iocage exec __LIDARR_JAIL__ "pkg update && pkg upgrade -y"
 # Install Mono 6.8.0.105
 if [ ! -f __APPS_ROOT__/mono-6.8.0.105.txz ];then
 	iocage exec __LIDARR_JAIL__ portsnap fetch extract
-	iocage exec __LIDARR_JAIL__ pkg install -y p5-XML-Parser bash cmake autoconf automake libtool bison gmake gettext-tools xorg-vfbserver xorg-fonts-miscbitmaps font-alias
+	iocage exec __LIDARR_JAIL__ pkg install -y p5-XML-Parser bash cmake autoconf automake libtool bison gcc gmake gettext-tools xorg-vfbserver xorg-fonts-miscbitmaps font-alias
 	iocage exec __LIDARR_JAIL__ cp -r /usr/ports/lang/mono /usr/ports/lang/mono68105
 	curl -o /tmp/mono-patch-6.8.0.105 "https://bz-attachments.freebsd.org/attachment.cgi?id=219366"
 	patch -d __IOCAGE_ROOT__/jails/__LIDARR_JAIL__/root/usr/ports/lang/ -E < /tmp/mono-patch-6.8.0.105
@@ -41,21 +41,21 @@ iocage fstab -a __LIDARR_JAIL__ __APPS_ROOT__/__LIDARR_JAIL__ /config nullfs rw 
 iocage fstab -a __LIDARR_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__ nullfs rw 0 0
 
 # Download lidarr
-iocage exec __LIDARR_JAIL__ "fetch __LIDARR_FETCH_URL__ -o /usr/local/share"
-iocage exec __LIDARR_JAIL__ "tar -xzvf __LIDARR_FETCH_PATH__ -C /usr/local/share"
-iocage exec __LIDARR_JAIL__ rm __LIDARR_FETCH_PATH__
+iocage exec __LIDARR_JAIL__ "fetch https://github.com/lidarr/Lidarr/releases/download/__LIDARR_VERSION__/Lidarr.master.patsubst(__LIDARR_VERSION__,v).linux.tar.gz -o /usr/local/share"
+iocage exec __LIDARR_JAIL__ "tar -xzvf /usr/local/share/Lidarr.master.patsubst(__LIDARR_VERSION__,v).linux.tar.gz -C /usr/local/share"
+iocage exec __LIDARR_JAIL__ rm /usr/local/share/Lidarr.master.patsubst(__LIDARR_VERSION__,v).linux.tar.gz
 
 # Configure rc.conf
 iocage exec __LIDARR_JAIL__ sysrc lidarr_enable=YES
 iocage exec __LIDARR_JAIL__ sysrc "lidarr_data_dir=/config"
-iocage exec __LIDARR_JAIL__ sysrc lidarr_user=__MEDIA_USER__
-iocage exec __LIDARR_JAIL__ sysrc lidarr_group=__MEDIA_GROUP__
+iocage exec __LIDARR_JAIL__ sysrc lidarr_user=media
+iocage exec __LIDARR_JAIL__ sysrc lidarr_group=media
 
 # Media Permissions
-iocage exec __LIDARR_JAIL__ "pw user add __LIDARR_USER__ -c lidarr -u __LIDARR_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __LIDARR_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __LIDARR_JAIL__ "pw groupmod __MEDIA_GROUP__ -m __LIDARR_USER__"
-iocage exec __LIDARR_JAIL__ chown -R __MEDIA_USER__:__MEDIA_GROUP__ /usr/local/share/Lidarr /config
+iocage exec __LIDARR_JAIL__ "pw user add lidarr -c lidarr -u 353 -d /nonexistent -s /usr/bin/nologin"
+iocage exec __LIDARR_JAIL__ "pw user add media -c media -u 8675309 -d /nonexistent -s /usr/bin/nologin"
+iocage exec __LIDARR_JAIL__ "pw groupmod media -m lidarr"
+iocage exec __LIDARR_JAIL__ chown -R media:media /usr/local/share/Lidarr /config
 
 # Install rc.d service
 cp lidarr.rc __IOCAGE_ROOT__/jails/__LIDARR_JAIL__/root/usr/local/etc/rc.d/lidarr

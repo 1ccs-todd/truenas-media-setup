@@ -16,15 +16,15 @@ mkdir -p __APPS_ROOT__/__TAUTULLI_JAIL__
 iocage fstab -a __TAUTULLI_JAIL__ __APPS_ROOT__/__TAUTULLI_JAIL__ /config nullfs rw 0 0
 
 # Download Tautulli
-iocage exec __TAUTULLI_JAIL__ git clone __TAUTULLI_REPO__ /usr/local/share/Tautulli
+iocage exec __TAUTULLI_JAIL__ git clone https://github.com/Tautulli/Tautulli.git /usr/local/share/Tautulli
 
 # Configure rc.conf
 iocage exec __TAUTULLI_JAIL__ sysrc tautulli_enable=YES
 iocage exec __TAUTULLI_JAIL__ sysrc "tautulli_flags=--datadir /config"
 
 # Media permissions
-iocage exec __TAUTULLI_JAIL__ "pw user add __TAUTULLI_USER__ -c tautulli -u __TAUTULLI_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __TAUTULLI_JAIL__ chown -R __TAUTULLI_USER__:__TAUTULLI_GROUP__ /usr/local/share/Tautulli /config
+iocage exec __TAUTULLI_JAIL__ "pw user add tautulli -c tautulli -u 109 -d /nonexistent -s /usr/bin/nologin"
+iocage exec __TAUTULLI_JAIL__ chown -R tautulli:tautulli /usr/local/share/Tautulli /config
 iocage exec __TAUTULLI_JAIL__ cp /usr/local/share/Tautulli/init-scripts/init.freenas /usr/local/etc/rc.d/tautulli
 iocage exec __TAUTULLI_JAIL__ chmod u+x /usr/local/etc/rc.d/tautulli
 

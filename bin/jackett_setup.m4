@@ -16,16 +16,17 @@ mkdir -p __APPS_ROOT__/__JACKETT_JAIL__
 iocage fstab -a __JACKETT_JAIL__ __APPS_ROOT__/__JACKETT_JAIL__ /config nullfs rw 0 0
 
 # Download jackett
-iocage exec __JACKETT_JAIL__ "fetch __JACKETT_FETCH_URL__ -o /usr/local/share"
-iocage exec __JACKETT_JAIL__ "tar -xzvf __JACKETT_FETCH_PATH__ -C /usr/local/share"
-iocage exec __JACKETT_JAIL__ rm __JACKETT_FETCH_PATH__
+iocage exec __JACKETT_JAIL__ "fetch https://github.com/Jackett/Jackett/releases/download/__JACKETT_VERSION__/Jackett.Binaries.Mono.tar.gz -o /usr/local/share"
+iocage exec __JACKETT_JAIL__ "tar -xzvf /usr/local/share/Jackett.Binaries.Mono.tar.gz -C /usr/local/share"
+iocage exec __JACKETT_JAIL__ rm /usr/local/share/Jackett.Binaries.Mono.tar.gz
 
 # Configure rc.conf
 iocage exec __JACKETT_JAIL__ sysrc "jackett_enable=YES"
+iocage exec __JACKETT_JAIL__ sysrc jackett_data_dir="/config"
 
 # Media permissions
-iocage exec __JACKETT_JAIL__ "pw user add __JACKETT_USER__ -c jackett -u __JACKETT_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __JACKETT_JAIL__ chown -R __JACKETT_USER__:__JACKETT_GROUP__ /usr/local/share/Jackett /config
+iocage exec __JACKETT_JAIL__ "pw user add jackett -c jackett -u 818 -d /nonexistent -s /usr/bin/nologin"
+iocage exec __JACKETT_JAIL__ chown -R jackett:jackett /usr/local/share/Jackett /config
 
 # Install rc.d service
 iocage exec __JACKETT_JAIL__ mkdir /usr/local/etc/rc.d

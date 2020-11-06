@@ -11,22 +11,22 @@ iocage exec __TRANSMISSION_JAIL__ "echo -e 'FreeBSD: { url: \"pkg+http://pkg.Fre
 iocage exec __TRANSMISSION_JAIL__ "pkg update && pkg upgrade -y"
 
 # Mount storage
-iocage exec __TRANSMISSION_JAIL__ mkdir -p /config/transmission-home
+iocage exec __TRANSMISSION_JAIL__ mkdir -p /config/transmission
 mkdir -p __APPS_ROOT__/__TRANSMISSION_JAIL__
-iocage fstab -a __TRANSMISSION_JAIL__ __APPS_ROOT__/__TRANSMISSION_JAIL__ /config nullfs rw 0 0
+iocage fstab -a __TRANSMISSION_JAIL__ __APPS_ROOT__/__TRANSMISSION_JAIL__ /config/transmission nullfs rw 0 0
 iocage fstab -a __TRANSMISSION_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__ nullfs rw 0 0
 
 # Configure rc.conf
 iocage exec __TRANSMISSION_JAIL__ sysrc transmission_enable=YES
-iocage exec __TRANSMISSION_JAIL__ sysrc "transmission_conf_dir=/config/transmission-home"
+iocage exec __TRANSMISSION_JAIL__ sysrc "transmission_conf_dir=/config/transmission"
 iocage exec __TRANSMISSION_JAIL__ sysrc "transmission_download_dir=/__MOUNT_LOCATION__/downloads/complete"
-iocage exec __TRANSMISSION_JAIL__ sysrc transmission_user=__MEDIA_USER__
-iocage exec __TRANSMISSION_JAIL__ sysrc transmission_group=__MEDIA_GROUP__
+iocage exec __TRANSMISSION_JAIL__ sysrc transmission_user=media
+iocage exec __TRANSMISSION_JAIL__ sysrc transmission_group=media
 
 # Media permissions
-iocage exec __TRANSMISSION_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __TRANSMISSION_JAIL__ "pw groupmod __MEDIA_GROUP__ -m transmission"
-iocage exec __TRANSMISSION_JAIL__  chown -R __MEDIA_USER__:__MEDIA_GROUP__ /config/transmission-home
+iocage exec __TRANSMISSION_JAIL__ "pw user add media -c media -u 8675309 -d /nonexistent -s /usr/bin/nologin"
+iocage exec __TRANSMISSION_JAIL__ "pw groupmod media -m transmission"
+iocage exec __TRANSMISSION_JAIL__  chown -R media:media /config
 
 # Edit Transmission web-access
 iocage exec __TRANSMISSION_JAIL__  service transmission start

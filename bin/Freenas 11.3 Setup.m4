@@ -66,7 +66,7 @@ Configuration:
 ***Plex***
 ------
 ```
-include(plex_setup.sh)
+include(./plex_setup.sh)
 ```
 
 <a name="transmission"></a>

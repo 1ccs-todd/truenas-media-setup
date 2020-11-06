@@ -21,8 +21,8 @@ iocage exec __PLEX_JAIL__ sysrc plexmediaserver_enable=YES
 iocage exec __PLEX_JAIL__ sysrc "plexmediaserver_support_path=/config"
 
 # Set permissions
-iocage exec __PLEX_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __PLEX_JAIL__ "pw groupmod __MEDIA_GROUP__ -m plex"
+iocage exec __PLEX_JAIL__ "pw user add media -c media -u 8675309 -d /nonexistent -s /usr/bin/nologin"
+iocage exec __PLEX_JAIL__ "pw groupmod media -m plex"
 iocage exec __PLEX_JAIL__ chown -R plex:plex /config
 
 # Start rc.d service

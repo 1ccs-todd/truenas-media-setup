@@ -17,21 +17,21 @@ iocage fstab -a __RADARR_JAIL__ __APPS_ROOT__/__RADARR_JAIL__ /config nullfs rw 
 iocage fstab -a __RADARR_JAIL__ __MEDIA_ROOT__ /__MOUNT_LOCATION__ nullfs rw 0 0
 
 # download radarr
-iocage exec __RADARR_JAIL__ "fetch __RADARR_FETCH_URL__ -o __RADARR_FETCH_PATH__"
-iocage exec __RADARR_JAIL__ "tar -xzvf __RADARR_FETCH_PATH__ -C /usr/local/share"
-iocage exec __RADARR_JAIL__ rm __RADARR_FETCH_PATH__
+iocage exec __RADARR_JAIL__ "fetch https://github.com/Radarr/Radarr/releases/download/__RADARR_VERSION__/Radarr.develop.patsubst(__RADARR_VERSION__,v).linux.tar.gz -o /usr/local/share/Radarr.patsubst(__RADARR_VERSION__,v).linux.tar.gz"
+iocage exec __RADARR_JAIL__ "tar -xzvf /usr/local/share/Radarr.patsubst(__RADARR_VERSION__,v).linux.tar.gz -C /usr/local/share"
+iocage exec __RADARR_JAIL__ rm /usr/local/share/Radarr.patsubst(__RADARR_VERSION__,v).linux.tar.gz
 
 # Configure rc.conf
 iocage exec __RADARR_JAIL__ sysrc radarr_enable=YES
 iocage exec __RADARR_JAIL__ sysrc "radarr_data_dir=/config"
-iocage exec __RADARR_JAIL__ sysrc radarr_user=__MEDIA_USER__
-iocage exec __RADARR_JAIL__ sysrc radarr_group=__MEDIA_GROUP__
+iocage exec __RADARR_JAIL__ sysrc radarr_user=media
+iocage exec __RADARR_JAIL__ sysrc radarr_group=media
 
 # Media Permissions
-iocage exec __RADARR_JAIL__ "pw user add __RADARR_USER__ -c radarr -u __RADARR_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __RADARR_JAIL__ "pw user add __MEDIA_USER__ -c media -u __MEDIA_UID__ -d /nonexistent -s /usr/bin/nologin"
-iocage exec __RADARR_JAIL__ "pw groupmod __MEDIA_GROUP__ -m __RADARR_USER__"
-iocage exec __RADARR_JAIL__ chown -R __MEDIA_USER__:__MEDIA_GROUP__ /usr/local/share/Radarr /config
+iocage exec __RADARR_JAIL__ "pw user add radarr -c radarr -u 352 -d /nonexistent -s /usr/bin/nologin"
+iocage exec __RADARR_JAIL__ "pw user add media -c media -u 8675309 -d /nonexistent -s /usr/bin/nologin"
+iocage exec __RADARR_JAIL__ "pw groupmod media -m radarr"
+iocage exec __RADARR_JAIL__ chown -R media:media /usr/local/share/Radarr /config
 
 # Start rc.d service
 iocage exec __RADARR_JAIL__ mkdir /usr/local/etc/rc.d

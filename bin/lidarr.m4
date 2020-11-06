@@ -1,4 +1,3 @@
-include(variables.m4)dnl
 #!/bin/sh
 
 # $FreeBSD$
@@ -19,8 +18,8 @@ rcvar=${name}_enable
 load_rc_config $name
 
 : ${lidarr_enable:="NO"}
-: ${lidarr_user:="__MEDIA_USER__"}
-: ${lidarr_group:="__MEDIA_GROUP__"}
+: ${lidarr_user:="media"}
+: ${lidarr_group:="media"}
 : ${lidarr_data_dir:="/config"}
 
 pidfile="${lidarr_data_dir}/lidarr.pid"
