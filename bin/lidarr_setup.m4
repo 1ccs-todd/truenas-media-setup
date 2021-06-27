@@ -1,5 +1,5 @@
 include(variables.m4)dnl
-echo '{"pkgs":["mono","mediainfo","sqlite3","chromaprint","python37","libinotify","nano"]}' > /tmp/pkg.json
+echo '{"pkgs":["mono6.8","mediainfo","sqlite3","chromaprint","python37","libinotify","nano"]}' > /tmp/pkg.json
 iocage create -n "__LIDARR_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__LIDARR_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 rm /tmp/pkg.json
 
