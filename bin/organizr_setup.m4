@@ -13,7 +13,7 @@ if [ "$(whoami)" != "root" ]; then
 fi
 
 # Create the jail
-echo '{"pkgs":["nginx","php72","php72-filter","php72-curl","php72-hash","php72-json","php72-openssl","php72-pdo","php72-pdo_sqlite","php72-session","php72-simplexml","php72-sqlite3","php72-zip","git-tiny"]}' > /tmp/pkg.json
+echo '{"pkgs":["nginx","php83","php83-filter","php83-curl","php83-pdo","php83-pdo_sqlite","php83-session","php83-simplexml","php83-sqlite3","php83-zip","git-tiny"]}' > /tmp/pkg.json
 iocage create -n "__ORGANIZR_JAIL__" -p /tmp/pkg.json -r __IOCAGE_RELEASE__ ip4_addr="__DEFAULT_INTERFACE__|__ORGANIZR_IP__/__DEFAULT_CIDR__" defaultrouter="__DEFAULT_ROUTER__" vnet="on" allow_raw_sockets="1" boot="on"
 rm /tmp/pkg.json
 
