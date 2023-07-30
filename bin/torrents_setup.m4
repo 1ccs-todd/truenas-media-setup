@@ -134,7 +134,7 @@ if echo ${vpninput:0:1} | grep -iq y; then
 
     # Install run PIA scripts
     iocage exec __TORRENT_JAIL__ pkg install -y  git-tiny
-#    iocage exec __TORRENT_JAIL__ "git clone https://github.com/1ccs-todd/manual-connections.git /config/pia"
+    iocage exec __TORRENT_JAIL__ "git clone https://github.com/1ccs-todd/manual-connections.git /config/pia"
     iocage exec __TORRENT_JAIL__ "cd /config/pia; ./run_setup.sh"
 
     # Configure PIA service
