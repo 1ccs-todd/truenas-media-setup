@@ -4,16 +4,15 @@
 
 Thanks to the creator of this guide https://www.ixsystems.com/community/resources/fn11-2-iocage-jails-plex-tautulli-sonarr-radarr-lidarr-jackett-transmission-organizr.58/  
 
-The goal is to make a customizable installation script to setup complete media management including Plex, Tautulli, Sonarr, Radarr, Lidarr, Jackett, Transmission or Deluge, Organizr, Ombi, and Sabnzbd on any FreeNAS server.  
+The goal is to make a customizable installation script to setup complete media management including Plex, Tautulli, Sonarr, Radarr, Lidarr, Jackett, Transmission or Deluge, Organizr, Ombi, and Sabnzbd on TrueNAS CORE server.  
 
-Ombi 3.x and Radarr 3.x are not yet compatible due to .NET Core requriements.  
 
 
 **Basic Guide:**  
-1) download the latest release from this repo and unpack it to a folder on your FreeNAS server.  
-2) ssh (preferred) or use shell from the Web-UI of FreeNAS  
+1) download the latest release from this repo and unpack it to a folder on your TrueNAS CORE server.  
+2) ssh (preferred) or use shell from the Web-UI of TrueNAS  
 3) enter path where you unpacked the master.zip  
-4) copy 'variables.m4.sample' to 'variables.m4' and open it for editing...  
+4) copy 'variables.m4.sample' to 'variables.m4' and open for editing...  
 * Recommended variables to edit:
 ```
                                      __POOL__;
@@ -25,17 +24,18 @@ Ombi 3.x and Radarr 3.x are not yet compatible due to .NET Core requriements.
                                      __RADARR_IP__;
                                      __SONARR_IP__;
                                      __TAUTULLI_IP__;
-                                     __TRANSMISSION_IP__;
+                                     __TORRENTS_IP__;
                                      __SABNZBD_IP__;
 ```
 
-5) run 'make' to build custom install scripts based on 'variables.m4'  
-6) Review "Freenas 11.3 Setup.md".  A customized manual installation guide for each FreeNAS installation.  
+5) run 'make' to build the custom install scripts based on 'variables.m4'  
+6) Review "Truenas 13.x Setup.md".  A customized pre-install review guide for each installation.  
    (I use Chrome with MarkDown Viewer Extension.)  
 7) Enter "chmod u+x *.sh" to ensure execution of the installation scripts.  
 8) Execute './\<JAIL\>_setup.sh' to install whichever jails you desire.   
-9a) If you desire VPN protection for your Transmission jail, execute "transmission_add_VPN.sh" and place your working openvpn.conf file where the script recommends.  
-9b) If you desire VPN protection for your Deluge jail, execute "deluge_add_VPN.sh" and place your working openvpn.conf file where the script recommends.  
+8a) torrents_setup.sh replaces old scripts.  During execution, prompts added to decide daemon (Deluge/Transmission) and if adding VPN protection.
+8b) VPN protection prompts for universal Openvpn or PrivateInternetAccess specific (wireguard/openvpn) configurations.
+
 ------  
 ***Post Installation Steps***  
 
@@ -73,8 +73,6 @@ Transmission should be available at http://\<JailIP\>:9091/transmission/web/
 **ORGANIZR:**  
 Navigate to http://\<JailIP\> and set the database location to "/config" and pick your timezone.  
 
-**TORRENT-VPN:**  
-The install script prompts for the extra steps that MUST be made.  Here is a recap:  
-
-First, place your working openvpn.conf (and any linked ca,key,pass files) to /mnt/\<POOL\>/apps/openvpn/  
-Second, using your favorite editor, edit /mnt/\<POOL\>/apps/\<JAIL\>/config/ipfw.rules and check "tun*" device, and that the public IP of the VPN server is allowed.  
+**TORRENTS-VPN:**  
+For standard OpenVPN, place your working openvpn.conf (and any linked ca,key,pass files) to /mnt/\<POOL\>/apps/openvpn/  
+Finally, using your favorite editor, edit /mnt/\<POOL\>/apps/\<JAIL\>/config/ipfw.rules and check "tun*" device, and that the public IP of the VPN server is allowed.

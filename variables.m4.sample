@@ -1,61 +1,63 @@
-define(__IOCAGE_RELEASE__,11.3-RELEASE)dnl # update 11.3-Release to match compatibility with your FreeNAS version.
+define(__IOCAGE_RELEASE__,13.1-RELEASE)dnl # update 13.1-Release to match compatibility with your TrueNAS version.
 dnl
-define(__POOL__,myVol)dnl # edit 'myVol' to your pool for iocage (jail) data.
-define(__APPS_DATASET__,apps)dnl # edit 'apps' to your dataset name for holding configuration data
-define(__MEDIA_DATASET__,media)dnl # edit 'media' to your dataset name for holding all your media files
-define(__MOUNT_LOCATION__,mnt)dnl # edit 'mnt' if you want to change the default mount location inside each jail.
+define(__POOL__,myVol)dnl		# edit 'myVol' to a/the pool name for media and iocage (jail) storage.
+define(__APPS_DATASET__,apps)dnl	# edit 'apps' to a/the dataset name for jail daemon configuration storage.
+define(__MEDIA_DATASET__,media)dnl	# edit 'media' to a/the dataset name for all media files.
+define(__MOUNT_LOCATION__,mnt)dnl	# edit 'mnt' to change the default mount location of media inside each jail.
 dnl
-define(__DEFAULT_ROUTER__,10.68.69.1)dnl # change to your router IP address
-define(__DEFAULT_CIDR__,24)dnl # edit if you use a different subnet mask than /24
+define(__DEFAULT_ROUTER__,192.168.1.1)dnl # change to your router IP address
+define(__DEFAULT_CIDR__,24)dnl		# edit if you use a different subnet mask than /24
 dnl
-define(__BAZARR_JAIL__,bazarr)dnl
-define(__BAZARR_IP__,10.68.69.20)dnl # desired IP for Tautulli
+define(__BAZARR_JAIL__,bazarr)dnl	# name of jail
+define(__BAZARR_IP__,192.168.1.20)dnl	# static LAN IP for Tautulli
 dnl
-define(__JACKETT_JAIL__,jackett)dnl
-define(__JACKETT_IP__,10.68.69.21)dnl # desired IP for Jackett
-define(__JACKETT_VERSION__,v0.12.1384)dnl # change to latest version of Jackett
+define(__EMBY_JAIL__,emby)dnl           # name of jail
+define(__EMBY_IP__,192.168.1.21)dnl     # static LAN IP for Emby
 dnl
-define(__LIDARR_JAIL__,lidarr)dnl
-define(__LIDARR_IP__,10.68.69.22)dnl # desired IP for Lidarr
-define(__LIDARR_VERSION__,v0.7.1.1381)dnl # edit to latest version of Lidarr
+define(__JELLYFIN_JAIL__,jellyfin)dnl   # name of jail
+define(__JELLYFIN_IP__,192.168.1.79)dnl # static LAN IP for Jellyfin
 dnl
-define(__ORGANIZR_JAIL__,organizr)dnl
-define(__ORGANIZR_IP__,10.68.69.23)dnl # desired IP for Organizr
+define(__LIDARR_JAIL__,lidarr)dnl	# name of jail
+define(__LIDARR_IP__,192.168.1.22)dnl	# static LAN IP for Lidarr
 dnl
-define(__PLEX_JAIL__,plex)dnl
-define(__PLEX_IP__,10.68.69.24)dnl # desired IP for Plex
+define(__ORGANIZR_JAIL__,organizr)dnl	# name of jail
+define(__ORGANIZR_IP__,192.168.1.23)dnl # static LAN IP for Organizr
 dnl
-define(__RADARR_JAIL__,radarr)dnl
-define(__RADARR_IP__,10.68.69.25)dnl # desired IP for Radarr
-define(__RADARR_VERSION__,v0.2.0.1450)dnl # change to latest version of Radarr
+define(__PLEX_JAIL__,plex)dnl		# name of jail
+define(__PLEX_IP__,192.168.1.24)dnl	# static LAN IP for Plex
 dnl
-define(__SABNZBD_JAIL__,sabnzbd)dnl
-define(__SABNZBD_IP__,10.68.69.26)dnl # desired IP for Sabnzbd
+define(__PROWLARR_JAIL__,prowlarr)dnl	# name of jail
+define(__PROWLARR_IP__,192.168.1.25)dnl	# static LAN IP for Prowlarr
 dnl
-define(__SONARR_JAIL__,sonarr)dnl
-define(__SONARR_IP__,10.68.69.27)dnl # desired IP for Sonarr
+define(__RADARR_JAIL__,radarr)dnl	# name of jail
+define(__RADARR_IP__,192.168.1.26)dnl	# static LAN IP for Radarr
 dnl
-define(__TAUTULLI_JAIL__,tautulli)
-define(__TAUTULLI_IP__,10.68.69.28)dnl # desired IP for Tautulli
+define(__SABNZBD_JAIL__,sabnzbd)dnl	# name of jail
+define(__SABNZBD_IP__,192.168.1.27)dnl	# static LAN IP for Sabnzbd
 dnl
-define(__DELUGE_JAIL__,deluge)dnl
+define(__SONARR_JAIL__,sonarr)dnl	# name of jail
+define(__SONARR_IP__,192.168.1.28)dnl	# static LAN IP for Sonarr
 dnl
-define(__TRANSMISSION_JAIL__,transmission)dnl
-define(__TORRENT_IP__,10.68.69.29)dnl # static LAN IP for Transmission
-define(__TORRENT_SVRIP__,10.10.10.10)dnl # IP of VPN server to connect to
+define(__TAUTULLI_JAIL__,tautulli)dnl	# name of jail	
+define(__TAUTULLI_IP__,192.168.1.29)dnl # static LAN IP for Tautulli
+dnl
+define(__TORRENT_JAIL__,deluge)dnl	# name of jail for torrents
+define(__TORRENT_IP__,192.168.1.30)dnl	# static LAN IP for Transmission/Deluge
+dnl
+define(__OPENVPN_IP__,10.10.10.10)dnl	# public IP of OpenVPN server to connect to
 dnl
 dnl##
 dnl### Below typically do not need editing.
 dnl##
 define(__DEFAULT_INTERFACE__,vnet0)dnl
 dnl
-define(__SONARR_DOWNLOADS__,sonarr)dnl # edit if a different category name is desired for Sonarr
-define(__SONARR_COMPLETED__,series)dnl # edit if a different storage folder is desired for Sonarr
-define(__RADARR_DOWNLOADS__,radarr)dnl # edit if a different category name is desired for Radarr
-define(__RADARR_COMPLETED__,movies)dnl # edit if a different storage folder is desired for Radarr
-define(__LIDARR_DOWNLOADS__,lidarr)dnl # edit if a different category name is desired for Lidarr
-define(__LIDARR_COMPLETED__,music)dnl # edit if a different storage folder is desired for Lidarr
-define(__SABNZBD_FILES__,sabnzbd)dnl # edit if a differnet download folder is desired for Usenet files
+define(__SONARR_DOWNLOADS__,sonarr)dnl	# edit if a different category name is desired for Sonarr
+define(__SONARR_COMPLETED__,series)dnl	# edit if a different storage folder is desired for Sonarr
+define(__RADARR_DOWNLOADS__,radarr)dnl	# edit if a different category name is desired for Radarr
+define(__RADARR_COMPLETED__,movies)dnl	# edit if a different storage folder is desired for Radarr
+define(__LIDARR_DOWNLOADS__,lidarr)dnl	# edit if a different category name is desired for Lidarr
+define(__LIDARR_COMPLETED__,music)dnl	# edit if a different storage folder is desired for Lidarr
+define(__SABNZBD_FILES__,sabnzbd)dnl	# edit if a differnet download folder is desired for Usenet files
 dnl##
 dnl### Below NEVER need editing.
 dnl##

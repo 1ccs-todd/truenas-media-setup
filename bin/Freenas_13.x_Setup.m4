@@ -1,6 +1,6 @@
 changequote(`[[[', `]]]')dnl
 include(variables.m4)dnl
-FreeNAS 11.2-U7, 11.3
+FreeNAS 13.1, 13.2
 =======
 
 ***WARNING READ THIS: This page contains incomplete and possibly incorrect info. The page is constantly being edited and worked on. Many of these should work but some may be broken. Read the code carefully to understand what you are doing, stuff may be nedd to be changed for your own use. These include but are not limited too JAIL AND ROUTER IPs, YOUR FREENAS MAIN VOLUME,THE MOST RECENT RELEASE OF DOWNLOADED FILES Use at your own risk.***
@@ -29,7 +29,7 @@ You have pool named "__POOL__". And created a dataset named "__MEDIA_DATASET__" 
 
 Permissions
 ------  
-For Sonarr, Radarr, Lidarr, and Transmission to share files, the default user is changed to to __MEDIA_USER__:__MEDIA_GROUP__ so the jails can work together properly.
+For Sonarr, Radarr, Lidarr, Bazarr and Transmission/Deluge to share files, the default user is changed to to __MEDIA_USER__:__MEDIA_GROUP__ so the jails can work together properly.
 
 MONO 5.20 compatibility
 ------
@@ -37,21 +37,25 @@ Sonarr and Lidarr have moved away from mono 5.10.  For these two, PORTS are inst
 
 OPENVPN
 ------
-A VPN may not be desired by everyone. Execute "transmission_add_VPN.sh" to process the necessary additions for __TRANSMISSION_JAIL__.
+A VPN may not be desired by everyone. Execute "torrent_add_VPN.sh" to process the necessary additions for __TORRENT_JAIL__.
 
 ------
 
 ***Complete Media setup including (dates show the last successful test):***
 
 + [Plex](#plex) 12/30/19
-+ [Transmission](#transmission) 12/30/19
-+ [Sonarr V3](#sonarr) 12/30/19
-+ [Radarr](#radarr) 12/30/19
-+ [Lidarr](#lidarr) 12/30/19
-+ [Jackett](#jackett) 12/30/19
++ [Emby](#emby) 07/25/23
++ [Jelllyfin](#jellyfin) 07/25/23
++ [Transmission](#torrent)
++ [Deluge](#torrent) 
++ [Radarr](#radarr) 07/25/23
++ [Lidarr](#lidarr) 07/25/23
++ [Sonarr](#sonarr) 07/25/23
++ [Prowlarr](#prowlarr) 07/25/23
 + [Tautulli](#tautulli) 12/30/19
 + [Organizr V2](#organizr) 12/30/19
-+ [Sabnzbd](#sabnzbd) 12/30/19
++ [Sabnzbd](#sabnzbd) 07/25/23
++ [Bazarr](#bazarr) 07/23/23
 
 Ombi is no longer supported as Ombi 2.x is no longer being developed actively and Ombi 3.x is not usable until there is proper support for .net-core on FreeBSD
 
@@ -69,11 +73,11 @@ Configuration:
 include(./plex_setup.sh)
 ```
 
-<a name="transmission"></a>
-***Transmission***
+<a name="torrents"></a>
+***Transmission/Deluge***
 -------
 ```
-include(transmission_setup.sh)
+include(torrents_setup.sh)
 ```
 ```
 # you may need to change the white list in settings.json to your preferred settings. The script allows EVERYONE.
@@ -86,16 +90,6 @@ include(transmission_setup.sh)
 include(sonarr_setup.sh)
 ```
 
-<details><summary>CLICK TO SHOW SONARR rc.d</summary>
-<p>
-
-```
-include(sonarr.rc)
-```
-
-</p>
-</details>
-
 <a name="radarr"></a>
 ***Radarr***
 ------
@@ -103,32 +97,12 @@ include(sonarr.rc)
 include(radarr_setup.sh)
 ```
 
-<details><summary>CLICK TO SHOW RADARR rc.d</summary>
-<p>
-
-```
-include(radarr.rc)
-```
-
-</p>
-</details>
-
 <a name="lidarr"></a>
 ***Lidarr V7.1.x***
 -----
 ```
 include(lidarr_setup.sh)
 ```
-
-<details><summary>CLICK TO SHOW LIDARR rc.d</summary>
-<p>
-
-```
-include(lidarr.rc)
-```
-
-</p>
-</details>
 
 <a name="organizr"></a>
 ***Organizr V2***
@@ -140,28 +114,18 @@ include(organizr_setup.sh)
 <p>
 
 ```
-include(organizr_nginx.conf)
+include(bin/organizr_nginx.conf)
 ```
 
 </p>
 </details>
 
-<a name="jackett"></a>
-***Jackett***
+<a name="Prowlarr"></a>
+***Prowlarr***
 ------
 ```
-include(jackett_setup.sh)
+include(prowlarr_setup.sh)
 ```
-
-<details><summary>CLICK TO SHOW JACKETT rc.d</summary>
-<p>
-
-```
-include(jackett.rc)
-```
-
-</p>
-</details>
 
 <a name="tautulli"></a>
 ***Tautulli***
@@ -223,7 +187,7 @@ iocage exec <jail> service <name of service> stop
 PORT - SERVICE - USER (UID)
 radarr- 7878 - __RADARR_USER__ (__RADARR_UID__) 
 sonarr- 8989 - __SONARR_USER__ (__SONARR_UID__)
-jackett - 9117 - __JACKETT_USER__ (__JACKETT_UID__)
+prowlarr - 9117 - __PROWLARR_USER__ (__PROWLARR_UID__)
 0rganizr - 80 - organizr (www)
 plexmediaserver 32400 - plex (972)
 transmission - 9091 -transmission (921) 
