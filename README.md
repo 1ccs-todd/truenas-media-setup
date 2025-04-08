@@ -1,6 +1,7 @@
 # freenas-media-setup
 
-***DISCLAIMER: The project is constantly being edited and worked on. Many of these should work but some may be broken. Read the code carefully to understand what you are doing.  Use at your own risk.***  
+***DISCLAIMER: The project is no longer maintained. Read the code carefully to understand what you are doing.  Use at your own risk.***  
+*** These worked well for me on TN 12 & 13 systems.  TN Core is beinge phased out for Community Edition (Scale) ***
 
 Thanks to the creator of this guide https://www.ixsystems.com/community/resources/fn11-2-iocage-jails-plex-tautulli-sonarr-radarr-lidarr-jackett-transmission-organizr.58/  
 
